@@ -8,3 +8,4 @@ gradio
 deep-translator
 wikipedia
 pubchempy
+transformers
