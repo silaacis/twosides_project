@@ -2,6 +2,7 @@ import torch
 import gradio as gr
 import pubchempy as pcp
 import wikipedia
+import requests
 
 from deep_translator import GoogleTranslator
 from tdc.multi_pred import DDI
@@ -35,6 +36,59 @@ def get_side_effect_info(effect_name):
         )
 
     return tr_name, description
+
+
+def get_pubchem_record_title(cid):
+    try:
+        pure_cid = str(int(str(cid).replace("CID", "")))
+        url = f"https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/compound/{pure_cid}/JSON"
+
+        response = requests.get(url, timeout=8)
+
+        if response.status_code == 200:
+            data = response.json()
+            title = data.get("Record", {}).get("RecordTitle", None)
+
+            if title and not title.upper().startswith("CID"):
+                return title.title()
+
+    except Exception:
+        pass
+
+    return None
+
+
+def get_drug_name(cid):
+    try:
+        pure_cid = int(str(cid).replace("CID", ""))
+
+        title_name = get_pubchem_record_title(cid)
+        if title_name:
+            return title_name
+
+        compound = pcp.Compound.from_cid(pure_cid)
+
+        if compound.synonyms:
+            clean_names = [
+                name
+                for name in compound.synonyms
+                if len(name) < 50
+                and not name.upper().startswith("CID")
+                and not any(char.isdigit() for char in name[:5])
+            ]
+
+            if clean_names:
+                return clean_names[0].title()
+
+            return compound.synonyms[0].title()
+
+        if compound.iupac_name:
+            return compound.iupac_name.title()
+
+    except Exception:
+        pass
+
+    return f"Bilinmeyen İlaç [{cid}]"
 
 
 print(f"Kullanılan cihaz: {device}")
@@ -74,32 +128,13 @@ for _, row in grouped_df.iterrows():
     all_drugs[row["Drug2_ID"]] = row["Drug2"]
 
 
-def get_drug_name(cid):
-    try:
-        pure_cid = int(str(cid).replace("CID", ""))
-        compound = pcp.Compound.from_cid(pure_cid)
-
-        if compound.synonyms:
-            clean_names = [
-                name
-                for name in compound.synonyms
-                if len(name) < 40 and not any(char.isdigit() for char in name)
-            ]
-
-            if clean_names:
-                return clean_names[0].title()
-
-            return compound.synonyms[0].title()
-
-    except Exception:
-        pass
-
-    return cid
-
-
 for cid, smiles in all_drugs.items():
     drug_name = get_drug_name(cid)
-    display_name = f"{drug_name} [{cid}]"
+
+    if drug_name.startswith("Bilinmeyen İlaç"):
+        display_name = drug_name
+    else:
+        display_name = f"{drug_name} [{cid}]"
 
     drug_dict[cid] = smiles
     display_to_id[display_name] = cid
