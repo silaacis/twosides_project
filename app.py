@@ -1,6 +1,7 @@
 import torch
 import gradio as gr
-import pandas as pd
+import pubchempy as pcp
+
 from tdc.multi_pred import DDI
 from tdc.utils import get_label_map
 from rdkit import Chem
@@ -28,23 +29,59 @@ grouped_df = (
 mlb = torch.load(
     "models/label_binarizer.pth",
     map_location=device,
-    weights_only=False
+    weights_only=False,
 )
+
 num_classes = len(mlb.classes_)
 
 label_map = get_label_map(
     name="TWOSIDES",
     task="DDI",
-    name_column="Side Effect Name"
+    name_column="Side Effect Name",
 )
 
+print("İlaç isimleri hazırlanıyor...")
+
 drug_dict = {}
+display_to_id = {}
+all_drugs = {}
 
 for _, row in grouped_df.iterrows():
-    drug_dict[row["Drug1_ID"]] = row["Drug1"]
-    drug_dict[row["Drug2_ID"]] = row["Drug2"]
+    all_drugs[row["Drug1_ID"]] = row["Drug1"]
+    all_drugs[row["Drug2_ID"]] = row["Drug2"]
 
-drug_list = sorted(list(drug_dict.keys()))
+
+def get_drug_name(cid):
+    try:
+        pure_cid = int(str(cid).replace("CID", ""))
+        compound = pcp.Compound.from_cid(pure_cid)
+
+        if compound.synonyms:
+            clean_names = [
+                name
+                for name in compound.synonyms
+                if len(name) < 40 and not any(char.isdigit() for char in name)
+            ]
+
+            if clean_names:
+                return clean_names[0].title()
+
+            return compound.synonyms[0].title()
+
+    except Exception:
+        pass
+
+    return cid
+
+
+for cid, smiles in all_drugs.items():
+    drug_name = get_drug_name(cid)
+    display_name = f"{drug_name} [{cid}]"
+
+    drug_dict[cid] = smiles
+    display_to_id[display_name] = cid
+
+drug_list = sorted(list(display_to_id.keys()))
 
 model = SiameseGATv2(
     num_node_features=80,
@@ -54,7 +91,10 @@ model = SiameseGATv2(
 ).to(device)
 
 model.load_state_dict(
-    torch.load("models/twosides_gatv2_model.pth", map_location=device)
+    torch.load(
+        "models/twosides_gatv2_model.pth",
+        map_location=device,
+    )
 )
 
 model.eval()
@@ -62,7 +102,13 @@ model.eval()
 print("Model başarıyla yüklendi.")
 
 
-def predict_side_effects(drug1_id, drug2_id):
+def predict_side_effects(drug1_display, drug2_display):
+    if drug1_display is None or drug2_display is None:
+        return None, "Lütfen iki ilaç seçiniz."
+
+    drug1_id = display_to_id[drug1_display]
+    drug2_id = display_to_id[drug2_display]
+
     if drug1_id == drug2_id:
         return None, "Lütfen iki farklı ilaç seçiniz."
 
@@ -92,7 +138,7 @@ def predict_side_effects(drug1_id, drug2_id):
 
     image = Draw.MolsToGridImage(
         [mol1, mol2],
-        legends=[drug1_id, drug2_id],
+        legends=[drug1_display.split(" [")[0], drug2_display.split(" [")[0]],
         molsPerRow=2,
         subImgSize=(350, 300),
     )
@@ -106,7 +152,7 @@ def predict_side_effects(drug1_id, drug2_id):
         side_effect_name = label_map.get(label_id, str(label_id))
         probability = top_probs[i].item() * 100
 
-        result += f"| {i+1} | {side_effect_name} | %{probability:.2f} |\n"
+        result += f"| {i + 1} | {side_effect_name} | %{probability:.2f} |\n"
 
     result += "\n---\n"
     result += "**Not:** Bu sistem tıbbi tanı veya tedavi önerisi değildir. "
@@ -117,6 +163,7 @@ def predict_side_effects(drug1_id, drug2_id):
 
 with gr.Blocks(theme=gr.themes.Soft()) as demo:
     gr.Markdown("# GNN Tabanlı Polypharmacy Yan Etki Tahmin Sistemi")
+
     gr.Markdown(
         "Bu arayüz, iki ilacın birlikte kullanımında ortaya çıkabilecek "
         "olası yan etkileri TWOSIDES veri seti üzerinde eğitilmiş GATv2 modeliyle tahmin eder."
@@ -126,14 +173,16 @@ with gr.Blocks(theme=gr.themes.Soft()) as demo:
         with gr.Column():
             drug1 = gr.Dropdown(
                 choices=drug_list,
-                label="Birinci İlaç ID",
+                label="Birinci İlaç",
                 filterable=True,
             )
+
             drug2 = gr.Dropdown(
                 choices=drug_list,
-                label="İkinci İlaç ID",
+                label="İkinci İlaç",
                 filterable=True,
             )
+
             button = gr.Button("Yan Etki Tahmini Yap")
 
         with gr.Column():
