@@ -1,0 +1,10 @@
+torch
+torch-geometric
+rdkit
+pandas
+numpy
+scikit-learn
+gradio
+deep-translator
+wikipedia
+pubchempy
