@@ -29,6 +29,7 @@ explanation_generator = pipeline(
 )
 
 CACHE_FILE = "side_effect_cache.json"
+DRUG_NAME_CACHE_FILE = "drug_name_cache.json"
 
 
 def load_cache():
@@ -43,7 +44,20 @@ def save_cache(cache):
         json.dump(cache, file, ensure_ascii=False, indent=4)
 
 
+def load_drug_name_cache():
+    if os.path.exists(DRUG_NAME_CACHE_FILE):
+        with open(DRUG_NAME_CACHE_FILE, "r", encoding="utf-8") as file:
+            return json.load(file)
+    return {}
+
+
+def save_drug_name_cache(cache):
+    with open(DRUG_NAME_CACHE_FILE, "w", encoding="utf-8") as file:
+        json.dump(cache, file, ensure_ascii=False, indent=4)
+
+
 side_effect_cache = load_cache()
+drug_name_cache = load_drug_name_cache()
 
 
 def get_side_effect_explanation(effect_name):
@@ -133,32 +147,61 @@ drug_dict = {}
 display_to_id = {}
 all_drugs = {}
 
+
 for _, row in grouped_df.iterrows():
     all_drugs[row["Drug1_ID"]] = row["Drug1"]
     all_drugs[row["Drug2_ID"]] = row["Drug2"]
 
 
 def get_drug_name(cid):
+    cid = str(cid)
+
+    if cid in drug_name_cache:
+        cached_name = drug_name_cache[cid]
+
+        if cached_name and not cached_name.startswith("CID"):
+            return cached_name
+
     try:
-        pure_cid = int(str(cid).replace("CID", ""))
+        pure_cid = int(cid.replace("CID", ""))
         compound = pcp.Compound.from_cid(pure_cid)
 
+        candidate_names = []
+
         if compound.synonyms:
-            clean_names = [
-                name
-                for name in compound.synonyms
-                if len(name) < 40 and not any(char.isdigit() for char in name)
-            ]
+            candidate_names.extend(compound.synonyms)
 
-            if clean_names:
-                return clean_names[0].title()
+        if compound.iupac_name:
+            candidate_names.append(compound.iupac_name)
 
-            return compound.synonyms[0].title()
+        clean_names = []
+
+        for name in candidate_names:
+            name = str(name).strip()
+
+            if not name:
+                continue
+
+            if len(name) > 60:
+                continue
+
+            if name.lower().startswith("cid"):
+                continue
+
+            clean_names.append(name)
+
+        if clean_names:
+            selected_name = clean_names[0].title()
+        else:
+            selected_name = f"PubChem Compound {cid}"
 
     except Exception:
-        pass
+        selected_name = f"PubChem Compound {cid}"
 
-    return cid
+    drug_name_cache[cid] = selected_name
+    save_drug_name_cache(drug_name_cache)
+
+    return selected_name
 
 
 for cid, smiles in all_drugs.items():
