@@ -1,7 +1,11 @@
+import os
+import json
 import torch
 import gradio as gr
 import pubchempy as pcp
+import wikipedia
 
+from deep_translator import GoogleTranslator
 from tdc.multi_pred import DDI
 from tdc.utils import get_label_map
 from rdkit import Chem
@@ -13,6 +17,57 @@ from model import SiameseGATv2
 
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
+wikipedia.set_lang("tr")
+translator = GoogleTranslator(source="en", target="tr")
+
+CACHE_FILE = "side_effect_cache.json"
+
+
+def load_cache():
+    if os.path.exists(CACHE_FILE):
+        with open(CACHE_FILE, "r", encoding="utf-8") as file:
+            return json.load(file)
+    return {}
+
+
+def save_cache(cache):
+    with open(CACHE_FILE, "w", encoding="utf-8") as file:
+        json.dump(cache, file, ensure_ascii=False, indent=4)
+
+
+side_effect_cache = load_cache()
+
+
+def get_side_effect_explanation(effect_name):
+    key = effect_name.lower().strip()
+
+    if key in side_effect_cache:
+        return side_effect_cache[key]["tr_name"], side_effect_cache[key]["description"]
+
+    try:
+        tr_name = translator.translate(effect_name)
+        tr_name = tr_name.title()
+    except Exception:
+        tr_name = effect_name
+
+    try:
+        description = wikipedia.summary(tr_name, sentences=1, auto_suggest=True)
+    except Exception:
+        description = (
+            "Bu yan etki TWOSIDES veri setinde yer alan klinik bir bildirimdir. "
+            "Ayrıntılı tıbbi değerlendirme için uzman görüşü gerekir."
+        )
+
+    side_effect_cache[key] = {
+        "tr_name": tr_name,
+        "description": description,
+    }
+
+    save_cache(side_effect_cache)
+
+    return tr_name, description
+
 
 print(f"Kullanılan cihaz: {device}")
 print("TWOSIDES verisi yükleniyor...")
@@ -45,6 +100,7 @@ print("İlaç isimleri hazırlanıyor...")
 drug_dict = {}
 display_to_id = {}
 all_drugs = {}
+
 
 for _, row in grouped_df.iterrows():
     all_drugs[row["Drug1_ID"]] = row["Drug1"]
@@ -144,15 +200,20 @@ def predict_side_effects(drug1_display, drug2_display):
     )
 
     result = "## Tahmin Edilen İlk 10 Yan Etki\n\n"
-    result += "| Sıra | Yan Etki | Olasılık |\n"
-    result += "|---|---|---|\n"
+    result += "| Sıra | Yan Etki | Türkçe Karşılık | Açıklama | Olasılık |\n"
+    result += "|---|---|---|---|---|\n"
 
     for i, idx in enumerate(top_indices):
         label_id = mlb.classes_[idx.item()]
         side_effect_name = label_map.get(label_id, str(label_id))
         probability = top_probs[i].item() * 100
 
-        result += f"| {i + 1} | {side_effect_name} | %{probability:.2f} |\n"
+        tr_name, description = get_side_effect_explanation(side_effect_name)
+
+        result += (
+            f"| {i + 1} | {side_effect_name} | {tr_name} | "
+            f"{description} | %{probability:.2f} |\n"
+        )
 
     result += "\n---\n"
     result += "**Not:** Bu sistem tıbbi tanı veya tedavi önerisi değildir. "
