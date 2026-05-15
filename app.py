@@ -1,10 +1,8 @@
-import os
-import json
 import torch
 import gradio as gr
 import pubchempy as pcp
+import wikipedia
 
-from transformers import pipeline
 from deep_translator import GoogleTranslator
 from tdc.multi_pred import DDI
 from tdc.utils import get_label_map
@@ -19,84 +17,22 @@ from model import SiameseGATv2
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 translator = GoogleTranslator(source="en", target="tr")
-
-print("AI açıklama modeli yükleniyor...")
-
-explanation_generator = pipeline(
-    "text-generation",
-    model="distilgpt2",
-    device=0 if torch.cuda.is_available() else -1,
-)
-
-CACHE_FILE = "side_effect_cache.json"
+wikipedia.set_lang("tr")
 
 
-def load_cache():
-    if os.path.exists(CACHE_FILE):
-        with open(CACHE_FILE, "r", encoding="utf-8") as file:
-            return json.load(file)
-    return {}
-
-
-def save_cache(cache):
-    with open(CACHE_FILE, "w", encoding="utf-8") as file:
-        json.dump(cache, file, ensure_ascii=False, indent=4)
-
-
-side_effect_cache = load_cache()
-
-
-def get_side_effect_explanation(effect_name):
-    key = effect_name.lower().strip()
-
-    if key in side_effect_cache:
-        return side_effect_cache[key]["tr_name"], side_effect_cache[key]["description"]
-
+def get_side_effect_info(effect_name):
     try:
-        tr_name = translator.translate(effect_name)
-        tr_name = tr_name.title()
+        tr_name = translator.translate(effect_name).title()
     except Exception:
         tr_name = effect_name
 
-    prompt = (
-        "Explain this medical side effect in one simple English sentence. "
-        "Do not give medical advice. "
-        f"Side effect: {effect_name}. Explanation:"
-    )
-
     try:
-        ai_output = explanation_generator(
-            prompt,
-            max_new_tokens=60,
-            do_sample=False,
-            pad_token_id=50256,
-        )
-
-        english_description = ai_output[0]["generated_text"].replace(prompt, "").strip()
-
-        if len(english_description) < 20:
-            english_description = (
-                f"{effect_name} is a clinical side effect that may be reported "
-                "in relation to medication use."
-            )
-
-        try:
-            description = translator.translate(english_description)
-        except Exception:
-            description = english_description
-
+        description = wikipedia.summary(tr_name, sentences=1, auto_suggest=True)
     except Exception:
         description = (
             f"{tr_name}, TWOSIDES veri setinde ilaç kombinasyonlarıyla ilişkili "
             "olarak bildirilen klinik bir yan etkidir."
         )
-
-    side_effect_cache[key] = {
-        "tr_name": tr_name,
-        "description": description,
-    }
-
-    save_cache(side_effect_cache)
 
     return tr_name, description
 
@@ -231,7 +167,7 @@ def predict_side_effects(drug1_display, drug2_display):
     )
 
     result = "## Tahmin Edilen İlk 10 Yan Etki\n\n"
-    result += "| Sıra | Yan Etki | Türkçe Karşılık | AI Açıklaması | Olasılık |\n"
+    result += "| Sıra | Yan Etki | Türkçe Karşılık | Açıklama | Olasılık |\n"
     result += "|---|---|---|---|---|\n"
 
     for i, idx in enumerate(top_indices):
@@ -239,7 +175,7 @@ def predict_side_effects(drug1_display, drug2_display):
         side_effect_name = label_map.get(label_id, str(label_id))
         probability = top_probs[i].item() * 100
 
-        tr_name, description = get_side_effect_explanation(side_effect_name)
+        tr_name, description = get_side_effect_info(side_effect_name)
 
         result += (
             f"| {i + 1} | {side_effect_name} | {tr_name} | "
@@ -248,8 +184,7 @@ def predict_side_effects(drug1_display, drug2_display):
 
     result += "\n---\n"
     result += "**Not:** Bu sistem tıbbi tanı veya tedavi önerisi değildir. "
-    result += "Model yalnızca TWOSIDES veri setindeki örüntülere dayalı tahmin üretir. "
-    result += "Yan etki açıklamaları, kullanıcıya anlaşılır bilgi sunmak amacıyla AI destekli açıklama modülüyle oluşturulmuştur."
+    result += "Model yalnızca TWOSIDES veri setindeki örüntülere dayalı tahmin üretir."
 
     return image, result
 
