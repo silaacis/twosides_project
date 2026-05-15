@@ -16,7 +16,7 @@ from model import SiameseGATv2
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-DESCRIPTION_FILE = "side_effect_descriptions.json"
+DESCRIPTION_FILE = "side_effect_descriptions_enhanced.json"
 
 
 def load_side_effect_descriptions():
