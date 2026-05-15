@@ -4,6 +4,7 @@ import pubchempy as pcp
 import wikipedia
 import requests
 
+from transformers import pipeline
 from deep_translator import GoogleTranslator
 from tdc.multi_pred import DDI
 from tdc.utils import get_label_map
@@ -20,6 +21,14 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 translator = GoogleTranslator(source="en", target="tr")
 wikipedia.set_lang("tr")
 
+print("AI açıklama modeli yükleniyor...")
+
+ai_explainer = pipeline(
+    "text2text-generation",
+    model="google/flan-t5-small",
+    device=0 if torch.cuda.is_available() else -1,
+)
+
 
 def get_side_effect_info(effect_name):
     try:
@@ -27,13 +36,37 @@ def get_side_effect_info(effect_name):
     except Exception:
         tr_name = effect_name
 
+    prompt = (
+        "Explain this medical side effect in one simple English sentence. "
+        "Do not give medical advice. "
+        f"Side effect: {effect_name}"
+    )
+
     try:
-        description = wikipedia.summary(tr_name, sentences=1, auto_suggest=True)
-    except Exception:
-        description = (
-            f"{tr_name}, TWOSIDES veri setinde ilaç kombinasyonlarıyla ilişkili "
-            "olarak bildirilen klinik bir yan etkidir."
+        ai_result = ai_explainer(
+            prompt,
+            max_new_tokens=60,
+            do_sample=False,
         )
+
+        english_description = ai_result[0]["generated_text"].strip()
+
+        if len(english_description) < 20:
+            raise ValueError("AI explanation is too short")
+
+        try:
+            description = translator.translate(english_description)
+        except Exception:
+            description = english_description
+
+    except Exception:
+        try:
+            description = wikipedia.summary(tr_name, sentences=1, auto_suggest=True)
+        except Exception:
+            description = (
+                f"{tr_name}, TWOSIDES veri setinde ilaç kombinasyonlarıyla ilişkili "
+                "olarak bildirilen klinik bir yan etkidir."
+            )
 
     return tr_name, description
 
@@ -190,9 +223,9 @@ def predict_side_effects(drug1_display, drug2_display):
 
     with torch.no_grad():
         output = model(batch1, batch2)
-        probs = torch.sigmoid(output)[0]
+        scores = torch.sigmoid(output)[0]
 
-    top_probs, top_indices = torch.topk(probs, 10)
+    top_scores, top_indices = torch.topk(scores, 10)
 
     image = Draw.MolsToGridImage(
         [mol1, mol2],
@@ -202,24 +235,25 @@ def predict_side_effects(drug1_display, drug2_display):
     )
 
     result = "## Tahmin Edilen İlk 10 Yan Etki\n\n"
-    result += "| Sıra | Yan Etki | Türkçe Karşılık | Açıklama | Olasılık |\n"
+    result += "| Sıra | Yan Etki | Türkçe Karşılık | Açıklama | Model Skoru |\n"
     result += "|---|---|---|---|---|\n"
 
     for i, idx in enumerate(top_indices):
         label_id = mlb.classes_[idx.item()]
         side_effect_name = label_map.get(label_id, str(label_id))
-        probability = top_probs[i].item() * 100
+        score = top_scores[i].item() * 100
 
         tr_name, description = get_side_effect_info(side_effect_name)
 
         result += (
             f"| {i + 1} | {side_effect_name} | {tr_name} | "
-            f"{description} | %{probability:.2f} |\n"
+            f"{description} | %{score:.2f} |\n"
         )
 
     result += "\n---\n"
     result += "**Not:** Bu sistem tıbbi tanı veya tedavi önerisi değildir. "
-    result += "Model yalnızca TWOSIDES veri setindeki örüntülere dayalı tahmin üretir."
+    result += "Model skorları, kesin klinik olasılık değil; TWOSIDES veri setinden öğrenilen örüntülere dayalı göreli tahmin skorlarıdır. "
+    result += "Açıklamalar kullanıcıya anlaşılır bilgi sunmak için AI destekli açıklama modülü ve bilgi kaynaklarıyla oluşturulmuştur."
 
     return image, result
 
