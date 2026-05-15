@@ -3,8 +3,8 @@ import json
 import torch
 import gradio as gr
 import pubchempy as pcp
-import wikipedia
 
+from transformers import pipeline
 from deep_translator import GoogleTranslator
 from tdc.multi_pred import DDI
 from tdc.utils import get_label_map
@@ -18,8 +18,15 @@ from model import SiameseGATv2
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-wikipedia.set_lang("tr")
 translator = GoogleTranslator(source="en", target="tr")
+
+print("AI açıklama modeli yükleniyor...")
+
+explanation_generator = pipeline(
+    "text2text-generation",
+    model="google/flan-t5-small",
+    device=0 if torch.cuda.is_available() else -1,
+)
 
 CACHE_FILE = "side_effect_cache.json"
 
@@ -51,12 +58,31 @@ def get_side_effect_explanation(effect_name):
     except Exception:
         tr_name = effect_name
 
+    prompt = (
+        "Explain this medical side effect in Turkish with one clear sentence. "
+        "Do not give medical advice. "
+        f"Side effect: {effect_name}"
+    )
+
     try:
-        description = wikipedia.summary(tr_name, sentences=1, auto_suggest=True)
+        ai_output = explanation_generator(
+            prompt,
+            max_new_tokens=80,
+            do_sample=False,
+        )
+
+        description = ai_output[0]["generated_text"].strip()
+
+        if len(description) < 20:
+            description = (
+                f"{tr_name}, ilaç kullanımıyla ilişkili olarak bildirilebilen "
+                "klinik bir yan etkidir."
+            )
+
     except Exception:
         description = (
-            "Bu yan etki TWOSIDES veri setinde yer alan klinik bir bildirimdir. "
-            "Ayrıntılı tıbbi değerlendirme için uzman görüşü gerekir."
+            f"{tr_name}, TWOSIDES veri setinde ilaç kombinasyonlarıyla ilişkili "
+            "olarak bildirilen klinik bir yan etkidir."
         )
 
     side_effect_cache[key] = {
@@ -100,7 +126,6 @@ print("İlaç isimleri hazırlanıyor...")
 drug_dict = {}
 display_to_id = {}
 all_drugs = {}
-
 
 for _, row in grouped_df.iterrows():
     all_drugs[row["Drug1_ID"]] = row["Drug1"]
@@ -200,7 +225,7 @@ def predict_side_effects(drug1_display, drug2_display):
     )
 
     result = "## Tahmin Edilen İlk 10 Yan Etki\n\n"
-    result += "| Sıra | Yan Etki | Türkçe Karşılık | Açıklama | Olasılık |\n"
+    result += "| Sıra | Yan Etki | Türkçe Karşılık | AI Açıklaması | Olasılık |\n"
     result += "|---|---|---|---|---|\n"
 
     for i, idx in enumerate(top_indices):
@@ -217,7 +242,8 @@ def predict_side_effects(drug1_display, drug2_display):
 
     result += "\n---\n"
     result += "**Not:** Bu sistem tıbbi tanı veya tedavi önerisi değildir. "
-    result += "Model yalnızca TWOSIDES veri setindeki örüntülere dayalı tahmin üretir."
+    result += "Model yalnızca TWOSIDES veri setindeki örüntülere dayalı tahmin üretir. "
+    result += "Yan etki açıklamaları, kullanıcıya anlaşılır bilgi sunmak amacıyla AI destekli açıklama modülüyle oluşturulmuştur."
 
     return image, result
 
@@ -231,7 +257,7 @@ with gr.Blocks(theme=gr.themes.Soft()) as demo:
     )
 
     with gr.Row():
-        with gr.Column():
+        with gr.Column(scale=1):
             drug1 = gr.Dropdown(
                 choices=drug_list,
                 label="Birinci İlaç",
@@ -244,11 +270,13 @@ with gr.Blocks(theme=gr.themes.Soft()) as demo:
                 filterable=True,
             )
 
-            button = gr.Button("Yan Etki Tahmini Yap")
+            button = gr.Button("Yan Etki Tahmini Yap", variant="primary")
 
-        with gr.Column():
+        with gr.Column(scale=1):
             output_image = gr.Image(label="Moleküler Yapılar")
-            output_text = gr.Markdown()
+
+    gr.Markdown("## Tahmin Sonuçları")
+    output_text = gr.Markdown()
 
     button.click(
         predict_side_effects,
