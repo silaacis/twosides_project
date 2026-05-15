@@ -1,14 +1,11 @@
-import re
+import json
+import os
 import torch
 import gradio as gr
 import pubchempy as pcp
-import wikipedia
 import requests
 
-from transformers import pipeline
-from deep_translator import GoogleTranslator
 from tdc.multi_pred import DDI
-from tdc.utils import get_label_map
 from rdkit import Chem
 from rdkit.Chem import Draw
 from torch_geometric.data import Batch
@@ -19,123 +16,37 @@ from model import SiameseGATv2
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-translator = GoogleTranslator(source="en", target="tr")
-wikipedia.set_lang("tr")
-
-print("AI açıklama modeli yükleniyor...")
-
-ai_explainer = pipeline(
-    "text2text-generation",
-    model="google/flan-t5-small",
-    device=0 if torch.cuda.is_available() else -1,
-)
+DESCRIPTION_FILE = "side_effect_descriptions.json"
 
 
-def is_bad_explanation(text):
-    if text is None:
-        return True
+def load_side_effect_descriptions():
+    if os.path.exists(DESCRIPTION_FILE):
+        with open(DESCRIPTION_FILE, "r", encoding="utf-8") as file:
+            return json.load(file)
 
-    text = text.strip()
-
-    if len(text) < 35:
-        return True
-
-    words = text.lower().split()
-
-    if len(words) < 6:
-        return True
-
-    repeated_words = [word for word in set(words) if words.count(word) >= 4]
-
-    if repeated_words:
-        return True
-
-    if re.search(r"(\b\w+\b)(\s+\1){2,}", text.lower()):
-        return True
-
-    bad_patterns = [
-        "şişmiş şişmiş",
-        "unknown",
-        "i don't know",
-        "not sure",
-        "medical advice",
-        "consult your doctor",
-    ]
-
-    if any(pattern in text.lower() for pattern in bad_patterns):
-        return True
-
-    return False
+    print("Uyarı: side_effect_descriptions.json bulunamadı.")
+    return {}
 
 
-def get_ai_explanation(effect_name):
-    prompt = (
-        "Explain this medical side effect in one simple English sentence. "
-        "Only define the side effect. Do not give advice. "
-        f"Side effect: {effect_name}"
-    )
+side_effect_descriptions = load_side_effect_descriptions()
 
-    try:
-        ai_result = ai_explainer(
-            prompt,
-            max_new_tokens=60,
-            do_sample=False,
+
+def get_side_effect_info(label_id, effect_name):
+    key = str(label_id)
+
+    if key in side_effect_descriptions:
+        item = side_effect_descriptions[key]
+        return (
+            item.get("tr_name", effect_name),
+            item.get("description", "Açıklama bulunamadı."),
+            item.get("source", "Açıklama dosyası"),
         )
 
-        english_description = ai_result[0]["generated_text"].strip()
-
-        if is_bad_explanation(english_description):
-            return None
-
-        try:
-            turkish_description = translator.translate(english_description)
-        except Exception:
-            turkish_description = english_description
-
-        if is_bad_explanation(turkish_description):
-            return None
-
-        return turkish_description
-
-    except Exception:
-        return None
-
-
-def get_wikipedia_explanation(tr_name):
-    try:
-        description = wikipedia.summary(tr_name, sentences=1, auto_suggest=True)
-
-        if is_bad_explanation(description):
-            return None
-
-        return description
-
-    except Exception:
-        return None
-
-
-def get_side_effect_info(effect_name):
-    try:
-        tr_name = translator.translate(effect_name).title()
-    except Exception:
-        tr_name = effect_name
-
-    ai_description = get_ai_explanation(effect_name)
-
-    if ai_description:
-        return tr_name, ai_description, "AI"
-
-    wiki_description = get_wikipedia_explanation(tr_name)
-
-    if wiki_description:
-        return tr_name, wiki_description, "Wikipedia"
-
-    default_description = (
-        f"{tr_name}, TWOSIDES veri setinde ilaç kombinasyonlarıyla ilişkili "
-        "olarak bildirilen klinik bir yan etkidir."
+    return (
+        effect_name,
+        f"{effect_name}, TWOSIDES veri setinde ilaç kombinasyonlarıyla ilişkili olarak bildirilen klinik bir yan etkidir.",
+        "Varsayılan",
     )
-
-    return tr_name, default_description, "Varsayılan"
 
 
 def get_pubchem_record_title(cid):
@@ -212,12 +123,6 @@ mlb = torch.load(
 
 num_classes = len(mlb.classes_)
 
-label_map = get_label_map(
-    name="TWOSIDES",
-    task="DDI",
-    name_column="Side Effect Name",
-)
-
 print("İlaç isimleri hazırlanıyor...")
 
 drug_dict = {}
@@ -227,7 +132,6 @@ all_drugs = {}
 for _, row in grouped_df.iterrows():
     all_drugs[row["Drug1_ID"]] = row["Drug1"]
     all_drugs[row["Drug2_ID"]] = row["Drug2"]
-
 
 for cid, smiles in all_drugs.items():
     drug_name = get_drug_name(cid)
@@ -308,20 +212,23 @@ def predict_side_effects(drug1_display, drug2_display):
 
     for i, idx in enumerate(top_indices):
         label_id = mlb.classes_[idx.item()]
-        side_effect_name = label_map.get(label_id, str(label_id))
+        effect_name = side_effect_descriptions.get(
+            str(label_id), {}
+        ).get("en_name", str(label_id))
+
         score = top_scores[i].item() * 100
 
-        tr_name, description, source = get_side_effect_info(side_effect_name)
+        tr_name, description, source = get_side_effect_info(label_id, effect_name)
 
         result += (
-            f"| {i + 1} | {side_effect_name} | {tr_name} | "
+            f"| {i + 1} | {effect_name} | {tr_name} | "
             f"{description} | {source} | %{score:.2f} |\n"
         )
 
     result += "\n---\n"
     result += "**Not:** Bu sistem tıbbi tanı veya tedavi önerisi değildir. "
     result += "Model skorları kesin klinik olasılık değil, TWOSIDES veri setinden öğrenilen örüntülere dayalı göreli tahmin skorlarıdır. "
-    result += "Yan etki açıklamaları önce AI destekli modül ile üretilir; kalite kontrolünden geçmeyen açıklamalar yerine Wikipedia veya güvenli varsayılan açıklama kullanılır."
+    result += "Yan etki açıklamaları, önceden oluşturulmuş açıklama dosyasından alınmaktadır."
 
     return image, result
 
