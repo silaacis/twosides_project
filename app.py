@@ -25,7 +25,11 @@ grouped_df = (
     .reset_index()
 )
 
-mlb = torch.load("models/label_binarizer.pth", map_location=device)
+mlb = torch.load(
+    "models/label_binarizer.pth",
+    map_location=device,
+    weights_only=False
+)
 num_classes = len(mlb.classes_)
 
 label_map = get_label_map(
