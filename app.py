@@ -23,8 +23,8 @@ translator = GoogleTranslator(source="en", target="tr")
 print("AI açıklama modeli yükleniyor...")
 
 explanation_generator = pipeline(
-    "text2text-generation",
-    model="google/flan-t5-small",
+    "text-generation",
+    model="distilgpt2",
     device=0 if torch.cuda.is_available() else -1,
 )
 
@@ -59,9 +59,9 @@ def get_side_effect_explanation(effect_name):
         tr_name = effect_name
 
     prompt = (
-        "Explain this medical side effect in Turkish with one clear sentence. "
+        "Explain this medical side effect in one simple English sentence. "
         "Do not give medical advice. "
-        f"Side effect: {effect_name}"
+        f"Side effect: {effect_name}. Explanation:"
     )
 
     try:
@@ -69,15 +69,21 @@ def get_side_effect_explanation(effect_name):
             prompt,
             max_new_tokens=80,
             do_sample=False,
+            pad_token_id=50256,
         )
 
-        description = ai_output[0]["generated_text"].strip()
+        english_description = ai_output[0]["generated_text"].replace(prompt, "").strip()
 
-        if len(description) < 20:
-            description = (
-                f"{tr_name}, ilaç kullanımıyla ilişkili olarak bildirilebilen "
-                "klinik bir yan etkidir."
+        if len(english_description) < 20:
+            english_description = (
+                f"{effect_name} is a clinical side effect that may be reported "
+                "in relation to medication use."
             )
+
+        try:
+            description = translator.translate(english_description)
+        except Exception:
+            description = english_description
 
     except Exception:
         description = (
