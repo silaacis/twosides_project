@@ -1,3 +1,4 @@
+import re
 import torch
 import gradio as gr
 import pubchempy as pcp
@@ -30,15 +31,47 @@ ai_explainer = pipeline(
 )
 
 
-def get_side_effect_info(effect_name):
-    try:
-        tr_name = translator.translate(effect_name).title()
-    except Exception:
-        tr_name = effect_name
+def is_bad_explanation(text):
+    if text is None:
+        return True
 
+    text = text.strip()
+
+    if len(text) < 35:
+        return True
+
+    words = text.lower().split()
+
+    if len(words) < 6:
+        return True
+
+    repeated_words = [word for word in set(words) if words.count(word) >= 4]
+
+    if repeated_words:
+        return True
+
+    if re.search(r"(\b\w+\b)(\s+\1){2,}", text.lower()):
+        return True
+
+    bad_patterns = [
+        "şişmiş şişmiş",
+        "unknown",
+        "i don't know",
+        "not sure",
+        "medical advice",
+        "consult your doctor",
+    ]
+
+    if any(pattern in text.lower() for pattern in bad_patterns):
+        return True
+
+    return False
+
+
+def get_ai_explanation(effect_name):
     prompt = (
         "Explain this medical side effect in one simple English sentence. "
-        "Do not give medical advice. "
+        "Only define the side effect. Do not give advice. "
         f"Side effect: {effect_name}"
     )
 
@@ -51,24 +84,58 @@ def get_side_effect_info(effect_name):
 
         english_description = ai_result[0]["generated_text"].strip()
 
-        if len(english_description) < 20:
-            raise ValueError("AI explanation is too short")
+        if is_bad_explanation(english_description):
+            return None
 
         try:
-            description = translator.translate(english_description)
+            turkish_description = translator.translate(english_description)
         except Exception:
-            description = english_description
+            turkish_description = english_description
+
+        if is_bad_explanation(turkish_description):
+            return None
+
+        return turkish_description
 
     except Exception:
-        try:
-            description = wikipedia.summary(tr_name, sentences=1, auto_suggest=True)
-        except Exception:
-            description = (
-                f"{tr_name}, TWOSIDES veri setinde ilaç kombinasyonlarıyla ilişkili "
-                "olarak bildirilen klinik bir yan etkidir."
-            )
+        return None
 
-    return tr_name, description
+
+def get_wikipedia_explanation(tr_name):
+    try:
+        description = wikipedia.summary(tr_name, sentences=1, auto_suggest=True)
+
+        if is_bad_explanation(description):
+            return None
+
+        return description
+
+    except Exception:
+        return None
+
+
+def get_side_effect_info(effect_name):
+    try:
+        tr_name = translator.translate(effect_name).title()
+    except Exception:
+        tr_name = effect_name
+
+    ai_description = get_ai_explanation(effect_name)
+
+    if ai_description:
+        return tr_name, ai_description, "AI"
+
+    wiki_description = get_wikipedia_explanation(tr_name)
+
+    if wiki_description:
+        return tr_name, wiki_description, "Wikipedia"
+
+    default_description = (
+        f"{tr_name}, TWOSIDES veri setinde ilaç kombinasyonlarıyla ilişkili "
+        "olarak bildirilen klinik bir yan etkidir."
+    )
+
+    return tr_name, default_description, "Varsayılan"
 
 
 def get_pubchem_record_title(cid):
@@ -96,6 +163,7 @@ def get_drug_name(cid):
         pure_cid = int(str(cid).replace("CID", ""))
 
         title_name = get_pubchem_record_title(cid)
+
         if title_name:
             return title_name
 
@@ -235,25 +303,25 @@ def predict_side_effects(drug1_display, drug2_display):
     )
 
     result = "## Tahmin Edilen İlk 10 Yan Etki\n\n"
-    result += "| Sıra | Yan Etki | Türkçe Karşılık | Açıklama | Model Skoru |\n"
-    result += "|---|---|---|---|---|\n"
+    result += "| Sıra | Yan Etki | Türkçe Karşılık | Açıklama | Kaynak | Model Skoru |\n"
+    result += "|---|---|---|---|---|---|\n"
 
     for i, idx in enumerate(top_indices):
         label_id = mlb.classes_[idx.item()]
         side_effect_name = label_map.get(label_id, str(label_id))
         score = top_scores[i].item() * 100
 
-        tr_name, description = get_side_effect_info(side_effect_name)
+        tr_name, description, source = get_side_effect_info(side_effect_name)
 
         result += (
             f"| {i + 1} | {side_effect_name} | {tr_name} | "
-            f"{description} | %{score:.2f} |\n"
+            f"{description} | {source} | %{score:.2f} |\n"
         )
 
     result += "\n---\n"
     result += "**Not:** Bu sistem tıbbi tanı veya tedavi önerisi değildir. "
-    result += "Model skorları, kesin klinik olasılık değil; TWOSIDES veri setinden öğrenilen örüntülere dayalı göreli tahmin skorlarıdır. "
-    result += "Açıklamalar kullanıcıya anlaşılır bilgi sunmak için AI destekli açıklama modülü ve bilgi kaynaklarıyla oluşturulmuştur."
+    result += "Model skorları kesin klinik olasılık değil, TWOSIDES veri setinden öğrenilen örüntülere dayalı göreli tahmin skorlarıdır. "
+    result += "Yan etki açıklamaları önce AI destekli modül ile üretilir; kalite kontrolünden geçmeyen açıklamalar yerine Wikipedia veya güvenli varsayılan açıklama kullanılır."
 
     return image, result
 
