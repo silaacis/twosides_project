@@ -130,8 +130,8 @@ print("Gerçek etiket sözlüğü hazırlanıyor...")
 true_label_dict = {}
 
 for _, row in grouped_df.iterrows():
-    d1 = row["Drug1_ID"]
-    d2 = row["Drug2_ID"]
+    d1 = str(row["Drug1_ID"])
+    d2 = str(row["Drug2_ID"])
     labels = set(str(label) for label in row["Y"])
 
     true_label_dict[(d1, d2)] = labels
@@ -142,11 +142,12 @@ print("İlaç isimleri hazırlanıyor...")
 
 drug_dict = {}
 display_to_id = {}
+id_to_display = {}
 all_drugs = {}
 
 for _, row in grouped_df.iterrows():
-    all_drugs[row["Drug1_ID"]] = row["Drug1"]
-    all_drugs[row["Drug2_ID"]] = row["Drug2"]
+    all_drugs[str(row["Drug1_ID"])] = row["Drug1"]
+    all_drugs[str(row["Drug2_ID"])] = row["Drug2"]
 
 for cid, smiles in all_drugs.items():
     drug_name = get_drug_name(cid)
@@ -158,8 +159,39 @@ for cid, smiles in all_drugs.items():
 
     drug_dict[cid] = smiles
     display_to_id[display_name] = cid
+    id_to_display[cid] = display_name
 
 drug_list = sorted(list(display_to_id.keys()))
+
+print("İlaç eşleşme haritası hazırlanıyor...")
+
+drug_pair_map = {}
+
+for _, row in grouped_df.iterrows():
+    d1 = str(row["Drug1_ID"])
+    d2 = str(row["Drug2_ID"])
+
+    display1 = id_to_display.get(d1)
+    display2 = id_to_display.get(d2)
+
+    if display1 and display2:
+        drug_pair_map.setdefault(display1, set()).add(display2)
+        drug_pair_map.setdefault(display2, set()).add(display1)
+
+
+def update_second_drug(selected_drug):
+    if selected_drug is None:
+        return gr.Dropdown(choices=[], value=None)
+
+    possible_pairs = sorted(list(drug_pair_map.get(selected_drug, [])))
+
+    return gr.Dropdown(
+        choices=possible_pairs,
+        value=None,
+        label="İkinci İlaç",
+        filterable=True,
+    )
+
 
 model = SiameseGATv2(
     num_node_features=80,
@@ -181,15 +213,15 @@ print("Model başarıyla yüklendi.")
 
 
 def predict_side_effects(drug1_display, drug2_display):
+    empty_df = pd.DataFrame()
+
     if drug1_display is None or drug2_display is None:
-        empty_df = pd.DataFrame()
         return None, "Lütfen iki ilaç seçiniz.", empty_df, empty_df
 
     drug1_id = display_to_id[drug1_display]
     drug2_id = display_to_id[drug2_display]
 
     if drug1_id == drug2_id:
-        empty_df = pd.DataFrame()
         return None, "Lütfen iki farklı ilaç seçiniz.", empty_df, empty_df
 
     smiles1 = drug_dict[drug1_id]
@@ -199,14 +231,12 @@ def predict_side_effects(drug1_display, drug2_display):
     mol2 = Chem.MolFromSmiles(smiles2)
 
     if mol1 is None or mol2 is None:
-        empty_df = pd.DataFrame()
         return None, "Molekül yapısı okunamadı.", empty_df, empty_df
 
     g1 = smiles_to_graph(smiles1)
     g2 = smiles_to_graph(smiles2)
 
     if g1 is None or g2 is None:
-        empty_df = pd.DataFrame()
         return None, "Graf dönüşümü başarısız oldu.", empty_df, empty_df
 
     batch1 = Batch.from_data_list([g1]).to(device)
@@ -219,9 +249,6 @@ def predict_side_effects(drug1_display, drug2_display):
     top_scores, top_indices = torch.topk(scores, 10)
 
     true_labels = true_label_dict.get((drug1_id, drug2_id), set())
-
-    print("SEÇİLEN:", drug1_id, drug2_id)
-    print("DICT VAR MI:", (drug1_id, drug2_id) in true_label_dict)
 
     image = Draw.MolsToGridImage(
         [mol1, mol2],
@@ -278,7 +305,8 @@ def predict_side_effects(drug1_display, drug2_display):
         f"- **Top-10 eşleşme:** {matched_count} / 10\n"
         f"- **Precision@10:** {precision_at_10:.2f}\n"
         f"- **Veri setindeki gerçek yan etki sayısı:** {len(true_labels)}\n\n"
-        f"Model skorları kesin klinik olasılık değil, TWOSIDES veri setinden öğrenilen örüntülere dayalı göreli tahmin skorlarıdır."
+        f"Bu karşılaştırma yalnızca TWOSIDES veri setinde kayıtlı ilaç çiftleri için yapılmaktadır. "
+        f"Model skorları kesin klinik olasılık değil, veri setinden öğrenilen örüntülere dayalı göreli tahmin skorlarıdır."
     )
 
     return image, summary, prediction_df, true_df
@@ -301,7 +329,7 @@ with gr.Blocks(theme=gr.themes.Soft()) as demo:
             )
 
             drug2 = gr.Dropdown(
-                choices=drug_list,
+                choices=[],
                 label="İkinci İlaç",
                 filterable=True,
             )
@@ -316,15 +344,6 @@ with gr.Blocks(theme=gr.themes.Soft()) as demo:
     gr.Markdown("## Modelin Tahmin Ettiği İlk 10 Yan Etki")
 
     prediction_table = gr.Dataframe(
-        headers=[
-            "Sıra",
-            "Yan Etki",
-            "Türkçe Karşılık",
-            "Açıklama",
-            "Kaynak",
-            "Model Skoru",
-            "Veri Setinde Var mı?",
-        ],
         interactive=False,
         wrap=True,
     )
@@ -332,11 +351,6 @@ with gr.Blocks(theme=gr.themes.Soft()) as demo:
     gr.Markdown("## TWOSIDES Veri Setindeki Gerçek Yan Etkiler")
 
     true_table = gr.Dataframe(
-        headers=[
-            "Yan Etki",
-            "Türkçe Karşılık",
-            "Açıklama",
-        ],
         interactive=False,
         wrap=True,
     )
@@ -344,6 +358,12 @@ with gr.Blocks(theme=gr.themes.Soft()) as demo:
     gr.Markdown(
         "**Not:** Bu sistem tıbbi tanı veya tedavi önerisi değildir. "
         "Sonuçlar araştırma/prototip amaçlıdır."
+    )
+
+    drug1.change(
+        fn=update_second_drug,
+        inputs=drug1,
+        outputs=drug2,
     )
 
     button.click(
