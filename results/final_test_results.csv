@@ -1,0 +1,2 @@
+best_val_pr_auc,test_roc_auc,test_pr_auc,num_classes,train_size,validation_size,test_size,epochs,batch_size,hidden_dim
+0.3384297670087676,0.882751458409041,0.34368794815656367,1317,44430,6348,12695,10,64,128
