@@ -17,19 +17,28 @@ from model import SiameseGATv2
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-DESCRIPTION_FILE = "side_effect_descriptions_enhanced.json"
+SIDE_EFFECT_DESCRIPTION_FILE = "side_effect_descriptions_enhanced.json"
+DRUG_DESCRIPTION_FILE = "drug_descriptions_enhanced.json"
 
 
-def load_side_effect_descriptions():
-    if os.path.exists(DESCRIPTION_FILE):
-        with open(DESCRIPTION_FILE, "r", encoding="utf-8") as file:
+def load_json_file(file_path, warning_message):
+    if os.path.exists(file_path):
+        with open(file_path, "r", encoding="utf-8") as file:
             return json.load(file)
 
-    print("Uyarı: side_effect_descriptions_enhanced.json bulunamadı.")
+    print(warning_message)
     return {}
 
 
-side_effect_descriptions = load_side_effect_descriptions()
+side_effect_descriptions = load_json_file(
+    SIDE_EFFECT_DESCRIPTION_FILE,
+    "Uyarı: side_effect_descriptions_enhanced.json bulunamadı.",
+)
+
+drug_descriptions = load_json_file(
+    DRUG_DESCRIPTION_FILE,
+    "Uyarı: drug_descriptions_enhanced.json bulunamadı.",
+)
 
 
 def get_side_effect_info(label_id):
@@ -70,75 +79,6 @@ def get_pubchem_record_title(cid):
         pass
 
     return None
-
-
-def extract_pubchem_description(cid):
-    try:
-        pure_cid = str(int(str(cid).replace("CID", "")))
-        url = f"https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/compound/{pure_cid}/JSON"
-
-        response = requests.get(url, timeout=8)
-
-        if response.status_code != 200:
-            return "PubChem üzerinden kısa açıklama alınamadı."
-
-        data = response.json()
-        sections = data.get("Record", {}).get("Section", [])
-
-        preferred_headings = [
-            "description",
-            "pharmacology",
-            "therapeutic uses",
-            "drug indication",
-            "use and manufacturing",
-            "clinical use",
-            "mechanism of action",
-        ]
-
-        def extract_text_from_info(info_list):
-            for info in info_list:
-                value = info.get("Value", {})
-
-                if "StringWithMarkup" in value:
-                    texts = [
-                        item.get("String", "")
-                        for item in value["StringWithMarkup"]
-                    ]
-
-                    text = " ".join(texts).strip()
-
-                    if len(text) > 40:
-                        return text[:700] + ("..." if len(text) > 700 else "")
-
-            return None
-
-        def search_sections(section_list):
-            for section in section_list:
-                heading = section.get("TOCHeading", "").lower()
-
-                if any(key in heading for key in preferred_headings):
-                    text = extract_text_from_info(section.get("Information", []))
-
-                    if text:
-                        return text
-
-                nested_sections = section.get("Section", [])
-                nested_result = search_sections(nested_sections)
-
-                if nested_result:
-                    return nested_result
-
-            return None
-
-        description = search_sections(sections)
-
-        if description:
-            return description
-
-    except Exception:
-        pass
-
-    return "PubChem’de bu bileşik için kısa kullanım açıklaması bulunamadı."
 
 
 def get_compound_from_cid(cid):
@@ -183,16 +123,38 @@ def get_drug_name(cid):
     return f"Bilinmeyen İlaç [{cid}]"
 
 
+def get_drug_usage_description(cid):
+    item = drug_descriptions.get(cid, {})
+
+    description = item.get(
+        "description",
+        "Bu bileşik hakkında güvenilir kısa kullanım bilgisi bulunamadı.",
+    )
+
+    source = item.get("source", "Varsayılan")
+
+    name = item.get("name", "")
+
+    return name, description, source
+
+
 def get_drug_info_markdown(display_name, cid, smiles):
     compound = get_compound_from_cid(cid)
     name = display_name.split(" [")[0]
-    drug_description = extract_pubchem_description(cid)
+
+    stored_name, drug_description, drug_description_source = get_drug_usage_description(cid)
+
+    if stored_name and not stored_name.upper().startswith("CID"):
+        shown_name = stored_name
+    else:
+        shown_name = name
 
     if compound is None:
         return (
-            f"### {name}\n\n"
+            f"### {shown_name}\n\n"
             f"- **PubChem CID:** {cid}\n"
             f"- **Kısa Açıklama / Kullanım Bilgisi:** {drug_description}\n"
+            f"- **Açıklama Kaynağı:** {drug_description_source}\n"
             f"- **SMILES:** `{smiles}`\n"
             f"- PubChem üzerinden ayrıntılı kimyasal bilgi alınamadı.\n"
         )
@@ -205,9 +167,10 @@ def get_drug_info_markdown(display_name, cid, smiles):
     synonyms_text = ", ".join(synonyms) if synonyms else "Bilinmiyor"
 
     return (
-        f"### {name}\n\n"
+        f"### {shown_name}\n\n"
         f"- **PubChem CID:** {cid}\n"
         f"- **Kısa Açıklama / Kullanım Bilgisi:** {drug_description}\n"
+        f"- **Açıklama Kaynağı:** {drug_description_source}\n"
         f"- **Moleküler Formül:** {formula}\n"
         f"- **Molekül Ağırlığı:** {weight}\n"
         f"- **IUPAC Adı:** {iupac}\n"
@@ -485,7 +448,8 @@ with gr.Blocks(theme=gr.themes.Soft()) as demo:
 
     gr.Markdown(
         "**Not:** Bu sistem tıbbi tanı veya tedavi önerisi değildir. "
-        "Sonuçlar araştırma/prototip amaçlıdır."
+        "Sonuçlar araştırma/prototip amaçlıdır. İlaç bilgi kartlarındaki açıklamalar "
+        "kullanıcıya genel fikir vermek amacıyla oluşturulmuştur."
     )
 
     drug1.change(

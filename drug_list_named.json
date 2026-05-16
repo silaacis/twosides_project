@@ -1,0 +1,3227 @@
+{
+    "CID000002173": {
+        "cid": "CID000002173",
+        "name": "STK177241",
+        "smiles": "CC1(C(N2C(S1)C(C2=O)NC(=O)C(C3=CC=CC=C3)N)C(=O)[O-])C"
+    },
+    "CID000003345": {
+        "cid": "CID000003345",
+        "name": "fentanyl",
+        "smiles": "CCC(=O)N(C1CCN(CC1)CCC2=CC=CC=C2)C3=CC=CC=C3"
+    },
+    "CID000005206": {
+        "cid": "CID000005206",
+        "name": "sevoflurane",
+        "smiles": "C(OC(C(F)(F)F)C(F)(F)F)F"
+    },
+    "CID000009433": {
+        "cid": "CID000009433",
+        "name": "aminophylline",
+        "smiles": "CN1C2=C(C(=O)N(C1=O)C)NC=N2.CN1C2=C(C(=O)N(C1=O)C)NC=N2.C(CN)N"
+    },
+    "CID000003929": {
+        "cid": "CID000003929",
+        "name": "224323-50-6",
+        "smiles": "CC(=O)NCC1CN(C(=O)O1)C2=CC(=C(C=C2)N3CCOCC3)F"
+    },
+    "CID000150610": {
+        "cid": "CID000150610",
+        "name": "Ertapenem",
+        "smiles": "CC1C2C(C(=O)N2C(=C1SC3CC(NC3)C(=O)NC4=CC=CC(=C4)C(=O)O)C(=O)O)C(C)O"
+    },
+    "CID000001302": {
+        "cid": "CID000001302",
+        "name": "2-(6-Methoxy-2-naphthyl)propionic acid",
+        "smiles": "CC(C1=CC2=C(C=C1)C=C(C=C2)OC)C(=O)O"
+    },
+    "CID000005064": {
+        "cid": "CID000005064",
+        "name": "1192243-01-8",
+        "smiles": "C1=NC(=NN1C2C(C(C(O2)CO)O)O)C(=O)N"
+    },
+    "CID000005267": {
+        "cid": "CID000005267",
+        "name": "MLS000678252",
+        "smiles": "CC(=O)SC1CC2=CC(=O)CCC2(C3C1C4CCC5(C4(CC3)C)CCC(=O)O5)C"
+    },
+    "CID000010631": {
+        "cid": "CID000010631",
+        "name": "medroxyprogesterone",
+        "smiles": "CC1CC2C(CCC3(C2CCC3(C(=O)C)O)C)C4(C1=CC(=O)CC4)C"
+    },
+    "CID000004601": {
+        "cid": "CID000004601",
+        "name": "orphenadrine",
+        "smiles": "CC1=CC=CC=C1C(C2=CC=CC=C2)OCCN(C)C"
+    },
+    "CID000005376": {
+        "cid": "CID000005376",
+        "name": "7728-73-6",
+        "smiles": "CCC(=C(C1=CC=CC=C1)C2=CC=C(C=C2)OCCN(C)C)C3=CC=CC=C3"
+    },
+    "CID000005090": {
+        "cid": "CID000005090",
+        "name": "rofecoxib",
+        "smiles": "CS(=O)(=O)C1=CC=C(C=C1)C2=C(C(=O)OC2)C3=CC=CC=C3"
+    },
+    "CID000005556": {
+        "cid": "CID000005556",
+        "name": "triazolam",
+        "smiles": "CC1=NN=C2N1C3=C(C=C(C=C3)Cl)C(=NC2)C4=CC=CC=C4Cl"
+    },
+    "CID000004946": {
+        "cid": "CID000004946",
+        "name": "propranolol",
+        "smiles": "CC(C)NCC(COC1=CC=CC2=CC=CC=C21)O"
+    },
+    "CID000130881": {
+        "cid": "CID000130881",
+        "name": "Olmesartan medoxomil",
+        "smiles": "CCCC1=NC(=C(N1CC2=CC=C(C=C2)C3=CC=CC=C3C4=NNN=N4)C(=O)OCC5=C(OC(=O)O5)C)C(C)(C)O"
+    },
+    "CID000005391": {
+        "cid": "CID000005391",
+        "name": "temazepam",
+        "smiles": "CN1C2=C(C=C(C=C2)Cl)C(=NC(C1=O)O)C3=CC=CC=C3"
+    },
+    "CID000005584": {
+        "cid": "CID000005584",
+        "name": "trimipramine",
+        "smiles": "CC(CN1C2=CC=CC=C2CCC3=CC=CC=C31)CN(C)C"
+    },
+    "CID000002802": {
+        "cid": "CID000002802",
+        "name": "clonazepam",
+        "smiles": "C1C(=O)NC2=C(C=C(C=C2)[N+](=O)[O-])C(=N1)C3=CC=CC=C3Cl"
+    },
+    "CID005381226": {
+        "cid": "CID005381226",
+        "name": "[(7S,9E,11S,12R,13S,14R,15R,16R,17S,18S,19E,21Z,26E)-2,15,17,29-tetrahydroxy-11-methoxy-3,7,12,14,16,18,22-heptamethyl-26-[[(4-methylpiperazin-1-yl)amino]methylidene]-6,23,27-trioxo-8,30-dioxa-24-azatetracyclo[23.3.1.14,7.05,28]triaconta-1(28),2,4,9,19,21,25(29)-heptaen-13-yl] acetate",
+        "smiles": "CC1C=CC=C(C(=O)NC2=C(C3=C(C4=C(C(=C3O)C)OC(C4=O)(OC=CC(C(C(C(C(C(C1O)C)O)C)OC(=O)C)C)OC)C)C(=O)C2=CNN5CCN(CC5)C)O)C"
+    },
+    "CID000004212": {
+        "cid": "CID000004212",
+        "name": "mitoxantrone",
+        "smiles": "C1=CC(=C2C(=C1NCCNCCO)C(=O)C3=C(C=CC(=C3C2=O)O)O)NCCNCCO"
+    },
+    "CID000060953": {
+        "cid": "CID000060953",
+        "name": "CAPECITABINE",
+        "smiles": "CCCCCOC(=O)NC1=NC(=O)N(C=C1F)C2C(C(C(O2)C)O)O"
+    },
+    "CID000000596": {
+        "cid": "CID000000596",
+        "name": "688007-26-3",
+        "smiles": "C1=CN(C(=O)N=C1N)C2C(C(C(O2)CO)O)O"
+    },
+    "CID000005726": {
+        "cid": "CID000005726",
+        "name": "Azidothymidine (AZT)",
+        "smiles": "CC1=CN(C(=O)NC1=O)C2CC(C(O2)CO)N=[N+]=[N-]"
+    },
+    "CID000002522": {
+        "cid": "CID000002522",
+        "name": "112828-00-9",
+        "smiles": "CC(C=CC(C1CC1)O)C2CCC3C2(CCCC3=CC=C4CC(CC(C4=C)O)O)C"
+    },
+    "CID000003308": {
+        "cid": "CID000003308",
+        "name": "etodolac",
+        "smiles": "CCC1=C2C(=CC=C1)C3=C(N2)C(OCC3)(CC)CC(=O)O"
+    },
+    "CID000003405": {
+        "cid": "CID000003405",
+        "name": "2-[[4-[(2-amino-4-oxo-1H-pteridin-6-yl)methylamino]benzoyl]amino]pentanedioic acid",
+        "smiles": "C1=CC(=CC=C1C(=O)NC(CCC(=O)O)C(=O)O)NCC2=CN=C3C(=N2)C(=O)N=C(N3)N"
+    },
+    "CID000060795": {
+        "cid": "CID000060795",
+        "name": "Aripiprazole",
+        "smiles": "C1CC(=O)NC2=C1C=CC(=C2)OCCCCN3CCN(CC3)C4=C(C(=CC=C4)Cl)Cl"
+    },
+    "CID000003446": {
+        "cid": "CID000003446",
+        "name": "gabapentin",
+        "smiles": "C1CCC(CC1)(CC(=O)O)CN"
+    },
+    "CID004183806": {
+        "cid": "CID004183806",
+        "name": "8-iso Misoprostol",
+        "smiles": "CCCCC(C)(CC=CC1C(CC(=O)C1CCCCCCC(=O)OC)O)O"
+    },
+    "CID000004107": {
+        "cid": "CID000004107",
+        "name": "methocarbamol",
+        "smiles": "COC1=CC=CC=C1OCC(COC(=O)N)O"
+    },
+    "CID000004917": {
+        "cid": "CID000004917",
+        "name": "prochlorperazine",
+        "smiles": "CN1CCN(CC1)CCCN2C3=CC=CC=C3SC4=C2C=C(C=C4)Cl"
+    },
+    "CID000003161": {
+        "cid": "CID000003161",
+        "name": "2-[amino(hydroxy)methylidene]-4-(dimethylamino)-5,10,11,12a-tetrahydroxy-6-methyl-4a,5,5a,6-tetrahydro-4H-tetracene-1,3,12-trione",
+        "smiles": "CC1C2C(C3C(C(=O)C(=C(N)O)C(=O)C3(C(=O)C2=C(C4=C1C=CC=C4O)O)O)N(C)C)O"
+    },
+    "CID000071329": {
+        "cid": "CID000071329",
+        "name": "Dofetilide",
+        "smiles": "CN(CCC1=CC=C(C=C1)NS(=O)(=O)C)CCOC2=CC=C(C=C2)NS(=O)(=O)C"
+    },
+    "CID000003823": {
+        "cid": "CID000003823",
+        "name": "DTXSID20273956",
+        "smiles": "CC(=O)N1CCN(CC1)C2=CC=C(C=C2)OCC3COC(O3)(CN4C=CN=C4)C5=C(C=C(C=C5)Cl)Cl"
+    },
+    "CID000003911": {
+        "cid": "CID000003911",
+        "name": "Leuprelin Acetate",
+        "smiles": "CCNC(=O)C1CCCN1C(=O)C(CCCN=C(N)N)NC(=O)C(CC(C)C)NC(=O)C(CC(C)C)NC(=O)C(CC2=CC=C(C=C2)O)NC(=O)C(CO)NC(=O)C(CC3=CNC4=CC=CC=C43)NC(=O)C(CC5=CN=CN5)NC(=O)C6CCC(=O)N6"
+    },
+    "CID000054454": {
+        "cid": "CID000054454",
+        "name": "simvastatin",
+        "smiles": "CCC(C)(C)C(=O)OC1CC(C=C2C1C(C(C=C2)C)CCC3CC(CC(=O)O3)O)C"
+    },
+    "CID000002156": {
+        "cid": "CID000002156",
+        "name": "HMS1361O16",
+        "smiles": "CCCCC1=C(C2=CC=CC=C2O1)C(=O)C3=CC(=C(C(=C3)I)OCC[NH+](CC)CC)I"
+    },
+    "CID000004411": {
+        "cid": "CID000004411",
+        "name": "CHEMBL521606",
+        "smiles": "CC(C)(C)NCC(COC1=CC=CC2=C1CC(C(C2)O)O)O"
+    },
+    "CID000002907": {
+        "cid": "CID000002907",
+        "name": "cyclophosphamide",
+        "smiles": "C1CNP(=O)(OC1)N(CCCl)CCCl"
+    },
+    "CID000004192": {
+        "cid": "CID000004192",
+        "name": "midazolam",
+        "smiles": "CC1=NC=C2N1C3=C(C=C(C=C3)Cl)C(=NC2)C4=CC=CC=C4F"
+    },
+    "CID000083786": {
+        "cid": "CID000083786",
+        "name": "1,4-dihydropyrazolo[4,5-d]pyrimidin-7-one",
+        "smiles": "C1=NNC2=C1NC=NC2=O"
+    },
+    "CID000003348": {
+        "cid": "CID000003348",
+        "name": "fexofenadine",
+        "smiles": "CC(C)(C1=CC=C(C=C1)C(CCCN2CCC(CC2)C(C3=CC=CC=C3)(C4=CC=CC=C4)O)O)C(=O)O"
+    },
+    "CID000000838": {
+        "cid": "CID000000838",
+        "name": "329-65-7",
+        "smiles": "CNCC(C1=CC(=C(C=C1)O)O)O"
+    },
+    "CID000002617": {
+        "cid": "CID000002617",
+        "name": "F1443-7605",
+        "smiles": "CC1=NN=C(S1)SCC2=C(N3C(C(C3=O)NC(=O)CN4C=NN=N4)SC2)C(=O)[O-]"
+    },
+    "CID000001986": {
+        "cid": "CID000001986",
+        "name": "acetazolamide",
+        "smiles": "CC(=O)NC1=NN=C(S1)S(=O)(=O)N"
+    },
+    "CID000006691": {
+        "cid": "CID000006691",
+        "name": "2-hydroxy-3-(3-oxo-1-phenylbutyl)chromen-4-one",
+        "smiles": "CC(=O)CC(C1=CC=CC=C1)C2=C(OC3=CC=CC=C3C2=O)O"
+    },
+    "CID000004920": {
+        "cid": "CID000004920",
+        "name": "RefChem:429015",
+        "smiles": "CC(=O)C1CCC2C1(CCC3C2CCC4=CC(=O)CCC34C)C"
+    },
+    "CID000005478": {
+        "cid": "CID000005478",
+        "name": "29023-48-1",
+        "smiles": "CC(C)(C)NCC(COC1=NSN=C1N2CCOCC2)O"
+    },
+    "CID006398525": {
+        "cid": "CID006398525",
+        "name": "CID006398525",
+        "smiles": "C(C1C(C(C(C(O1)OC2(C(C(C(O2)OS(=O)(=O)O)OS(=O)(=O)O)OS(=O)(=O)O)COS(=O)(=O)O)OS(=O)(=O)O)OS(=O)(=O)O)OS(=O)(=O)O)OS(=O)(=O)O.O.O.O.O.O.O.O.O.O.O.O.O.O.O.O.O.O.O.O.O.[Al].[Al].[Al].[Al].[Al].[Al].[Al].[Al].[Al]"
+    },
+    "CID000003937": {
+        "cid": "CID000003937",
+        "name": "C21H31N3O5",
+        "smiles": "C1CC(N(C1)C(=O)C(CCCCN)NC(CCC2=CC=CC=C2)C(=O)O)C(=O)O"
+    },
+    "CID005311048": {
+        "cid": "CID005311048",
+        "name": "SCHEMBL11440306",
+        "smiles": "C(N)(N)(Cl)Cl"
+    },
+    "CID000004158": {
+        "cid": "CID000004158",
+        "name": "methylphenidate",
+        "smiles": "COC(=O)C(C1CCCCN1)C2=CC=CC=C2"
+    },
+    "CID000005523": {
+        "cid": "CID000005523",
+        "name": "2914-77-4",
+        "smiles": "CN(C)CC1CCCCC1(C2=CC(=CC=C2)OC)O"
+    },
+    "CID000003696": {
+        "cid": "CID000003696",
+        "name": "imipramine",
+        "smiles": "CN(C)CCCN1C2=CC=CC=C2CCC3=CC=CC=C31"
+    },
+    "CID000004112": {
+        "cid": "CID000004112",
+        "name": "DL-Methotrexate",
+        "smiles": "CN(CC1=CN=C2C(=N1)C(=NC(=N2)N)N)C3=CC=C(C=C3)C(=O)NC(CCC(=O)O)C(=O)O"
+    },
+    "CID000003899": {
+        "cid": "CID000003899",
+        "name": "leflunomide",
+        "smiles": "CC1=C(C=NO1)C(=O)NC2=CC=C(C=C2)C(F)(F)F"
+    },
+    "CID000004473": {
+        "cid": "CID000004473",
+        "name": "HMS1361F11",
+        "smiles": "CC1=C(C(C(=C(N1)C)C(=O)OCC[NH+](C)CC2=CC=CC=C2)C3=CC(=CC=C3)[N+](=O)[O-])C(=O)OC"
+    },
+    "CID000000853": {
+        "cid": "CID000000853",
+        "name": "DL-Thyroxine",
+        "smiles": "C1=C(C=C(C(=C1I)OC2=CC(=C(C(=C2)I)O)I)I)CC(C(=O)O)N"
+    },
+    "CID005311181": {
+        "cid": "CID005311181",
+        "name": "ILOPROST",
+        "smiles": "CC#CCC(C)C(C=CC1C(CC2C1CC(=CCCCC(=O)O)C2)O)O"
+    },
+    "CID000032797": {
+        "cid": "CID000032797",
+        "name": "NCGC00164580-01",
+        "smiles": "CC1CC2C3CCC4=CC(=O)C=CC4(C3(C(CC2(C1(C(=O)CCl)O)C)O)F)C"
+    },
+    "CID000059708": {
+        "cid": "CID000059708",
+        "name": "Etiracetam",
+        "smiles": "CCC(C(=O)N)N1CCCC1=O"
+    },
+    "CID000003826": {
+        "cid": "CID000003826",
+        "name": "ketorolac",
+        "smiles": "C1CN2C(=CC=C2C(=O)C3=CC=CC=C3)C1C(=O)O"
+    },
+    "CID000003143": {
+        "cid": "CID000003143",
+        "name": "Docetaxol",
+        "smiles": "CC1=C2C(C(=O)C3(C(CC4C(C3C(C(C2(C)C)(CC1OC(=O)C(C(C5=CC=CC=C5)NC(=O)OC(C)(C)C)O)O)OC(=O)C6=CC=CC=C6)(CO4)OC(=O)C)O)C)O"
+    },
+    "CID000004736": {
+        "cid": "CID000004736",
+        "name": "Talwin",
+        "smiles": "CC1C2CC3=C(C1(CCN2CC=C(C)C)C)C=C(C=C3)O"
+    },
+    "CID000005038": {
+        "cid": "CID000005038",
+        "name": "RefChem:1053867",
+        "smiles": "CCOC(=O)C(CCC1=CC=CC=C1)NC(C)C(=O)N2C3CCCC3CC2C(=O)O"
+    },
+    "CID000005039": {
+        "cid": "CID000005039",
+        "name": "Gastrosedol",
+        "smiles": "CNC(=C[N+](=O)[O-])NCCSCC1=CC=C(O1)CN(C)C"
+    },
+    "CID000005005": {
+        "cid": "CID000005005",
+        "name": "RefChem:1061935",
+        "smiles": "CCOC(=O)C(CCC1=CC=CC=C1)NC(C)C(=O)N2CC3=CC=CC=C3CC2C(=O)O"
+    },
+    "CID005493444": {
+        "cid": "CID005493444",
+        "name": "Aliskiren",
+        "smiles": "CC(C)C(CC1=CC(=C(C=C1)OC)OCCCOC)CC(C(CC(C(C)C)C(=O)NCC(C)(C)C(=O)N)O)N"
+    },
+    "CID000003261": {
+        "cid": "CID000003261",
+        "name": "estazolam",
+        "smiles": "C1C2=NN=CN2C3=C(C=C(C=C3)Cl)C(=N1)C4=CC=CC=C4"
+    },
+    "CID000003746": {
+        "cid": "CID000003746",
+        "name": "Atrovent Hfa",
+        "smiles": "CC(C)[N+]1(C2CCC1CC(C2)OC(=O)C(CO)C3=CC=CC=C3)C"
+    },
+    "CID000028112": {
+        "cid": "CID000028112",
+        "name": "Lithium aluminohydride",
+        "smiles": "[Li+].[AlH4-]"
+    },
+    "CID000002162": {
+        "cid": "CID000002162",
+        "name": "amlodipine",
+        "smiles": "CCOC(=O)C1=C(NC(=C(C1C2=CC=CC=C2Cl)C(=O)OC)C)COCCN"
+    },
+    "CID000003386": {
+        "cid": "CID000003386",
+        "name": "fluoxetine",
+        "smiles": "CNCCC(C1=CC=CC=C1)OC2=CC=C(C=C2)C(F)(F)F"
+    },
+    "CID000004259": {
+        "cid": "CID000004259",
+        "name": "354812-41-2",
+        "smiles": "COC1=C2C(=CC(=C1N3CC4CCCNC4C3)F)C(=O)C(=CN2C5CC5)C(=O)O"
+    },
+    "CID000119607": {
+        "cid": "CID000119607",
+        "name": "Valdecoxib",
+        "smiles": "CC1=C(C(=NO1)C2=CC=CC=C2)C3=CC=C(C=C3)S(=O)(=O)N"
+    },
+    "CID000087177": {
+        "cid": "CID000087177",
+        "name": "Maltulose",
+        "smiles": "C(C1C(C(C(C(O1)OC(C(CO)O)C(C(=O)CO)O)O)O)O)O"
+    },
+    "CID000003957": {
+        "cid": "CID000003957",
+        "name": "loratadine",
+        "smiles": "CCOC(=O)N1CCC(=C2C3=C(CCC4=C2N=CC=C4)C=C(C=C3)Cl)CC1"
+    },
+    "CID000004509": {
+        "cid": "CID000004509",
+        "name": "Furantoin",
+        "smiles": "C1C(=O)NC(=O)N1N=CC2=CC=C(O2)[N+](=O)[O-]"
+    },
+    "CID000004595": {
+        "cid": "CID000004595",
+        "name": "ondansetron",
+        "smiles": "CC1=NC=CN1CC2CCC3=C(C2=O)C4=CC=CC=C4N3C"
+    },
+    "CID000104865": {
+        "cid": "CID000104865",
+        "name": "Bosentan",
+        "smiles": "CC(C)(C)C1=CC=C(C=C1)S(=O)(=O)NC2=C(C(=NC(=N2)C3=NC=CC=N3)OCCO)OC4=CC=CC=C4OC"
+    },
+    "CID000002666": {
+        "cid": "CID000002666",
+        "name": "108260-04-4",
+        "smiles": "CC1=C(N2C(C(C2=O)NC(=O)C(C3=CC=CC=C3)N)SC1)C(=O)O"
+    },
+    "CID000003007": {
+        "cid": "CID000003007",
+        "name": "AMPHETAMINE",
+        "smiles": "CC(CC1=CC=CC=C1)N"
+    },
+    "CID000004506": {
+        "cid": "CID000004506",
+        "name": "nitrazepam",
+        "smiles": "C1C(=O)NC2=C(C=C(C=C2)[N+](=O)[O-])C(=N1)C3=CC=CC=C3"
+    },
+    "CID000003559": {
+        "cid": "CID000003559",
+        "name": "haloperidol",
+        "smiles": "C1CN(CCC1(C2=CC=C(C=C2)Cl)O)CCCC(=O)C3=CC=C(C=C3)F"
+    },
+    "CID000004909": {
+        "cid": "CID000004909",
+        "name": "primidone",
+        "smiles": "CCC1(C(=O)NCNC1=O)C2=CC=CC=C2"
+    },
+    "CID000060831": {
+        "cid": "CID000060831",
+        "name": "SCHEMBL411429",
+        "smiles": "C[N+]1(C2CC(CC1C3C2O3)OC(=O)C(C4=CC=CS4)(C5=CC=CS5)O)C"
+    },
+    "CID000002520": {
+        "cid": "CID000002520",
+        "name": "VERAPAMIL",
+        "smiles": "CC(C)C(CCCN(C)CCC1=CC(=C(C=C1)OC)OC)(C#N)C2=CC(=C(C=C2)OC)OC"
+    },
+    "CID000060852": {
+        "cid": "CID000060852",
+        "name": "Ibandronic Acid",
+        "smiles": "CCCCCN(C)CCC(O)(P(=O)(O)O)P(=O)(O)O"
+    },
+    "CID000060854": {
+        "cid": "CID000060854",
+        "name": "Ziprasidone",
+        "smiles": "C1CN(CCN1CCC2=C(C=C3C(=C2)CC(=O)N3)Cl)C4=NSC5=CC=CC=C54"
+    },
+    "CID000004889": {
+        "cid": "CID000004889",
+        "name": "DTXSID20861034",
+        "smiles": "CCC(C)C(=O)OC1CC(C=C2C1C(C(C=C2)C)CCC(CC(CC(=O)O)O)O)O"
+    },
+    "CID000003958": {
+        "cid": "CID000003958",
+        "name": "lorazepam",
+        "smiles": "C1=CC=C(C(=C1)C2=NC(C(=O)NC3=C2C=C(C=C3)Cl)O)Cl"
+    },
+    "CID005353980": {
+        "cid": "CID005353980",
+        "name": "(3E)-6-oxo-3-[[4-(pyridin-2-ylsulfamoyl)phenyl]hydrazinylidene]cyclohexa-1,4-diene-1-carboxylic acid",
+        "smiles": "C1=CC=NC(=C1)NS(=O)(=O)C2=CC=C(C=C2)NN=C3C=CC(=O)C(=C3)C(=O)O"
+    },
+    "CID000005505": {
+        "cid": "CID000005505",
+        "name": "tolbutamide",
+        "smiles": "CCCCNC(=O)NS(=O)(=O)C1=CC=C(C=C1)C"
+    },
+    "CID000216326": {
+        "cid": "CID000216326",
+        "name": "Lenalidomide",
+        "smiles": "C1CC(=O)NC(=O)C1N2CC3=C(C2=O)C=CC=C3N"
+    },
+    "CID000038904": {
+        "cid": "CID000038904",
+        "name": "azane;cyclobutane-1,1-dicarboxylic acid;platinum",
+        "smiles": "C1CC(C1)(C(=O)O)C(=O)O.N.N.[Pt]"
+    },
+    "CID005281007": {
+        "cid": "CID005281007",
+        "name": "5-(dimethylaminohydrazinylidene)imidazole-4-carboxamide",
+        "smiles": "CN(C)NN=C1C(=NC=N1)C(=O)N"
+    },
+    "CID000004485": {
+        "cid": "CID000004485",
+        "name": "nifedipine",
+        "smiles": "CC1=C(C(C(=C(N1)C)C(=O)OC)C2=CC=CC=C2[N+](=O)[O-])C(=O)OC"
+    },
+    "CID000004539": {
+        "cid": "CID000004539",
+        "name": "norfloxacin",
+        "smiles": "CCN1C=C(C(=O)C2=CC(=C(C=C21)N3CCNCC3)F)C(=O)O"
+    },
+    "CID000005245": {
+        "cid": "CID000005245",
+        "name": "Risedronic acid",
+        "smiles": "C1=CC(=CN=C1)CC(O)(P(=O)(O)O)P(=O)(O)O"
+    },
+    "CID000176870": {
+        "cid": "CID000176870",
+        "name": "Erlotinib",
+        "smiles": "COCCOC1=C(C=C2C(=C1)C(=NC=N2)NC3=CC=CC(=C3)C#C)OCCOC"
+    },
+    "CID000039765": {
+        "cid": "CID000039765",
+        "name": "Vecuronium",
+        "smiles": "CC(=O)OC1CC2CCC3C(C2(CC1N4CCCCC4)C)CCC5(C3CC(C5OC(=O)C)[N+]6(CCCCC6)C)C"
+    },
+    "CID000041774": {
+        "cid": "CID000041774",
+        "name": "RefChem:934832",
+        "smiles": "CC1C(C(C(C(O1)OC2C(OC(C(C2O)O)OC3C(OC(C(C3O)O)O)CO)CO)O)O)NC4C=C(C(C(C4O)O)O)CO"
+    },
+    "CID000667490": {
+        "cid": "CID000667490",
+        "name": "6-Mercaptopurine",
+        "smiles": "C1=NC2=C(N1)C(=S)N=CN2"
+    },
+    "CID000004635": {
+        "cid": "CID000004635",
+        "name": "DTXSID40859094",
+        "smiles": "CN1CCC23C4C(=O)CCC2(C1CC5=C3C(=C(C=C5)OC)O4)O"
+    },
+    "CID000065999": {
+        "cid": "CID000065999",
+        "name": "Telmisartan",
+        "smiles": "CCCC1=NC2=C(N1CC3=CC=C(C=C3)C4=CC=CC=C4C(=O)O)C=C(C=C2C)C5=NC6=CC=CC=C6N5C"
+    },
+    "CID000005656": {
+        "cid": "CID000005656",
+        "name": "venlafaxine",
+        "smiles": "CN(C)CC(C1=CC=C(C=C1)OC)C2(CCCCC2)O"
+    },
+    "CID000005650": {
+        "cid": "CID000005650",
+        "name": "943333-68-4",
+        "smiles": "CCCCC(=O)N(CC1=CC=C(C=C1)C2=CC=CC=C2C3=NNN=N3)C(C(C)C)C(=O)O"
+    },
+    "CID000005651": {
+        "cid": "CID000005651",
+        "name": "MLS001076663",
+        "smiles": "CC1C(C(CC(O1)OC2C(C(C(OC2OC3=C4C=C5C=C3OC6=C(C=C(C=C6)C(C(C(=O)NC(C(=O)NC5C(=O)NC7C8=CC(=C(C=C8)O)C9=C(C=C(C=C9O)O)C(NC(=O)C(C(C1=CC(=C(O4)C=C1)Cl)O)NC7=O)C(=O)O)CC(=O)N)NC(=O)C(CC(C)C)NC)O)Cl)CO)O)O)(C)N)O"
+    },
+    "CID000004510": {
+        "cid": "CID000004510",
+        "name": "nitroglycerin",
+        "smiles": "C(C(CO[N+](=O)[O-])O[N+](=O)[O-])O[N+](=O)[O-]"
+    },
+    "CID000002554": {
+        "cid": "CID000002554",
+        "name": "carbamazepine",
+        "smiles": "C1=CC=C2C(=C1)C=CC3=CC=CC=C3N2C(=O)N"
+    },
+    "CID000005717": {
+        "cid": "CID000005717",
+        "name": "zafirlukast",
+        "smiles": "CC1=CC=CC=C1S(=O)(=O)NC(=O)C2=CC(=C(C=C2)CC3=CN(C4=C3C=C(C=C4)NC(=O)OC5CCCC5)C)OC"
+    },
+    "CID000002650": {
+        "cid": "CID000002650",
+        "name": "AB02837",
+        "smiles": "CC(C)(C(=O)O)ON=C(C1=CSC(=N1)N)C(=O)NC2C3N(C2=O)C(=C(CS3)C[N+]4=CC=CC=C4)C(=O)[O-]"
+    },
+    "CID000003222": {
+        "cid": "CID000003222",
+        "name": "(R,S,S)-enalapril",
+        "smiles": "CCOC(=O)C(CCC1=CC=CC=C1)NC(C)C(=O)N2CCCC2C(=O)O"
+    },
+    "CID000003749": {
+        "cid": "CID000003749",
+        "name": "irbesartan",
+        "smiles": "CCCCC1=NC2(CCCC2)C(=O)N1CC3=CC=C(C=C3)C4=CC=CC=C4C5=NNN=N5"
+    },
+    "CID000004201": {
+        "cid": "CID000004201",
+        "name": "minoxidil",
+        "smiles": "C1CCN(CC1)C2=NC(=N)N(C(=C2)N)O"
+    },
+    "CID000003440": {
+        "cid": "CID000003440",
+        "name": "furosemide",
+        "smiles": "C1=COC(=C1)CNC2=CC(=C(C=C2C(=O)O)S(=O)(=O)N)Cl"
+    },
+    "CID005481350": {
+        "cid": "CID005481350",
+        "name": "Tenofovir disoproxil",
+        "smiles": "CC(C)OC(=O)OCOP(=O)(COC(C)CN1C=NC2=C(N=CN=C21)N)OCOC(=O)OC(C)C"
+    },
+    "CID000002909": {
+        "cid": "CID000002909",
+        "name": "Cyclosporine;Ciclosporin",
+        "smiles": "CCC1C(=O)N(CC(=O)N(C(C(=O)NC(C(=O)N(C(C(=O)NC(C(=O)NC(C(=O)N(C(C(=O)N(C(C(=O)N(C(C(=O)N(C(C(=O)N1)C(C(C)CC=CC)O)C)C(C)C)C)CC(C)C)C)CC(C)C)C)C)C)CC(C)C)C)C(C)C)CC(C)C)C)C"
+    },
+    "CID000057469": {
+        "cid": "CID000057469",
+        "name": "IMIQUIMOD",
+        "smiles": "CC(C)CN1C=NC2=C1C3=CC=CC=C3N=C2N"
+    },
+    "CID000003075": {
+        "cid": "CID000003075",
+        "name": "2-[3-acetyloxy-2-(4-methoxyphenyl)-4-oxo-2,3-dihydro-1,5-benzothiazepin-5-yl]ethyl-dimethylazanium",
+        "smiles": "CC(=O)OC1C(SC2=CC=CC=C2N(C1=O)CC[NH+](C)C)C3=CC=C(C=C3)OC"
+    },
+    "CID000027661": {
+        "cid": "CID000027661",
+        "name": "ISOSORBIDE MONONITRATE",
+        "smiles": "C1C(C2C(O1)C(CO2)O[N+](=O)[O-])O"
+    },
+    "CID000005647": {
+        "cid": "CID000005647",
+        "name": "2-[(2-amino-6-oxo-3H-purin-9-yl)methoxy]ethyl 2-amino-3-methylbutanoate",
+        "smiles": "CC(C)C(C(=O)OCCOCN1C=NC2=C1NC(=NC2=O)N)N"
+    },
+    "CID000123620": {
+        "cid": "CID000123620",
+        "name": "B.Mometason",
+        "smiles": "CC1CC2C3CCC4=CC(=O)C=CC4(C3(C(CC2(C1(C(=O)CCl)O)C)O)Cl)C"
+    },
+    "CID000000271": {
+        "cid": "CID000000271",
+        "name": "calcium ion",
+        "smiles": "[Ca+2]"
+    },
+    "CID000002405": {
+        "cid": "CID000002405",
+        "name": "BISOPROLOL",
+        "smiles": "CC(C)NCC(COC1=CC=C(C=C1)COCCOC(C)C)O"
+    },
+    "CID000003016": {
+        "cid": "CID000003016",
+        "name": "diazepam",
+        "smiles": "CN1C(=O)CN=C(C2=C1C=CC(=C2)Cl)C3=CC=CC=C3"
+    },
+    "CID000004189": {
+        "cid": "CID000004189",
+        "name": "miconazole",
+        "smiles": "C1=CC(=C(C=C1Cl)Cl)COC(CN2C=CN=C2)C3=C(C=C(C=C3)Cl)Cl"
+    },
+    "CID000003750": {
+        "cid": "CID000003750",
+        "name": "DTXSID80861151",
+        "smiles": "CCC1=C2CN3C(=CC4=C(C3=O)COC(=O)C4(CC)O)C2=NC5=C1C=C(C=C5)OC(=O)N6CCC(CC6)N7CCCCC7"
+    },
+    "CID000004666": {
+        "cid": "CID000004666",
+        "name": "DTXSID60860480",
+        "smiles": "CC1=C2C(C(=O)C3(C(CC4C(C3C(C(C2(C)C)(CC1OC(=O)C(C(C5=CC=CC=C5)NC(=O)C6=CC=CC=C6)O)O)OC(=O)C7=CC=CC=C7)(CO4)OC(=O)C)O)C)OC(=O)C"
+    },
+    "CID000004173": {
+        "cid": "CID000004173",
+        "name": "metronidazole",
+        "smiles": "CC1=NC=C(N1CCO)[N+](=O)[O-]"
+    },
+    "CID000005538": {
+        "cid": "CID000005538",
+        "name": "RefChem:1066153",
+        "smiles": "CC1=C(C(CCC1)(C)C)C=CC(=CC=CC(=CC(=O)O)C)C"
+    },
+    "CID000004159": {
+        "cid": "CID000004159",
+        "name": "6-.alpha.-Methylprednisolone",
+        "smiles": "CC1CC2C3CCC(C3(CC(C2C4(C1=CC(=O)C=C4)C)O)C)(C(=O)CO)O"
+    },
+    "CID005311297": {
+        "cid": "CID005311297",
+        "name": "SCHEMBL1133011",
+        "smiles": "CC(C)(C1=CC=CC=C1CCC(C2=CC=CC(=C2)C=CC3=NC4=C(C=CC(=C4)Cl)C=C3)S)O"
+    },
+    "CID000001065": {
+        "cid": "CID000001065",
+        "name": "Cinchonan-9-ol, 6'-methoxy-, (8.alpha.,9R)-",
+        "smiles": "COC1=CC2=C(C=CN=C2C=C1)C(C3CC4CCN3CC4C=C)O"
+    },
+    "CID000002576": {
+        "cid": "CID000002576",
+        "name": "carisoprodol",
+        "smiles": "CCCC(C)(COC(=O)N)COC(=O)NC(C)C"
+    },
+    "CID000002541": {
+        "cid": "CID000002541",
+        "name": "candesartan",
+        "smiles": "CCOC1=NC2=CC=CC(=C2N1CC3=CC=C(C=C3)C4=CC=CC=C4C5=NNN=N5)C(=O)O"
+    },
+    "CID000002585": {
+        "cid": "CID000002585",
+        "name": "carvedilol",
+        "smiles": "COC1=CC=CC=C1OCCNCC(COC2=CC=CC3=C2C4=CC=CC=C4N3)O"
+    },
+    "CID000004543": {
+        "cid": "CID000004543",
+        "name": "nortriptyline",
+        "smiles": "CNCCC=C1C2=CC=CC=C2CCC3=CC=CC=C31"
+    },
+    "CID000004599": {
+        "cid": "CID000004599",
+        "name": "RefChem:1054188",
+        "smiles": "CCCCCCCCCCCC(CC1C(C(=O)O1)CCCCCC)OC(=O)C(CC(C)C)NC=O"
+    },
+    "CID000019090": {
+        "cid": "CID000019090",
+        "name": "megestrol",
+        "smiles": "CC1=CC2C(CCC3(C2CCC3(C(=O)C)O)C)C4(C1=CC(=O)CC4)C"
+    },
+    "CID000003640": {
+        "cid": "CID000003640",
+        "name": "11,17,21-Trihydroxypregn-4-ene-3,20-dione",
+        "smiles": "CC12CCC(=O)C=C1CCC3C2C(CC4(C3CCC4(C(=O)CO)O)C)O"
+    },
+    "CID000005512": {
+        "cid": "CID000005512",
+        "name": "RefChem:1061045",
+        "smiles": "CC1=CC(=C(C=C1)O)C(CCN(C(C)C)C(C)C)C2=CC=CC=C2"
+    },
+    "CID000005533": {
+        "cid": "CID000005533",
+        "name": "trazodone",
+        "smiles": "C1CN(CCN1CCCN2C(=O)N3C=CC=CC3=N2)C4=CC(=CC=C4)Cl"
+    },
+    "CID000077999": {
+        "cid": "CID000077999",
+        "name": "rosiglitazone",
+        "smiles": "CN(CCOC1=CC=C(C=C1)CC2C(=O)NC(=O)S2)C3=CC=CC=N3"
+    },
+    "CID000002022": {
+        "cid": "CID000002022",
+        "name": "2-amino-9-(2-hydroxyethoxymethyl)-3H-purin-6-one",
+        "smiles": "C1=NC2=C(N1COCCO)NC(=NC2=O)N"
+    },
+    "CID000002092": {
+        "cid": "CID000002092",
+        "name": "alfuzosin",
+        "smiles": "CN(CCCNC(=O)C1CCCO1)C2=NC3=CC(=C(C=C3C(=N2)N)OC)OC"
+    },
+    "CID000000206": {
+        "cid": "CID000000206",
+        "name": "Hexopyranose",
+        "smiles": "C(C1C(C(C(C(O1)O)O)O)O)O"
+    },
+    "CID000003793": {
+        "cid": "CID000003793",
+        "name": "Itrizole",
+        "smiles": "CCC(C)N1C(=O)N(C=N1)C2=CC=C(C=C2)N3CCN(CC3)C4=CC=C(C=C4)OCC5COC(O5)(CN6C=NC=N6)C7=C(C=C(C=C7)Cl)Cl"
+    },
+    "CID000036339": {
+        "cid": "CID000036339",
+        "name": "Ethnor",
+        "smiles": "CCOC(=O)C1=CN=CN1C(C)C2=CC=CC=C2"
+    },
+    "CID000000450": {
+        "cid": "CID000000450",
+        "name": "RefChem:1057483",
+        "smiles": "CC12CCC3C(C1CCC2O)CCC4=C3C=CC(=C4)O"
+    },
+    "CID000002678": {
+        "cid": "CID000002678",
+        "name": "cetirizine",
+        "smiles": "C1CN(CCN1CCOCC(=O)O)C(C2=CC=CC=C2)C3=CC=C(C=C3)Cl"
+    },
+    "CID000004927": {
+        "cid": "CID000004927",
+        "name": "promethazine",
+        "smiles": "CC(CN1C2=CC=CC=C2SC3=CC=CC=C31)N(C)C"
+    },
+    "CID000002756": {
+        "cid": "CID000002756",
+        "name": "cimetidine",
+        "smiles": "CC1=C(N=CN1)CSCCNC(=NC)NC#N"
+    },
+    "CID000002803": {
+        "cid": "CID000002803",
+        "name": "clonidine",
+        "smiles": "C1CN=C(N1)NC2=C(C=CC=C2Cl)Cl"
+    },
+    "CID000005672": {
+        "cid": "CID000005672",
+        "name": "RefChem:1089445",
+        "smiles": "CCC1=CC2CC(C3=C(CN(C2)C1)C4=CC=CC=C4N3)(C5=C(C=C6C(=C5)C78CCN9C7C(C=CC9)(C(C(C8N6C)(C(=O)OC)O)OC(=O)C)CC)OC)C(=O)OC"
+    },
+    "CID000060835": {
+        "cid": "CID000060835",
+        "name": "duloxetine",
+        "smiles": "CNCCC(C1=CC=CS1)OC2=CC=CC3=CC=CC=C32"
+    },
+    "CID000005530": {
+        "cid": "CID000005530",
+        "name": "tranylcypromine",
+        "smiles": "C1C(C1N)C2=CC=CC=C2"
+    },
+    "CID000003657": {
+        "cid": "CID000003657",
+        "name": "hydroxyurea",
+        "smiles": "C(=O)(N)NO"
+    },
+    "CID000003890": {
+        "cid": "CID000003890",
+        "name": "C26H40O5",
+        "smiles": "CC(C)OC(=O)CCCC=CCC1C(CC(C1CCC(CCC2=CC=CC=C2)O)O)O"
+    },
+    "CID004475485": {
+        "cid": "CID004475485",
+        "name": "Rosuvastatin EP Impurity L",
+        "smiles": "CC(C)C1=NC(=NC(=C1CCC(CC(CC(=O)O)O)O)C2=CC=C(C=C2)F)N(C)S(=O)(=O)C"
+    },
+    "CID000002088": {
+        "cid": "CID000002088",
+        "name": "ALENDRONIC ACID",
+        "smiles": "C(CC(O)(P(=O)(O)O)P(=O)(O)O)CN"
+    },
+    "CID000156419": {
+        "cid": "CID000156419",
+        "name": "Cinacalcet",
+        "smiles": "CC(C1=CC=CC2=CC=CC=C21)NCCCC3=CC(=CC=C3)C(F)(F)F"
+    },
+    "CID000004034": {
+        "cid": "CID000004034",
+        "name": "meclizine",
+        "smiles": "CC1=CC(=CC=C1)CN2CCN(CC2)C(C3=CC=CC=C3)C4=CC=C(C=C4)Cl"
+    },
+    "CID000004451": {
+        "cid": "CID000004451",
+        "name": "C32H45N3O4S",
+        "smiles": "CC1=C(C=CC=C1O)C(=O)NC(CSC2=CC=CC=C2)C(CN3CC4CCCCC4CC3C(=O)NC(C)(C)C)O"
+    },
+    "CID000002891": {
+        "cid": "CID000002891",
+        "name": "cobalt(2+);[5-(5,6-dimethylbenzimidazol-1-yl)-4-hydroxy-2-(hydroxymethyl)oxolan-3-yl] 1-[3-[2,13,18-tris(2-amino-2-oxoethyl)-7,12,17-tris(3-amino-3-oxopropyl)-3,5,8,8,13,15,18,19-octamethyl-2,7,12,17-tetrahydro-1H-corrin-21-id-3-yl]propanoylamino]propan-2-yl hydrogen phosphate;cyanide",
+        "smiles": "CC1=CC2=C(C=C1C)N(C=N2)C3C(C(C(O3)CO)OP(=O)(O)OC(C)CNC(=O)CCC4(C(C5C6(C(C(C(=N6)C(=C7C(C(C(=N7)C=C8C(C(C(=N8)C(=C4[N-]5)C)CCC(=O)N)(C)C)CCC(=O)N)(C)CC(=O)N)C)CCC(=O)N)(C)CC(=O)N)C)CC(=O)N)C)O.[C-]#N.[Co+2]"
+    },
+    "CID000060865": {
+        "cid": "CID000060865",
+        "name": "(E)-Olopatadine",
+        "smiles": "CN(C)CCC=C1C2=CC=CC=C2COC3=C1C=C(C=C3)CC(=O)O"
+    },
+    "CID000004893": {
+        "cid": "CID000004893",
+        "name": "prazosin",
+        "smiles": "COC1=C(C=C2C(=C1)C(=NC(=N2)N3CCN(CC3)C(=O)C4=CC=CO4)N)OC"
+    },
+    "CID000005358": {
+        "cid": "CID000005358",
+        "name": "sumatriptan",
+        "smiles": "CNS(=O)(=O)CC1=CC2=C(C=C1)NC=C2CCN(C)C"
+    },
+    "CID000004894": {
+        "cid": "CID000004894",
+        "name": "11,17,21-Trihydroxypregna-1,4-diene-3,20-dione",
+        "smiles": "CC12CC(C3C(C1CCC2(C(=O)CO)O)CCC4=CC(=O)C=CC34C)O"
+    },
+    "CID000005234": {
+        "cid": "CID000005234",
+        "name": "sodium chloride",
+        "smiles": "[Na+].[Cl-]"
+    },
+    "CID000002578": {
+        "cid": "CID000002578",
+        "name": "carmustine",
+        "smiles": "C(CCl)NC(=O)N(CCCl)N=O"
+    },
+    "CID006447131": {
+        "cid": "CID006447131",
+        "name": "C43H68ClNO11",
+        "smiles": "CCC1C=C(CC(CC(C2C(CC(C(O2)(C(=O)C(=O)N3CCCCC3C(=O)OC(C(C(CC1=O)O)C)C(=CC4CCC(C(C4)OC)Cl)C)O)C)OC)OC)C)C"
+    },
+    "CID000002118": {
+        "cid": "CID000002118",
+        "name": "alprazolam",
+        "smiles": "CC1=NN=C2N1C3=C(C=C(C=C3)Cl)C(=NC2)C4=CC=CC=C4"
+    },
+    "CID000003715": {
+        "cid": "CID000003715",
+        "name": "indomethacin",
+        "smiles": "CC1=C(C2=C(N1C(=O)C3=CC=C(C=C3)Cl)C=CC(=C2)OC)CC(=O)O"
+    },
+    "CID000004264": {
+        "cid": "CID000004264",
+        "name": "C26H44O9",
+        "smiles": "CC(C1C(O1)CC2COC(C(C2O)O)CC(=CC(=O)OCCCCCCCCC(=O)O)C)C(C)O"
+    },
+    "CID000003062": {
+        "cid": "CID000003062",
+        "name": "Lanicor",
+        "smiles": "CC1C(C(CC(O1)OC2C(OC(CC2O)OC3C(OC(CC3O)OC4CCC5(C(C4)CCC6C5CC(C7(C6(CCC7C8=CC(=O)OC8)O)C)O)C)C)C)O)O"
+    },
+    "CID000003825": {
+        "cid": "CID000003825",
+        "name": "ketoprofen",
+        "smiles": "CC(C1=CC(=CC=C1)C(=O)C2=CC=CC=C2)C(=O)O"
+    },
+    "CID000004052": {
+        "cid": "CID000004052",
+        "name": "3-[hydroxy-[(5-methyl-1,3-thiazol-2-yl)amino]methylidene]-2-methyl-1,1-dioxo-1lambda6,2-benzothiazin-4-one",
+        "smiles": "CC1=CN=C(S1)NC(=C2C(=O)C3=CC=CC=C3S(=O)(=O)N2C)O"
+    },
+    "CID000002487": {
+        "cid": "CID000002487",
+        "name": "DTXSID70860592",
+        "smiles": "C1CCC2(C3CC4=C(C2(C1)CCN3CC5CCC5)C=C(C=C4)O)O"
+    },
+    "CID000216239": {
+        "cid": "CID000216239",
+        "name": "Sorafenib",
+        "smiles": "CNC(=O)C1=NC=CC(=C1)OC2=CC=C(C=C2)NC(=O)NC3=CC(=C(C=C3)Cl)C(F)(F)F"
+    },
+    "CID000003152": {
+        "cid": "CID000003152",
+        "name": "donepezil",
+        "smiles": "COC1=C(C=C2C(=C1)CC(C2=O)CC3CCN(CC3)CC4=CC=CC=C4)OC"
+    },
+    "CID000027686": {
+        "cid": "CID000027686",
+        "name": "CHEMBL4088679",
+        "smiles": "C1=CC2=C(C(=C1)OCC(COC3=CC4=C(C=C3)OC(=CC4=O)C(=O)O)O)C(=O)C=C(O2)C(=O)O"
+    },
+    "CID000004723": {
+        "cid": "CID000004723",
+        "name": "pemoline",
+        "smiles": "C1=CC=C(C=C1)C2C(=O)N=C(O2)N"
+    },
+    "CID000003883": {
+        "cid": "CID000003883",
+        "name": "lansoprazole",
+        "smiles": "CC1=C(C=CN=C1CS(=O)C2=NC3=CC=CC=C3N2)OCC(F)(F)F"
+    },
+    "CID000003157": {
+        "cid": "CID000003157",
+        "name": "doxazosin",
+        "smiles": "COC1=C(C=C2C(=C1)C(=NC(=N2)N3CCN(CC3)C(=O)C4COC5=CC=CC=C5O4)N)OC"
+    },
+    "CID000003154": {
+        "cid": "CID000003154",
+        "name": "120280-13-9",
+        "smiles": "CCNC1CC(S(=O)(=O)C2=C1C=C(S2)S(=O)(=O)N)C"
+    },
+    "CID000000214": {
+        "cid": "CID000000214",
+        "name": "8-iso Prostaglandin E1",
+        "smiles": "CCCCCC(C=CC1C(CC(=O)C1CCCCCCC(=O)O)O)O"
+    },
+    "CID000003003": {
+        "cid": "CID000003003",
+        "name": "Celestone",
+        "smiles": "CC1CC2C3CCC4=CC(=O)C=CC4(C3(C(CC2(C1(C(=O)CO)O)C)O)F)C"
+    },
+    "CID000003158": {
+        "cid": "CID000003158",
+        "name": "doxepin",
+        "smiles": "CN(C)CCC=C1C2=CC=CC=C2COC3=CC=CC=C31"
+    },
+    "CID000003333": {
+        "cid": "CID000003333",
+        "name": "felodipine",
+        "smiles": "CCOC(=O)C1=C(NC(=C(C1C2=C(C(=CC=C2)Cl)Cl)C(=O)OC)C)C"
+    },
+    "CID006398970": {
+        "cid": "CID006398970",
+        "name": "Cefdinir (Omnicef)",
+        "smiles": "C=CC1=C(N2C(C(C2=O)NC(=O)C(=NO)C3=CSC(=N3)N)SC1)C(=O)O"
+    },
+    "CID000003648": {
+        "cid": "CID000003648",
+        "name": "Hymorphan (Salt/Mix)",
+        "smiles": "CN1CCC23C4C1CC5=C2C(=C(C=C5)O)OC3C(=O)CC4"
+    },
+    "CID000000772": {
+        "cid": "CID000000772",
+        "name": "DTXSID80872762",
+        "smiles": "CC(=O)NC1C(C(C(OC1O)COS(=O)(=O)O)OC2C(C(C(C(O2)C(=O)O)OC3C(C(C(C(O3)CO)OC4C(C(C(C(O4)C(=O)O)O)O)OS(=O)(=O)O)OS(=O)(=O)O)NS(=O)(=O)O)O)OS(=O)(=O)O)O"
+    },
+    "CID003081884": {
+        "cid": "CID003081884",
+        "name": "Glatiramer (acetate)",
+        "smiles": "CC(C(=O)O)N.CC(=O)O.C1=CC(=CC=C1CC(C(=O)O)N)O.C(CCN)CC(C(=O)O)N.C(CC(=O)O)C(C(=O)O)N"
+    },
+    "CID000005544": {
+        "cid": "CID000005544",
+        "name": "Mycolog",
+        "smiles": "CC12CC(C3(C(C1CC(C2(C(=O)CO)O)O)CCC4=CC(=O)C=CC43C)F)O"
+    },
+    "CID000003365": {
+        "cid": "CID000003365",
+        "name": "fluconazole",
+        "smiles": "C1=CC(=C(C=C1F)F)C(CN2C=NC=N2)(CN3C=NC=N3)O"
+    },
+    "CID000060147": {
+        "cid": "CID000060147",
+        "name": "(+)-Tamsulosin",
+        "smiles": "CCOC1=CC=CC=C1OCCNC(C)CC2=CC(=C(C=C2)OC)S(=O)(=O)N"
+    },
+    "CID000002609": {
+        "cid": "CID000002609",
+        "name": "DTXSID80860664",
+        "smiles": "C1C(=C(N2C(S1)C(C2=O)NC(=O)C(C3=CC=CC=C3)N)C(=O)O)Cl"
+    },
+    "CID000004594": {
+        "cid": "CID000004594",
+        "name": "Prilosec",
+        "smiles": "CC1=CN=C(C(=C1OC)C)CS(=O)C2=NC3=C(N2)C=C(C=C3)OC"
+    },
+    "CID000002656": {
+        "cid": "CID000002656",
+        "name": "7-[[2-(2-amino-1,3-thiazol-4-yl)-2-methoxyiminoacetyl]amino]-3-[(2-methyl-6-oxido-5-oxo-1,2,4-triazin-3-yl)sulfanylmethyl]-8-oxo-5-thia-1-azabicyclo[4.2.0]oct-2-ene-2-carboxylate",
+        "smiles": "CN1C(=NC(=O)C(=N1)[O-])SCC2=C(N3C(C(C3=O)NC(=O)C(=NOC)C4=CSC(=N4)N)SC2)C(=O)[O-]"
+    },
+    "CID000002662": {
+        "cid": "CID000002662",
+        "name": "celecoxib",
+        "smiles": "CC1=CC=C(C=C1)C2=CC(=NN2C3=CC=C(C=C3)S(=O)(=O)N)C(F)(F)F"
+    },
+    "CID000003661": {
+        "cid": "CID000003661",
+        "name": "RefChem:1050733",
+        "smiles": "CN1C2CCC1CC(C2)OC(=O)C(CO)C3=CC=CC=C3"
+    },
+    "CID000004419": {
+        "cid": "CID000004419",
+        "name": "N-Cyclobutylmethyl-14-hydroxydihydronormorphine",
+        "smiles": "C1CC(C1)CN2CCC34C5C(CCC3(C2CC6=C4C(=C(C=C6)O)O5)O)O"
+    },
+    "CID000004679": {
+        "cid": "CID000004679",
+        "name": "pantoprazole",
+        "smiles": "COC1=C(C(=NC=C1)CS(=O)C2=NC3=C(N2)C=C(C=C3)OC(F)F)OC"
+    },
+    "CID000005210": {
+        "cid": "CID000005210",
+        "name": "sibutramine",
+        "smiles": "CC(C)CC(C1(CCC1)C2=CC=C(C=C2)Cl)N(C)C"
+    },
+    "CID000005203": {
+        "cid": "CID000005203",
+        "name": "DTXSID00861017",
+        "smiles": "CNC1CCC(C2=CC=CC=C12)C3=CC(=C(C=C3)Cl)Cl"
+    },
+    "CID000003043": {
+        "cid": "CID000003043",
+        "name": "9-[5-(hydroxymethyl)oxolan-2-yl]-3H-purin-6-one",
+        "smiles": "C1CC(OC1CO)N2C=NC3=C2NC=NC3=O"
+    },
+    "CID000124087": {
+        "cid": "CID000124087",
+        "name": "Desloratadine",
+        "smiles": "C1CC2=C(C=CC(=C2)Cl)C(=C3CCNCC3)C4=C1C=CC=N4"
+    },
+    "CID000003516": {
+        "cid": "CID000003516",
+        "name": "guaifenesin",
+        "smiles": "COC1=CC=CC=C1OCC(CO)O"
+    },
+    "CID000003510": {
+        "cid": "CID000003510",
+        "name": "[3H]GRANISETRON",
+        "smiles": "CN1C2CCCC1CC(C2)NC(=O)C3=NN(C4=CC=CC=C43)C"
+    },
+    "CID000005040": {
+        "cid": "CID000005040",
+        "name": "Rapamycin-d3",
+        "smiles": "CC1CCC2CC(C(=CC=CC=CC(CC(C(=O)C(C(C(=CC(C(=O)CC(OC(=O)C3CCCCN3C(=O)C(=O)C1(O2)O)C(C)CC4CCC(C(C4)OC)O)C)C)O)OC)C)C)C)OC"
+    },
+    "CID000152945": {
+        "cid": "CID000152945",
+        "name": "Dutasteride?",
+        "smiles": "CC12CCC3C(C1CCC2C(=O)NC4=C(C=CC(=C4)C(F)(F)F)C(F)(F)F)CCC5C3(C=CC(=O)N5)C"
+    },
+    "CID000003404": {
+        "cid": "CID000003404",
+        "name": "61718-81-8",
+        "smiles": "COCCCCC(=NOCCN)C1=CC=C(C=C1)C(F)(F)F"
+    },
+    "CID000003324": {
+        "cid": "CID000003324",
+        "name": "famciclovir",
+        "smiles": "CC(=O)OCC(CCN1C=NC2=CN=C(N=C21)N)COC(=O)C"
+    },
+    "CID000003325": {
+        "cid": "CID000003325",
+        "name": "Brolin",
+        "smiles": "C1=C(N=C(S1)N=C(N)N)CSCCC(=NS(=O)(=O)N)N"
+    },
+    "CID000004900": {
+        "cid": "CID000004900",
+        "name": "1192475-75-4",
+        "smiles": "CC12CC(=O)C3C(C1CCC2(C(=O)CO)O)CCC4=CC(=O)C=CC34C"
+    },
+    "CID000004856": {
+        "cid": "CID000004856",
+        "name": "3-[hydroxy-(pyridin-2-ylamino)methylidene]-2-methyl-1,1-dioxo-1lambda6,2-benzothiazin-4-one",
+        "smiles": "CN1C(=C(NC2=CC=CC=N2)O)C(=O)C3=CC=CC=C3S1(=O)=O"
+    },
+    "CID000122316": {
+        "cid": "CID000122316",
+        "name": "1875-50-9",
+        "smiles": "C#CCNC1CCC2=CC=CC=C12"
+    },
+    "CID000004054": {
+        "cid": "CID000004054",
+        "name": "memantine",
+        "smiles": "CC12CC3CC(C1)(CC(C3)(C2)N)C"
+    },
+    "CID000003255": {
+        "cid": "CID000003255",
+        "name": "DTXSID90859206",
+        "smiles": "CCC1C(C(C(C(=O)C(CC(C(C(C(C(C(=O)O1)C)OC2CC(C(C(O2)C)O)(C)OC)C)OC3C(C(CC(O3)C)N(C)C)O)(C)O)C)C)O)(C)O"
+    },
+    "CID000005077": {
+        "cid": "CID000005077",
+        "name": "RefChem:496508",
+        "smiles": "CCN(C)C(=O)OC1=CC=CC(=C1)C(C)N(C)C"
+    },
+    "CID000005095": {
+        "cid": "CID000005095",
+        "name": "ropinirole",
+        "smiles": "CCCN(CCC)CCC1=C2CC(=O)NC2=CC=C1"
+    },
+    "CID000003878": {
+        "cid": "CID000003878",
+        "name": "lamotrigine",
+        "smiles": "C1=CC(=C(C(=C1)Cl)Cl)C2=C(N=C(N=N2)N)N"
+    },
+    "CID000004058": {
+        "cid": "CID000004058",
+        "name": "meperidine",
+        "smiles": "CCOC(=O)C1(CCN(CC1)C)C2=CC=CC=C2"
+    },
+    "CID000002244": {
+        "cid": "CID000002244",
+        "name": "aspirin",
+        "smiles": "CC(=O)OC1=CC=CC=C1C(=O)O"
+    },
+    "CID000054374": {
+        "cid": "CID000054374",
+        "name": "10-(4-aminobutyl)-19-[(2-amino-3-phenylpropanoyl)amino]-16-benzyl-N-[(2R,3R)-1,3-dihydroxybutan-2-yl]-7-(1-hydroxyethyl)-13-(1H-indol-3-ylmethyl)-6,9,12,15,18-pentaoxo-1,2-dithia-5,8,11,14,17-pentazacycloicosane-4-carboxamide",
+        "smiles": "CC(C1C(=O)NC(CSSCC(C(=O)NC(C(=O)NC(C(=O)NC(C(=O)N1)CCCCN)CC2=CNC3=CC=CC=C32)CC4=CC=CC=C4)NC(=O)C(CC5=CC=CC=C5)N)C(=O)NC(CO)C(C)O)O"
+    },
+    "CID000060843": {
+        "cid": "CID000060843",
+        "name": "(2R)-2-[[4-[2-(2-amino-4-oxo-1,7-dihydropyrrolo[2,3-d]pyrimidin-5-yl)ethyl]benzoyl]amino]pentanedioic acid",
+        "smiles": "C1=CC(=CC=C1CCC2=CNC3=C2C(=O)N=C(N3)N)C(=O)NC(CCC(=O)O)C(=O)O"
+    },
+    "CID000160051": {
+        "cid": "CID000160051",
+        "name": "UNII-P4SG24WI5Q",
+        "smiles": "CCCCCCCCCCNCC=C.C[N+](C)(C)CCCCCCNCC=C.C=CCN.C1C(O1)CCl.Cl.[Cl-]"
+    },
+    "CID000002771": {
+        "cid": "CID000002771",
+        "name": "citalopram",
+        "smiles": "CN(C)CCCC1(C2=C(CO1)C=C(C=C2)C#N)C3=CC=C(C=C3)F"
+    },
+    "CID000005735": {
+        "cid": "CID000005735",
+        "name": "zopiclone",
+        "smiles": "CN1CCN(CC1)C(=O)OC2C3=NC=CN=C3C(=O)N2C4=NC=C(C=C4)Cl"
+    },
+    "CID000003279": {
+        "cid": "CID000003279",
+        "name": "RefChem:396963",
+        "smiles": "CCC(CO)NCCNC(CC)CO"
+    },
+    "CID005311039": {
+        "cid": "CID005311039",
+        "name": "Gaspofungin Impurity F",
+        "smiles": "CCC(C)CC(C)CCCCCCCCC(=O)NC1CC(C(NC(=O)C2CCCN2C(=O)C(NC(=O)C(NC(=O)C3CC(CN3C(=O)C(NC1=O)C(C)O)O)C(C(C4=CC=C(C=C4)O)O)O)C(CCN)O)NCCN)O"
+    },
+    "CID000004253": {
+        "cid": "CID000004253",
+        "name": "RefChem:1089870",
+        "smiles": "CN1CCC23C4C1CC5=C2C(=C(C=C5)O)OC3C(C=C4)O"
+    },
+    "CID000004497": {
+        "cid": "CID000004497",
+        "name": "nimodipine",
+        "smiles": "CC1=C(C(C(=C(N1)C)C(=O)OC(C)C)C2=CC(=CC=C2)[N+](=O)[O-])C(=O)OCCOC"
+    },
+    "CID004659568": {
+        "cid": "CID004659568",
+        "name": "RefChem:1062889",
+        "smiles": "CCN(CC)C(=O)C(=CC1=CC(=C(C(=C1)O)O)[N+](=O)[O-])C#N"
+    },
+    "CID000005732": {
+        "cid": "CID000005732",
+        "name": "zolpidem",
+        "smiles": "CC1=CC=C(C=C1)C2=C(N3C=C(C=CC3=N2)C)CC(=O)N(C)C"
+    },
+    "CID000004499": {
+        "cid": "CID000004499",
+        "name": "nisoldipine",
+        "smiles": "CC1=C(C(C(=C(N1)C)C(=O)OCC(C)C)C2=CC=CC=C2[N+](=O)[O-])C(=O)OC"
+    },
+    "CID000062924": {
+        "cid": "CID000062924",
+        "name": "Milveterol+Fluticasone",
+        "smiles": "CC1CC2C3CC(C4=CC(=O)C=CC4(C3(C(CC2(C1(C(=O)SCF)O)C)O)F)C)F"
+    },
+    "CID000000453": {
+        "cid": "CID000000453",
+        "name": "Hexitol",
+        "smiles": "C(C(C(C(C(CO)O)O)O)O)O"
+    },
+    "CID000000159": {
+        "cid": "CID000000159",
+        "name": "RefChem:1072480",
+        "smiles": "CCCCCC(C=CC1C(CC2C1CC(=CCCCC(=O)O)O2)O)O"
+    },
+    "CID000005035": {
+        "cid": "CID000005035",
+        "name": "raloxifene",
+        "smiles": "C1CCN(CC1)CCOC2=CC=C(C=C2)C(=O)C3=C(SC4=C3C=CC(=C4)O)C5=CC=C(C=C5)O"
+    },
+    "CID000163742": {
+        "cid": "CID000163742",
+        "name": "SCHEMBL1650579",
+        "smiles": "COC1C(C(C(C(O1)COS(=O)(=O)O)OC2C(C(C(C(O2)C(=O)O)OC3C(C(C(C(O3)COS(=O)(=O)O)OC4C(C(C(C(O4)C(=O)O)OC5C(C(C(C(O5)COS(=O)(=O)O)O)O)NS(=O)(=O)O)O)O)OS(=O)(=O)O)NS(=O)(=O)O)O)OS(=O)(=O)O)O)NS(=O)(=O)O"
+    },
+    "CID000003419": {
+        "cid": "CID000003419",
+        "name": "4-cyclohexyl-1-[2-[(2-methyl-1-propanoyloxypropoxy)-(4-phenylbutyl)phosphoryl]acetyl]pyrrolidine-2-carboxylate",
+        "smiles": "CCC(=O)OC(C(C)C)OP(=O)(CCCCC1=CC=CC=C1)CC(=O)N2CC(CC2C(=O)[O-])C3CCCCC3"
+    },
+    "CID000443871": {
+        "cid": "CID000443871",
+        "name": "SCHEMBL676870",
+        "smiles": "CC(C)C1CCCC(C1)C(=O)NC(CC2=CC=CC=C2)C(=O)O"
+    },
+    "CID000002800": {
+        "cid": "CID000002800",
+        "name": "clomiphene",
+        "smiles": "CCN(CC)CCOC1=CC=C(C=C1)C(=C(C2=CC=CC=C2)Cl)C3=CC=CC=C3"
+    },
+    "CID000002806": {
+        "cid": "CID000002806",
+        "name": "90055-48-4",
+        "smiles": "COC(=O)C(C1=CC=CC=C1Cl)N2CCC3=C(C2)C=CS3"
+    },
+    "CID000005379": {
+        "cid": "CID000005379",
+        "name": "Gatifloxacin",
+        "smiles": "CC1CN(CCN1)C2=C(C=C3C(=C2OC)N(C=C(C3=O)C(=O)O)C4CC4)F"
+    },
+    "CID000054688": {
+        "cid": "CID000054688",
+        "name": "CHEMBL143",
+        "smiles": "CCC1C(C(C(C(=O)C(CC(C(C(C(C(C(=O)O1)C)OC2CC(C(C(O2)C)O)(C)OC)C)OC3C(C(CC(O3)C)N(C)C)O)(C)OC)C)C)O)(C)O"
+    },
+    "CID000012536": {
+        "cid": "CID000012536",
+        "name": "SCHEMBL1649865",
+        "smiles": "CC1(OC2CC3C4CCC5=CC(=O)C=CC5(C4C(CC3(C2(O1)C(=O)CO)C)O)C)C"
+    },
+    "CID000123606": {
+        "cid": "CID000123606",
+        "name": "Almotriptan",
+        "smiles": "CN(C)CCC1=CNC2=C1C=C(C=C2)CS(=O)(=O)N3CCCC3"
+    },
+    "CID000004463": {
+        "cid": "CID000004463",
+        "name": "nevirapine",
+        "smiles": "CC1=C2C(=NC=C1)N(C3=C(C=CC=N3)C(=O)N2)C4CC4"
+    },
+    "CID000005487": {
+        "cid": "CID000005487",
+        "name": "tizanidine",
+        "smiles": "C1CN=C(N1)NC2=C(C=CC3=NSN=C32)Cl"
+    },
+    "CID000036811": {
+        "cid": "CID000036811",
+        "name": "dobutamine",
+        "smiles": "CC(CCC1=CC=C(C=C1)O)NCCC2=CC(=C(C=C2)O)O"
+    },
+    "CID000005734": {
+        "cid": "CID000005734",
+        "name": "zonisamide",
+        "smiles": "C1=CC=C2C(=C1)C(=NO2)CS(=O)(=O)N"
+    },
+    "CID000003463": {
+        "cid": "CID000003463",
+        "name": "gemfibrozil",
+        "smiles": "CC1=CC(=C(C=C1)C)OCCCC(C)(C)C(=O)O"
+    },
+    "CID000004583": {
+        "cid": "CID000004583",
+        "name": "ofloxacin",
+        "smiles": "CC1COC2=C3N1C=C(C(=O)C3=CC(=C2N4CCN(CC4)C)F)C(=O)O"
+    },
+    "CID000000598": {
+        "cid": "CID000000598",
+        "name": "2-Mercaptoethanesulfonic acid",
+        "smiles": "C(CS(=O)(=O)O)S"
+    },
+    "CID000002284": {
+        "cid": "CID000002284",
+        "name": "baclofen",
+        "smiles": "C1=CC(=CC=C1C(CC(=O)O)CN)Cl"
+    },
+    "CID000005029": {
+        "cid": "CID000005029",
+        "name": "rabeprazole",
+        "smiles": "CC1=C(C=CN=C1CS(=O)C2=NC3=CC=CC=C3N2)OCCCOC"
+    },
+    "CID000003639": {
+        "cid": "CID000003639",
+        "name": "hydrochlorothiazide",
+        "smiles": "C1NC2=CC(=C(C=C2S(=O)(=O)N1)S(=O)(=O)N)Cl"
+    },
+    "CID003085017": {
+        "cid": "CID003085017",
+        "name": "2-(chloromethyl)oxirane;prop-2-en-1-amine",
+        "smiles": "C=CCN.C1C(O1)CCl"
+    },
+    "CID005281104": {
+        "cid": "CID005281104",
+        "name": "Paricalcitol",
+        "smiles": "CC(C=CC(C)C(C)(C)O)C1CCC2C1(CCCC2=CC=C3CC(CC(C3)O)O)C"
+    },
+    "CID000004829": {
+        "cid": "CID000004829",
+        "name": "Pioglitazone",
+        "smiles": "CCC1=CN=C(C=C1)CCOC2=CC=C(C=C2)CC3C(=O)NC(=O)S3"
+    },
+    "CID000003385": {
+        "cid": "CID000003385",
+        "name": "5-Fluorouracil",
+        "smiles": "C1=C(C(=O)NC(=O)N1)F"
+    },
+    "CID000060198": {
+        "cid": "CID000060198",
+        "name": "EXEMESTANE",
+        "smiles": "CC12CCC3C(C1CCC2=O)CC(=C)C4=CC(=O)C=CC34C"
+    },
+    "CID000005195": {
+        "cid": "CID000005195",
+        "name": "Deprenyl",
+        "smiles": "CC(CC1=CC=CC=C1)N(C)CC#C"
+    },
+    "CID000003203": {
+        "cid": "CID000003203",
+        "name": "Rac-Efavirenz",
+        "smiles": "C1CC1C#CC2(C3=C(C=CC(=C3)Cl)NC(=O)O2)C(F)(F)F"
+    },
+    "CID000003877": {
+        "cid": "CID000003877",
+        "name": "141434-39-1",
+        "smiles": "C1C(OC(S1)CO)N2C=CC(=NC2=O)N"
+    },
+    "CID000003954": {
+        "cid": "CID000003954",
+        "name": "loperamide(1+)",
+        "smiles": "CN(C)C(=O)C(CC[NH+]1CCC(CC1)(C2=CC=C(C=C2)Cl)O)(C3=CC=CC=C3)C4=CC=CC=C4"
+    },
+    "CID000002153": {
+        "cid": "CID000002153",
+        "name": "theophylline",
+        "smiles": "CN1C2=C(C(=O)N(C1=O)C)NC=N2"
+    },
+    "CID000077993": {
+        "cid": "CID000077993",
+        "name": "Eletriptan",
+        "smiles": "CN1CCCC1CC2=CNC3=C2C=C(C=C3)CCS(=O)(=O)C4=CC=CC=C4"
+    },
+    "CID000002732": {
+        "cid": "CID000002732",
+        "name": "chlorthalidone",
+        "smiles": "C1=CC=C2C(=C1)C(=O)NC2(C3=CC(=C(C=C3)Cl)S(=O)(=O)N)O"
+    },
+    "CID000005155": {
+        "cid": "CID000005155",
+        "name": "26638-87-9",
+        "smiles": "CC1=CN(C(=O)NC1=O)C2C=CC(O2)CO"
+    },
+    "CID000005152": {
+        "cid": "CID000005152",
+        "name": "Salmeterol",
+        "smiles": "C1=CC=C(C=C1)CCCCOCCCCCCNCC(C2=CC(=C(C=C2)O)CO)O"
+    },
+    "CID003468412": {
+        "cid": "CID003468412",
+        "name": "STL069549",
+        "smiles": "CC1C=CC=CCCC=CC=CC=CC=CC(CC(C(C(CC(=O)CC(C(CCC(CC(CC(CC(=O)OC(C(C1O)C)C)O)O)O)O)O)O)C(=O)O)O)OC2C(C(C(C(O2)C)O)N)O"
+    },
+    "CID000005645": {
+        "cid": "CID000005645",
+        "name": "Urosodeoxycholic Acid EP Impurity K",
+        "smiles": "CC(CCC(=O)O)C1CCC2C1(CCC3C2C(CC4C3(CCC(C4)O)C)O)C"
+    },
+    "CID000071616": {
+        "cid": "CID000071616",
+        "name": "Voriconazole",
+        "smiles": "CC(C1=NC=NC=C1F)C(CN2C=NC=N2)(C3=C(C=C(C=C3)F)F)O"
+    },
+    "CID000074989": {
+        "cid": "CID000074989",
+        "name": "DTXSID20916694",
+        "smiles": "C1CC(CCC1C2=CC=C(C=C2)Cl)C3=C(C4=CC=CC=C4C(=O)C3=O)O"
+    },
+    "CID000003676": {
+        "cid": "CID000003676",
+        "name": "lidocaine",
+        "smiles": "CCN(CC)CC(=O)NC1=C(C=CC=C1C)C"
+    },
+    "CID000003367": {
+        "cid": "CID000003367",
+        "name": "Fludarabine Base",
+        "smiles": "C1=NC2=C(N=C(N=C2N1C3C(C(C(O3)CO)O)O)F)N"
+    },
+    "CID000003672": {
+        "cid": "CID000003672",
+        "name": "58560-75-1",
+        "smiles": "CC(C)CC1=CC=C(C=C1)C(C)C(=O)O"
+    },
+    "CID000003734": {
+        "cid": "CID000003734",
+        "name": "Bracco 15000",
+        "smiles": "CC(C(=O)NC1=C(C(=C(C(=C1I)C(=O)NC(CO)CO)I)C(=O)NC(CO)CO)I)O"
+    },
+    "CID000003736": {
+        "cid": "CID000003736",
+        "name": "iopromide",
+        "smiles": "CN(CC(CO)O)C(=O)C1=C(C(=C(C(=C1I)C(=O)NCC(CO)O)I)NC(=O)COC)I"
+    },
+    "CID000003730": {
+        "cid": "CID000003730",
+        "name": "iohexol",
+        "smiles": "CC(=O)N(CC(CO)O)C1=C(C(=C(C(=C1I)C(=O)NCC(CO)O)I)C(=O)NCC(CO)O)I"
+    },
+    "CID000002726": {
+        "cid": "CID000002726",
+        "name": "chlorpromazine",
+        "smiles": "CN(C)CCCN1C2=CC=CC=C2SC3=C1C=C(C=C3)Cl"
+    },
+    "CID000003393": {
+        "cid": "CID000003393",
+        "name": "flurazepam",
+        "smiles": "CCN(CC)CCN1C(=O)CN=C(C2=C1C=CC(=C2)Cl)C3=CC=CC=C3F"
+    },
+    "CID000004999": {
+        "cid": "CID000004999",
+        "name": "quazepam",
+        "smiles": "C1C(=S)N(C2=C(C=C(C=C2)Cl)C(=N1)C3=CC=CC=C3F)CC(F)(F)F"
+    },
+    "CID005329102": {
+        "cid": "CID005329102",
+        "name": "Sunitinib",
+        "smiles": "CCN(CC)CCNC(=O)C1=C(NC(=C1C)C=C2C3=C(C=CC(=C3)F)NC2=O)C"
+    },
+    "CID000004547": {
+        "cid": "CID000004547",
+        "name": "DTXSID00861330",
+        "smiles": "CCOC1=C(C=CC(=C1)CC(=O)NC(CC(C)C)C2=CC=CC=C2N3CCCCC3)C(=O)O"
+    },
+    "CID000004691": {
+        "cid": "CID000004691",
+        "name": "72473-26-8",
+        "smiles": "C1CNCC(C1C2=CC=C(C=C2)F)COC3=CC4=C(C=C3)OCO4"
+    },
+    "CID000002471": {
+        "cid": "CID000002471",
+        "name": "bumetanide",
+        "smiles": "CCCCNC1=C(C(=CC(=C1)C(=O)O)S(=O)(=O)N)OC2=CC=CC=C2"
+    },
+    "CID000003305": {
+        "cid": "CID000003305",
+        "name": "Etidronic acid",
+        "smiles": "CC(O)(P(=O)(O)O)P(=O)(O)O"
+    },
+    "CID000002631": {
+        "cid": "CID000002631",
+        "name": "3-(acetyloxymethyl)-7-[[2-(2-amino-1,3-thiazol-4-yl)-2-methoxyiminoacetyl]amino]-8-oxo-5-thia-1-azabicyclo[4.2.0]oct-2-ene-2-carboxylate",
+        "smiles": "CC(=O)OCC1=C(N2C(C(C2=O)NC(=O)C(=NOC)C3=CSC(=N3)N)SC1)C(=O)[O-]"
+    },
+    "CID000003410": {
+        "cid": "CID000003410",
+        "name": "formoterol",
+        "smiles": "CC(CC1=CC=C(C=C1)OC)NCC(C2=CC(=C(C=C2)O)NC=O)O"
+    },
+    "CID000003449": {
+        "cid": "CID000003449",
+        "name": "Galantamin",
+        "smiles": "CN1CCC23C=CC(CC2OC4=C(C=CC(=C34)C1)OC)O"
+    },
+    "CID000002083": {
+        "cid": "CID000002083",
+        "name": "Salbutamol",
+        "smiles": "CC(C)(C)NCC(C1=CC(=C(C=C1)O)CO)O"
+    },
+    "CID000001690": {
+        "cid": "CID000001690",
+        "name": "Doxorubicin (Adriamycin) HCl",
+        "smiles": "CC1C(C(CC(O1)OC2CC(CC3=C2C(=C4C(=C3O)C(=O)C5=C(C4=O)C(=CC=C5)OC)O)(C(=O)CO)O)[NH3+])O"
+    },
+    "CID000005731": {
+        "cid": "CID000005731",
+        "name": "RefChem:1069644",
+        "smiles": "CN(C)CCC1=CNC2=C1C=C(C=C2)CC3COC(=O)N3"
+    },
+    "CID000004046": {
+        "cid": "CID000004046",
+        "name": "mefloquine",
+        "smiles": "C1CCNC(C1)C(C2=CC(=NC3=C2C=CC=C3C(F)(F)F)C(F)(F)F)O"
+    },
+    "CID000001972": {
+        "cid": "CID000001972",
+        "name": "DTXSID60859632",
+        "smiles": "CC1C=CC=CC=CC=CC=CC=CC=CC(CC2C(C(CC(O2)(CC(CC(C(CCC(CC(CC(=O)OC(C(C1O)C)C)O)O)O)O)O)O)O)C(=O)O)OC3C(C(C(C(O3)C)O)N)O"
+    },
+    "CID000002171": {
+        "cid": "CID000002171",
+        "name": "DTXSID50860378",
+        "smiles": "CC1(C(N2C(S1)C(C2=O)NC(=O)C(C3=CC=C(C=C3)O)N)C(=O)O)C"
+    },
+    "CID000003403": {
+        "cid": "CID000003403",
+        "name": "XU 62-320 (free acid)",
+        "smiles": "CC(C)N1C2=CC=CC=C2C(=C1C=CC(CC(CC(=O)O)O)O)C3=CC=C(C=C3)F"
+    },
+    "CID000005746": {
+        "cid": "CID000005746",
+        "name": "mitomycin C",
+        "smiles": "CC1=C(C(=O)C2=C(C1=O)N3CC4C(C3(C2COC(=O)N)OC)N4)N"
+    },
+    "CID000005978": {
+        "cid": "CID000005978",
+        "name": "vincristine",
+        "smiles": "CCC1(CC2CC(C3=C(CCN(C2)C1)C4=CC=CC=C4N3)(C5=C(C=C6C(=C5)C78CCN9C7C(C=CC9)(C(C(C8N6C=O)(C(=O)OC)O)OC(=O)C)CC)OC)C(=O)OC)O"
+    },
+    "CID000000444": {
+        "cid": "CID000000444",
+        "name": "bupropion",
+        "smiles": "CC(C(=O)C1=CC(=CC=C1)Cl)NC(C)(C)C"
+    },
+    "CID000153941": {
+        "cid": "CID000153941",
+        "name": "2-amino-9-[(1S,3R,4S)-4-hydroxy-3-(hydroxymethyl)-2-methylidenecyclopentyl]-3H-purin-6-one",
+        "smiles": "C=C1C(CC(C1CO)O)N2C=NC3=C2NC(=NC3=O)N"
+    },
+    "CID000004075": {
+        "cid": "CID000004075",
+        "name": "5-Aminosalicylic acid",
+        "smiles": "C1=CC(=C(C=C1N)C(=O)O)O"
+    },
+    "CID000003675": {
+        "cid": "CID000003675",
+        "name": "Phenelzine",
+        "smiles": "C1=CC=C(C=C1)CCNN"
+    },
+    "CID000004585": {
+        "cid": "CID000004585",
+        "name": "2-methyl-4-(4-methylpiperazin-1-yl)-5H-thieno[3,2-c][1,5]benzodiazepine",
+        "smiles": "CC1=CC2=C(NC3=CC=CC=C3N=C2S1)N4CCN(CC4)C"
+    },
+    "CID000005078": {
+        "cid": "CID000005078",
+        "name": "rizatriptan",
+        "smiles": "CN(C)CCC1=CNC2=C1C=C(C=C2)CN3C=NC=N3"
+    },
+    "CID000041693": {
+        "cid": "CID000041693",
+        "name": "SUFENTANIL",
+        "smiles": "CCC(=O)N(C1=CC=CC=C1)C2(CCN(CC2)CCC3=CC=CS3)COC"
+    },
+    "CID000041781": {
+        "cid": "CID000041781",
+        "name": "Torasemide",
+        "smiles": "CC1=CC(=CC=C1)NC2=C(C=NC=C2)S(=O)(=O)NC(=O)NC(C)C"
+    },
+    "CID000003869": {
+        "cid": "CID000003869",
+        "name": "labetalol",
+        "smiles": "CC(CCC1=CC=CC=C1)NCC(C2=CC(=C(C=C2)O)C(=O)N)O"
+    },
+    "CID000005372": {
+        "cid": "CID000005372",
+        "name": "RefChem:1099365",
+        "smiles": "CC1CC(C2C(CC(C(O2)(C(=O)C(=O)N3CCCCC3C(=O)OC(C(C(CC(=O)C(C=C(C1)C)CC=C)O)C)C(=CC4CCC(C(C4)OC)O)C)O)C)OC)OC"
+    },
+    "CID000003961": {
+        "cid": "CID000003961",
+        "name": "losartan",
+        "smiles": "CCCCC1=NC(=C(N1CC2=CC=C(C=C2)C3=CC=CC=C3C4=NNN=N4)CO)Cl"
+    },
+    "CID000213039": {
+        "cid": "CID000213039",
+        "name": "Darunavir",
+        "smiles": "CC(C)CN(CC(C(CC1=CC=CC=C1)NC(=O)OC2COC3C2CCO3)O)S(=O)(=O)C4=CC=C(C=C4)N"
+    },
+    "CID000004991": {
+        "cid": "CID000004991",
+        "name": "pyridostigmine",
+        "smiles": "C[N+]1=CC=CC(=C1)OC(=O)N(C)C"
+    },
+    "CID000004091": {
+        "cid": "CID000004091",
+        "name": "metformin",
+        "smiles": "CN(C)C(=N)N=C(N)N"
+    },
+    "CID000005496": {
+        "cid": "CID000005496",
+        "name": "Tobramaxin",
+        "smiles": "C1C(C(C(C(C1N)OC2C(C(C(C(O2)CO)O)N)O)O)OC3C(CC(C(O3)CN)O)N)N"
+    },
+    "CID000001117": {
+        "cid": "CID000001117",
+        "name": "sulfate",
+        "smiles": "[O-]S(=O)(=O)[O-]"
+    },
+    "CID000005076": {
+        "cid": "CID000005076",
+        "name": "162990-01-4",
+        "smiles": "CC(C)C1=NC(=CS1)CN(C)C(=O)NC(C(C)C)C(=O)NC(CC2=CC=CC=C2)CC(C(CC3=CC=CC=C3)NC(=O)OCC4=CN=CS4)O"
+    },
+    "CID000003962": {
+        "cid": "CID000003962",
+        "name": "79952-43-5",
+        "smiles": "CCC(C)C(=O)OC1CC(C=C2C1C(C(C=C2)C)CCC3CC(CC(=O)O3)O)C"
+    },
+    "CID000003355": {
+        "cid": "CID000003355",
+        "name": "[2,5-bis(2,2,2-trifluoroethoxy)benzoyl]-(piperidin-2-ylmethyl)azanium",
+        "smiles": "C1CCNC(C1)C[NH2+]C(=O)C2=C(C=CC(=C2)OCC(F)(F)F)OCC(F)(F)F"
+    },
+    "CID000002719": {
+        "cid": "CID000002719",
+        "name": "chloroquine",
+        "smiles": "CCN(CC)CCCC(C)NC1=C2C=CC(=CC2=NC=C1)Cl"
+    },
+    "CID000002712": {
+        "cid": "CID000002712",
+        "name": "DTXSID40861935",
+        "smiles": "CN=C1CN(C(=C2C=C(C=CC2=N1)Cl)C3=CC=CC=C3)O"
+    },
+    "CID000002713": {
+        "cid": "CID000002713",
+        "name": "Chlorohexidine",
+        "smiles": "C1=CC(=CC=C1NC(=NC(=NCCCCCCN=C(N)N=C(N)NC2=CC=C(C=C2)Cl)N)N)Cl"
+    },
+    "CID000657298": {
+        "cid": "CID000657298",
+        "name": "propylthiouracil",
+        "smiles": "CCCC1=CC(=O)NC(=S)N1"
+    },
+    "CID000091270": {
+        "cid": "CID000091270",
+        "name": "MOEXIPRIL",
+        "smiles": "CCOC(=O)C(CCC1=CC=CC=C1)NC(C)C(=O)N2CC3=CC(=C(C=C3CC2C(=O)O)OC)OC"
+    },
+    "CID000004200": {
+        "cid": "CID000004200",
+        "name": "2-[amino(hydroxy)methylidene]-4,7-bis(dimethylamino)-10,11,12a-trihydroxy-4a,5,5a,6-tetrahydro-4H-tetracene-1,3,12-trione",
+        "smiles": "CN(C)C1C2CC3CC4=C(C=CC(=C4C(=C3C(=O)C2(C(=O)C(=C(N)O)C1=O)O)O)O)N(C)C"
+    },
+    "CID000005412": {
+        "cid": "CID000005412",
+        "name": "2-[amino(hydroxy)methylidene]-4-(dimethylamino)-6,10,11,12a-tetrahydroxy-6-methyl-4,4a,5,5a-tetrahydrotetracene-1,3,12-trione",
+        "smiles": "CC1(C2CC3C(C(=O)C(=C(N)O)C(=O)C3(C(=O)C2=C(C4=C1C=CC=C4O)O)O)N(C)C)O"
+    },
+    "CID000042113": {
+        "cid": "CID000042113",
+        "name": "DESFLURANE",
+        "smiles": "C(C(F)(F)F)(OC(F)F)F"
+    },
+    "CID000003108": {
+        "cid": "CID000003108",
+        "name": "dipyridamole",
+        "smiles": "C1CCN(CC1)C2=NC(=NC3=C2N=C(N=C3N4CCCCC4)N(CCO)CCO)N(CCO)CCO"
+    },
+    "CID000002250": {
+        "cid": "CID000002250",
+        "name": "Atorvastatin(Relative)",
+        "smiles": "CC(C)C1=C(C(=C(N1CCC(CC(CC(=O)O)O)O)C2=CC=C(C=C2)F)C3=CC=CC=C3)C(=O)NC4=CC=CC=C4"
+    },
+    "CID000170361": {
+        "cid": "CID000170361",
+        "name": "Varenicline (INN)",
+        "smiles": "C1C2CNCC1C3=CC4=NC=CN=C4C=C23"
+    },
+    "CID000002265": {
+        "cid": "CID000002265",
+        "name": "azathioprine",
+        "smiles": "CN1C=NC(=C1SC2=NC=NC3=C2NC=N3)[N+](=O)[O-]"
+    },
+    "CID000002801": {
+        "cid": "CID000002801",
+        "name": "clomipramine",
+        "smiles": "CN(C)CCCN1C2=CC=CC=C2CCC3=C1C=C(C=C3)Cl"
+    },
+    "CID000034312": {
+        "cid": "CID000034312",
+        "name": "OXCARBAZEPINE",
+        "smiles": "C1C2=CC=CC=C2N(C3=CC=CC=C3C1=O)C(=O)N"
+    },
+    "CID000072054": {
+        "cid": "CID000072054",
+        "name": "133033-93-9",
+        "smiles": "C1CN(CC1C(C2=CC=CC=C2)(C3=CC=CC=C3)C(=O)N)CCC4=CC5=C(C=C4)OCC5"
+    },
+    "CID000002749": {
+        "cid": "CID000002749",
+        "name": "CICLOPIROX",
+        "smiles": "CC1=CC(=O)N(C(=C1)C2CCCCC2)O"
+    },
+    "CID000004168": {
+        "cid": "CID000004168",
+        "name": "metoclopramide",
+        "smiles": "CCN(CC)CCNC(=O)C1=CC(=C(C=C1OC)N)Cl"
+    },
+    "CID000002720": {
+        "cid": "CID000002720",
+        "name": "chlorothiazide",
+        "smiles": "C1=C2C(=CC(=C1Cl)S(=O)(=O)N)S(=O)(=O)N=CN2"
+    },
+    "CID000154059": {
+        "cid": "CID000154059",
+        "name": "Solifenacin",
+        "smiles": "C1CN2CCC1C(C2)OC(=O)N3CCC4=CC=CC=C4C3C5=CC=CC=C5"
+    },
+    "CID000005394": {
+        "cid": "CID000005394",
+        "name": "temozolomide",
+        "smiles": "CN1C(=O)N2C=NC(=C2N=N1)C(=O)N"
+    },
+    "CID000004634": {
+        "cid": "CID000004634",
+        "name": "oxybutynin",
+        "smiles": "CCN(CC)CC#CCOC(=O)C(C1CCCCC1)(C2=CC=CC=C2)O"
+    },
+    "CID000002764": {
+        "cid": "CID000002764",
+        "name": "ciprofloxacin",
+        "smiles": "C1CC1N2C=C(C(=O)C3=CC(=C(C=C32)N4CCNCC4)F)C(=O)O"
+    },
+    "CID000000942": {
+        "cid": "CID000000942",
+        "name": "3-(1-methylpyrrolidin-2-yl)pyridine",
+        "smiles": "CN1CCCC1C2=CN=CC=C2"
+    },
+    "CID000002160": {
+        "cid": "CID000002160",
+        "name": "amitriptyline",
+        "smiles": "CN(C)CCC=C1C2=CC=CC=C2CCC3=CC=CC=C31"
+    },
+    "CID000004211": {
+        "cid": "CID000004211",
+        "name": "mitotane",
+        "smiles": "C1=CC=C(C(=C1)C(C2=CC=C(C=C2)Cl)C(Cl)Cl)Cl"
+    },
+    "CID000004170": {
+        "cid": "CID000004170",
+        "name": "metolazone",
+        "smiles": "CC1NC2=CC(=C(C=C2C(=O)N1C3=CC=CC=C3C)S(=O)(=O)N)Cl"
+    },
+    "CID000004171": {
+        "cid": "CID000004171",
+        "name": "metoprolol",
+        "smiles": "CC(C)NCC(COC1=CC=C(C=C1)CCOC)O"
+    },
+    "CID000002550": {
+        "cid": "CID000002550",
+        "name": "DTXSID30860775",
+        "smiles": "CC(CS)C(=O)N1CCCC1C(=O)O"
+    },
+    "CID000004885": {
+        "cid": "CID000004885",
+        "name": "104617-86-9",
+        "smiles": "CCCNC1CCC2=C(C1)SC(=N2)N"
+    },
+    "CID000004616": {
+        "cid": "CID000004616",
+        "name": "oxazepam",
+        "smiles": "C1=CC=C(C=C1)C2=NC(C(=O)NC3=C2C=C(C=C3)Cl)O"
+    },
+    "CID000004614": {
+        "cid": "CID000004614",
+        "name": "oxaprozin",
+        "smiles": "C1=CC=C(C=C1)C2=C(OC(=N2)CCC(=O)O)C3=CC=CC=C3"
+    },
+    "CID000003042": {
+        "cid": "CID000003042",
+        "name": "dicyclomine",
+        "smiles": "CCN(CC)CCOC(=O)C1(CCCCC1)C2CCCCC2"
+    },
+    "CID000005212": {
+        "cid": "CID000005212",
+        "name": "5-[2-ethoxy-5-(4-methylpiperazin-1-yl)sulfonylphenyl]-1-methyl-3-propyl-4H-pyrazolo[4,5-d]pyrimidin-7-one",
+        "smiles": "CCCC1=NN(C2=C1NC(=NC2=O)C3=C(C=CC(=C3)S(=O)(=O)N4CCN(CC4)C)OCC)C"
+    },
+    "CID000004609": {
+        "cid": "CID000004609",
+        "name": "NCGC00167798-01",
+        "smiles": "C1CCC(C(C1)[NH-])[NH-].C(=O)(C(=O)O)O.[Pt+2]"
+    },
+    "CID000054547": {
+        "cid": "CID000054547",
+        "name": "DTXSID90861021",
+        "smiles": "COCC1=C(N2C(C(C2=O)NC(=O)C(=NOC)C3=CSC(=N3)N)SC1)C(=O)O"
+    },
+    "CID000001206": {
+        "cid": "CID000001206",
+        "name": "DL-Methamphetamine",
+        "smiles": "CC(CC1=CC=CC=C1)NC"
+    },
+    "CID000004603": {
+        "cid": "CID000004603",
+        "name": "DTXSID90861485",
+        "smiles": "CCC(CC)OC1C=C(CC(C1NC(=O)C)N)C(=O)OCC"
+    },
+    "CID005487301": {
+        "cid": "CID005487301",
+        "name": "1-[[(Z)-[5-(hydroxymethyl)indol-3-ylidene]methyl]amino]-2-pentylguanidine",
+        "smiles": "CCCCCN=C(N)NNC=C1C=NC2=C1C=C(C=C2)CO"
+    },
+    "CID000047725": {
+        "cid": "CID000047725",
+        "name": "NCGC00167588-02",
+        "smiles": "CC(C)CC(C(=O)NC(CCCN=C(N)N)C(=O)N1CCCC1C(=O)NNC(=O)N)NC(=O)C(COC(C)(C)C)NC(=O)C(CC2=CC=C(C=C2)O)NC(=O)C(CO)NC(=O)C(CC3=CNC4=CC=CC=C43)NC(=O)C(CC5=CN=CN5)NC(=O)C6CCC(=O)N6"
+    },
+    "CID000125017": {
+        "cid": "CID000125017",
+        "name": "Desvenlafaxine",
+        "smiles": "CN(C)CC(C1=CC=C(C=C1)O)C2(CCCCC2)O"
+    },
+    "CID000004138": {
+        "cid": "CID000004138",
+        "name": "Mulfasin",
+        "smiles": "CC(CC1=CC(=C(C=C1)O)O)(C(=O)O)N"
+    },
+    "CID000005719": {
+        "cid": "CID000005719",
+        "name": "zaleplon",
+        "smiles": "CCN(C1=CC=CC(=C1)C2=CC=NC3=C(C=NN23)C#N)C(=O)C"
+    },
+    "CID000005514": {
+        "cid": "CID000005514",
+        "name": "DTXSID90861147",
+        "smiles": "CC1(OC2COC3(C(C2O1)OC(O3)(C)C)COS(=O)(=O)N)C"
+    },
+    "CID000003394": {
+        "cid": "CID000003394",
+        "name": "flurbiprofen",
+        "smiles": "CC(C1=CC(=C(C=C1)C2=CC=CC=C2)F)C(=O)O"
+    },
+    "CID000002311": {
+        "cid": "CID000002311",
+        "name": "98626-50-7",
+        "smiles": "CCOC(=O)C(CCC1=CC=CC=C1)NC2CCC3=CC=CC=C3N(C2=O)CC(=O)O"
+    },
+    "CID000003148": {
+        "cid": "CID000003148",
+        "name": "115956-12-2",
+        "smiles": "C1C2CC3CC(CC1N3CC2=O)OC(=O)C4=CNC5=CC=CC=C54"
+    },
+    "CID000147912": {
+        "cid": "CID000147912",
+        "name": "SR-01000942256",
+        "smiles": "CCC(C(C)O)N1C(=O)N(C=N1)C2=CC=C(C=C2)N3CCN(CC3)C4=CC=C(C=C4)OCC5CC(OC5)(CN6C=NC=N6)C7=C(C=C(C=C7)F)F"
+    },
+    "CID000001775": {
+        "cid": "CID000001775",
+        "name": "phenytoin",
+        "smiles": "C1=CC=C(C=C1)C2(C(=O)NC(=O)N2)C3=CC=CC=C3"
+    },
+    "CID000003767": {
+        "cid": "CID000003767",
+        "name": "isoniazid",
+        "smiles": "C1=CN=CC=C1C(=O)NN"
+    },
+    "CID000002658": {
+        "cid": "CID000002658",
+        "name": "3-(carbamoyloxymethyl)-7-[[2-(furan-2-yl)-2-methoxyiminoacetyl]amino]-8-oxo-5-thia-1-azabicyclo[4.2.0]oct-2-ene-2-carboxylate",
+        "smiles": "CON=C(C1=CC=CO1)C(=O)NC2C3N(C2=O)C(=C(CS3)COC(=O)N)C(=O)[O-]"
+    },
+    "CID000000861": {
+        "cid": "CID000000861",
+        "name": "Rathyronine",
+        "smiles": "C1=CC(=C(C=C1OC2=C(C=C(C=C2I)CC(C(=O)O)N)I)I)O"
+    },
+    "CID000002462": {
+        "cid": "CID000002462",
+        "name": "Budeson",
+        "smiles": "CCCC1OC2CC3C4CCC5=CC(=O)C=CC5(C4C(CC3(C2(O1)C(=O)CO)C)O)C"
+    },
+    "CID000125889": {
+        "cid": "CID000125889",
+        "name": "(R)-Pregabalin",
+        "smiles": "CC(C)CC(CC(=O)O)CN"
+    },
+    "CID000104741": {
+        "cid": "CID000104741",
+        "name": "Fulvestrant",
+        "smiles": "CC12CCC3C(C1CCC2O)C(CC4=C3C=CC(=C4)O)CCCCCCCCCS(=O)CCCC(C(F)(F)F)(F)F"
+    },
+    "CID000056339": {
+        "cid": "CID000056339",
+        "name": "Fosphenytoin",
+        "smiles": "C1=CC=C(C=C1)C2(C(=O)N(C(=O)N2)COP(=O)(O)O)C3=CC=CC=C3"
+    },
+    "CID000003032": {
+        "cid": "CID000003032",
+        "name": "Arthrotec",
+        "smiles": "C1=CC=C(C(=C1)CC(=O)[O-])NC2=C(C=CC=C2Cl)Cl"
+    },
+    "CID000002187": {
+        "cid": "CID000002187",
+        "name": "anastrozole",
+        "smiles": "CC(C)(C#N)C1=CC(=CC(=C1)CN2C=NC=N2)C(C)(C)C#N"
+    },
+    "CID000002267": {
+        "cid": "CID000002267",
+        "name": "azelastine",
+        "smiles": "CN1CCCC(CC1)N2C(=O)C3=CC=CC=C3C(=N2)CC4=CC=C(C=C4)Cl"
+    },
+    "CID000001546": {
+        "cid": "CID000001546",
+        "name": "RefChem:1062802",
+        "smiles": "C1C(C(OC1N2C=NC3=C(N=C(N=C32)Cl)N)CO)O"
+    },
+    "CID000002249": {
+        "cid": "CID000002249",
+        "name": "atenolol",
+        "smiles": "CC(C)NCC(COC1=CC=C(C=C1)CC(=O)N)O"
+    },
+    "CID005311082": {
+        "cid": "CID005311082",
+        "name": "2-[(1R,4S,10S,13S,19S)-19-[4-(diaminomethylideneamino)butyl]-10-(1H-indol-3-ylmethyl)-3,9,12,15,18,21,27-heptaoxo-24,25-dithia-2,8,11,14,17,20-hexazatricyclo[18.6.1.04,8]heptacosan-13-yl]acetic acid",
+        "smiles": "C1CC2C(=O)NC3CSSCCC(=O)N(C3=O)C(C(=O)NCC(=O)NC(C(=O)NC(C(=O)N2C1)CC4=CNC5=CC=CC=C54)CC(=O)O)CCCCN=C(N)N"
+    },
+    "CID000003488": {
+        "cid": "CID000003488",
+        "name": "Glibenclamide",
+        "smiles": "COC1=C(C=C(C=C1)Cl)C(=O)NCCC2=CC=C(C=C2)S(=O)(=O)NC(=O)NC3CCCCC3"
+    },
+    "CID003002190": {
+        "cid": "CID003002190",
+        "name": "Telithromycin",
+        "smiles": "CCC1C2(C(C(C(=O)C(CC(C(C(C(=O)C(C(=O)O1)C)C)OC3C(C(CC(O3)C)N(C)C)O)(C)OC)C)C)N(C(=O)O2)CCCCN4C=C(N=C4)C5=CN=CC=C5)C"
+    },
+    "CID000002951": {
+        "cid": "CID000002951",
+        "name": "dantrolene(1-)",
+        "smiles": "C1C(=NC(=O)N1N=CC2=CC=C(O2)C3=CC=C(C=C3)[N+](=O)[O-])[O-]"
+    },
+    "CID000004740": {
+        "cid": "CID000004740",
+        "name": "pentoxifylline",
+        "smiles": "CC(=O)CCCCN1C(=O)C2=C(N=CN2C)N(C1=O)C"
+    },
+    "CID000005253": {
+        "cid": "CID000005253",
+        "name": "sotalol",
+        "smiles": "CC(C)NCC(C1=CC=C(C=C1)NS(=O)(=O)C)O"
+    },
+    "CID000003249": {
+        "cid": "CID000003249",
+        "name": "RefChem:1093245",
+        "smiles": "CC(C)C(C)C=CC(C)C1CCC2C1(CCCC2=CC=C3CC(CCC3=C)O)C"
+    },
+    "CID000003690": {
+        "cid": "CID000003690",
+        "name": "ifosfamide",
+        "smiles": "C1CN(P(=O)(OC1)NCCCl)CCCl"
+    },
+    "CID000005572": {
+        "cid": "CID000005572",
+        "name": "trihexyphenidyl",
+        "smiles": "C1CCC(CC1)C(CCN2CCCCC2)(C3=CC=CC=C3)O"
+    },
+    "CID000002955": {
+        "cid": "CID000002955",
+        "name": "dapsone",
+        "smiles": "C1=CC(=CC=C1N)S(=O)(=O)C2=CC=C(C=C2)N"
+    },
+    "CID000002818": {
+        "cid": "CID000002818",
+        "name": "3-chloro-6-(4-methylpiperazin-1-yl)-5H-benzo[b][1,4]benzodiazepine",
+        "smiles": "CN1CCN(CC1)C2=C3C=CC=CC3=NC4=C(N2)C=C(C=C4)Cl"
+    },
+    "CID000003379": {
+        "cid": "CID000003379",
+        "name": "RefChem:1057427",
+        "smiles": "CC1(OC2CC3C4CC(C5=CC(=O)C=CC5(C4C(CC3(C2(O1)C(=O)CO)C)O)C)F)C"
+    },
+    "CID000004911": {
+        "cid": "CID000004911",
+        "name": "probenecid",
+        "smiles": "CCCN(CCC)S(=O)(=O)C1=CC=C(C=C1)C(=O)O"
+    },
+    "CID000005408": {
+        "cid": "CID000005408",
+        "name": "RefChem:1057616",
+        "smiles": "CC12CCC3C(C1CCC2O)CCC4=CC(=O)CCC34C"
+    },
+    "CID000002895": {
+        "cid": "CID000002895",
+        "name": "cyclobenzaprine",
+        "smiles": "CN(C)CCC=C1C2=CC=CC=C2C=CC3=CC=CC=C31"
+    },
+    "CID000068740": {
+        "cid": "CID000068740",
+        "name": "Zoledronic acid",
+        "smiles": "C1=CN(C=N1)CC(O)(P(=O)(O)O)P(=O)(O)O"
+    },
+    "CID000008953": {
+        "cid": "CID000008953",
+        "name": "sodium hydrogen carbonate",
+        "smiles": "C(=O)(O)[O-].[Na+]"
+    },
+    "CID000051263": {
+        "cid": "CID000051263",
+        "name": "ALFENTANIL",
+        "smiles": "CCC(=O)N(C1=CC=CC=C1)C2(CCN(CC2)CCN3C(=O)N(N=N3)CC)COC"
+    },
+    "CID000002435": {
+        "cid": "CID000002435",
+        "name": "brimonidine",
+        "smiles": "C1CN=C(N1)NC2=C(C3=NC=CN=C3C=C2)Br"
+    },
+    "CID000002812": {
+        "cid": "CID000002812",
+        "name": "clotrimazole",
+        "smiles": "C1=CC=C(C=C1)C(C2=CC=CC=C2)(C3=CC=CC=C3Cl)N4C=CN=C4"
+    },
+    "CID000002524": {
+        "cid": "CID000002524",
+        "name": "73837-24-8",
+        "smiles": "CC(CCCC(C)(C)O)C1CCC2C1(CCCC2=CC=C3CC(CC(C3=C)O)O)C"
+    },
+    "CID000003706": {
+        "cid": "CID000003706",
+        "name": "RefChem:1054290",
+        "smiles": "CC(C)(C)NC(=O)C1CN(CCN1CC(CC(CC2=CC=CC=C2)C(=O)NC3C(CC4=CC=CC=C34)O)O)CC5=CN=CC=C5"
+    },
+    "CID000060871": {
+        "cid": "CID000060871",
+        "name": "ADEFOVIR DIPIVOXIL",
+        "smiles": "CC(C)(C)C(=O)OCOP(=O)(COCCN1C=NC2=C(N=CN=C21)N)OCOC(=O)C(C)(C)C"
+    },
+    "CID000004943": {
+        "cid": "CID000004943",
+        "name": "propofol",
+        "smiles": "CC(C)C1=C(C(=CC=C1)C(C)C)O"
+    },
+    "CID000003478": {
+        "cid": "CID000003478",
+        "name": "glipizide",
+        "smiles": "CC1=CN=C(C=N1)C(=O)NCCC2=CC=C(C=C2)S(=O)(=O)NC(=O)NC3CCCCC3"
+    },
+    "CID000005578": {
+        "cid": "CID000005578",
+        "name": "trimethoprim",
+        "smiles": "COC1=CC(=CC(=C1OC)OC)CC2=CN=C(N=C2N)N"
+    },
+    "CID000060815": {
+        "cid": "CID000060815",
+        "name": "REMIFENTANIL",
+        "smiles": "CCC(=O)N(C1=CC=CC=C1)C2(CCN(CC2)CCC(=O)OC)C(=O)OC"
+    },
+    "CID000005401": {
+        "cid": "CID000005401",
+        "name": "terazosin",
+        "smiles": "COC1=C(C=C2C(=C1)C(=NC(=N2)N3CCN(CC3)C(=O)C4CCCO4)N)OC"
+    },
+    "CID000003652": {
+        "cid": "CID000003652",
+        "name": "hydroxychloroquine",
+        "smiles": "CCN(CCCC(C)NC1=C2C=CC(=CC2=NC=C1)Cl)CCO"
+    },
+    "CID000000581": {
+        "cid": "CID000000581",
+        "name": "N-Acetyl-DL-cysteine",
+        "smiles": "CC(=O)NC(CS)C(=O)O"
+    },
+    "CID000068844": {
+        "cid": "CID000068844",
+        "name": "Brinzolamide",
+        "smiles": "CCNC1CN(S(=O)(=O)C2=C1C=C(S2)S(=O)(=O)N)CCCOC"
+    },
+    "CID005282226": {
+        "cid": "CID005282226",
+        "name": "Travoprost",
+        "smiles": "CC(C)OC(=O)CCCC=CCC1C(CC(C1C=CC(COC2=CC=CC(=C2)C(F)(F)F)O)O)O"
+    },
+    "CID000004409": {
+        "cid": "CID000004409",
+        "name": "nabumetone",
+        "smiles": "CC(=O)CCC1=CC2=C(C=C1)C=C(C=C2)OC"
+    },
+    "CID000004812": {
+        "cid": "CID000004812",
+        "name": "81818-54-4",
+        "smiles": "CC1=C(C(=O)C2=CC=CC=C2C1=O)CC=C(C)CCCC(C)CCCC(C)CCCC(C)C"
+    },
+    "CID000002733": {
+        "cid": "CID000002733",
+        "name": "chlorzoxazone",
+        "smiles": "C1=CC2=C(C=C1Cl)NC(=O)O2"
+    },
+    "CID000003310": {
+        "cid": "CID000003310",
+        "name": "RefChem:607824",
+        "smiles": "CC1OCC2C(O1)C(C(C(O2)OC3C4COC(=O)C4C(C5=CC6=C(C=C35)OCO6)C7=CC(=C(C(=C7)OC)O)OC)O)O"
+    },
+    "CID000005184": {
+        "cid": "CID000005184",
+        "name": "DTXSID60858963",
+        "smiles": "CN1C2CC(CC1C3C2O3)OC(=O)C(CO)C4=CC=CC=C4"
+    },
+    "CID000005073": {
+        "cid": "CID000005073",
+        "name": "risperidone",
+        "smiles": "CC1=C(C(=O)N2CCCCC2=N1)CCN3CCC(CC3)C4=NOC5=C4C=CC(=C5)F"
+    },
+    "CID000003350": {
+        "cid": "CID000003350",
+        "name": "RefChem:1071733",
+        "smiles": "CC12CCC3C(C1CCC2C(=O)NC(C)(C)C)CCC4C3(C=CC(=O)N4)C"
+    },
+    "CID000093860": {
+        "cid": "CID000093860",
+        "name": "1132709-16-0",
+        "smiles": "B(C(CC(C)C)NC(=O)C(CC1=CC=CC=C1)NC(=O)C2=NC=CN=C2)(O)O"
+    },
+    "CID000064147": {
+        "cid": "CID000064147",
+        "name": "[2-[(2-amino-6-oxo-3H-purin-9-yl)methoxy]-3-hydroxypropyl] (2S)-2-amino-3-methylbutanoate",
+        "smiles": "CC(C)C(C(=O)OCC(CO)OCN1C=NC2=C1NC(=NC2=O)N)N"
+    },
+    "CID000003658": {
+        "cid": "CID000003658",
+        "name": "hydroxyzine",
+        "smiles": "C1CN(CCN1CCOCCO)C(C2=CC=CC=C2)C3=CC=C(C=C3)Cl"
+    },
+    "CID006918453": {
+        "cid": "CID006918453",
+        "name": "Ridauran",
+        "smiles": "CCP(CC)CC.CC(=O)OCC1C(C(C(C(O1)[S-])OC(=O)C)OC(=O)C)OC(=O)C.[Au+]"
+    },
+    "CID005493381": {
+        "cid": "CID005493381",
+        "name": "4-[(3Z,5E)-3,5-bis(6-oxocyclohexa-2,4-dien-1-ylidene)-1,2,4-triazolidin-1-yl]benzoic acid",
+        "smiles": "C1=CC(=C2NC(=C3C=CC=CC3=O)N(N2)C4=CC=C(C=C4)C(=O)O)C(=O)C=C1"
+    },
+    "CID000005291": {
+        "cid": "CID000005291",
+        "name": "Imatinib",
+        "smiles": "CC1=C(C=C(C=C1)NC(=O)C2=CC=C(C=C2)CN3CCN(CC3)C)NC4=NC=CC(=N4)C5=CN=CC=C5"
+    },
+    "CID000150311": {
+        "cid": "CID000150311",
+        "name": "Ezetimibe",
+        "smiles": "C1=CC(=CC=C1C2C(C(=O)N2C3=CC=C(C=C3)F)CCC(C4=CC=C(C=C4)F)O)O"
+    },
+    "CID000002978": {
+        "cid": "CID000002978",
+        "name": "DTXSID20859693",
+        "smiles": "CCCCCC1=CC(=C2C3C=C(CCC3C(OC2=C1)(C)C)C)O"
+    },
+    "CID000003339": {
+        "cid": "CID000003339",
+        "name": "fenofibrate",
+        "smiles": "CC(C)OC(=O)C(C)(C)OC1=CC=C(C=C1)C(=O)C2=CC=C(C=C2)Cl"
+    },
+    "CID000002476": {
+        "cid": "CID000002476",
+        "name": "DTXSID60860647",
+        "smiles": "CC(C)(C)C(C)(C1CC23CCC1(C4C25CCN(C3CC6=C5C(=C(C=C6)O)O4)CC7CC7)OC)O"
+    },
+    "CID000002308": {
+        "cid": "CID000002308",
+        "name": "RefChem:1074955",
+        "smiles": "CC1CC2C3CCC4=CC(=O)C=CC4(C3(C(CC2(C1(C(=O)CO)O)C)O)Cl)C"
+    },
+    "CID000000143": {
+        "cid": "CID000000143",
+        "name": "2-[[4-[(2-amino-5-formyl-4-oxo-1,6,7,8-tetrahydropteridin-6-yl)methylamino]benzoyl]amino]pentanedioic acid",
+        "smiles": "C1C(N(C2=C(N1)NC(=NC2=O)N)C=O)CNC3=CC=C(C=C3)C(=O)NC(CCC(=O)O)C(=O)O"
+    },
+    "CID000000937": {
+        "cid": "CID000000937",
+        "name": "nicotinate",
+        "smiles": "C1=CC(=CN=C1)C(=O)[O-]"
+    },
+    "CID000002786": {
+        "cid": "CID000002786",
+        "name": "1097774-72-5",
+        "smiles": "CCCC1CC(N(C1)C)C(=O)NC(C2C(C(C(C(O2)SC)O)O)O)C(C)Cl"
+    },
+    "CID000005402": {
+        "cid": "CID000005402",
+        "name": "DTXSID50861123",
+        "smiles": "CC(C)(C)C#CC=CCN(C)CC1=CC=CC2=CC=CC=C21"
+    },
+    "CID000057537": {
+        "cid": "CID000057537",
+        "name": "92206-54-7",
+        "smiles": "CCCN(CCC1=CC=CS1)C2CCC3=C(C2)C=CC=C3O"
+    },
+    "CID000001071": {
+        "cid": "CID000001071",
+        "name": "9-cis retinol",
+        "smiles": "CC1=C(C(CCC1)(C)C)C=CC(=CC=CC(=CCO)C)C"
+    },
+    "CID000004513": {
+        "cid": "CID000004513",
+        "name": "Acinon",
+        "smiles": "CNC(=C[N+](=O)[O-])NCCSCC1=CSC(=N1)CN(C)C"
+    },
+    "CID000005596": {
+        "cid": "CID000005596",
+        "name": "Trosec",
+        "smiles": "C1CC[N+]2(C1)C3CCC2CC(C3)OC(=O)C(C4=CC=CC=C4)(C5=CC=CC=C5)O"
+    },
+    "CID000016231": {
+        "cid": "CID000016231",
+        "name": "AMILORIDE",
+        "smiles": "C1(=C(N=C(C(=N1)Cl)N)N)C(=O)N=C(N)N"
+    },
+    "CID004479097": {
+        "cid": "CID004479097",
+        "name": "cobalt;[5-(5,6-dimethylbenzimidazol-1-yl)-4-hydroxy-2-(hydroxymethyl)oxolan-3-yl] 1-[3-[2,13,18-tris(2-amino-2-oxoethyl)-7,12,17-tris(3-amino-3-oxopropyl)-3,5,8,8,13,15,18,19-octamethyl-2,7,12,17-tetrahydro-1H-corrin-21-id-3-yl]propanoylamino]propan-2-yl phosphate;hydrate",
+        "smiles": "CC1=CC2=C(C=C1C)N(C=N2)C3C(C(C(O3)CO)OP(=O)([O-])OC(C)CNC(=O)CCC4(C(C5C6(C(C(C(=N6)C(=C7C(C(C(=N7)C=C8C(C(C(=N8)C(=C4[N-]5)C)CCC(=O)N)(C)C)CCC(=O)N)(C)CC(=O)N)C)CCC(=O)N)(C)CC(=O)N)C)CC(=O)N)C)O.O.[Co]"
+    },
+    "CID000054808": {
+        "cid": "CID000054808",
+        "name": "C24H31ClO7",
+        "smiles": "CCOC(=O)OC1(CCC2C1(CC(C3C2CCC4=CC(=O)C=CC34C)O)C)C(=O)OCCl"
+    },
+    "CID000000191": {
+        "cid": "CID000000191",
+        "name": "RefChem:1061383",
+        "smiles": "C1=NC(=C2C(=N1)N(C=N2)C3C(C(C(O3)CO)O)O)N"
+    },
+    "CID000002477": {
+        "cid": "CID000002477",
+        "name": "buspirone",
+        "smiles": "C1CCC2(C1)CC(=O)N(C(=O)C2)CCCCN3CCN(CC3)C4=NC=CC=N4"
+    },
+    "CID000003066": {
+        "cid": "CID000003066",
+        "name": "Dihydroegotamine",
+        "smiles": "CC1(C(=O)N2C(C(=O)N3CCCC3C2(O1)O)CC4=CC=CC=C4)NC(=O)C5CC6C(CC7=CNC8=CC=CC6=C78)N(C5)C"
+    },
+    "CID000003008": {
+        "cid": "CID000003008",
+        "name": "RACEMETHORPHAN",
+        "smiles": "CN1CCC23CCCCC2C1CC4=C3C=C(C=C4)OC"
+    },
+    "CID000060754": {
+        "cid": "CID000060754",
+        "name": "122795-43-1",
+        "smiles": "CNC(=O)CN(CCN(CCN(CC(=O)NC)CC(=O)[O-])CC(=O)[O-])CC(=O)[O-].O.[Gd+3]"
+    },
+    "CID000002676": {
+        "cid": "CID000002676",
+        "name": "159813-78-2",
+        "smiles": "CC(C)C1=C(C(=C(C(=N1)C(C)C)COC)C2=CC=C(C=C2)F)C=CC(CC(CC(=O)O)O)O"
+    },
+    "CID000151165": {
+        "cid": "CID000151165",
+        "name": "5-[[(2S,3R)-2-[(1R)-1-[3,5-bis(trifluoromethyl)phenyl]ethoxy]-3-(4-fluorophenyl)morpholin-4-yl]methyl]-1,2-dihydro-1,2,4-triazol-3-one",
+        "smiles": "CC(C1=CC(=CC(=C1)C(F)(F)F)C(F)(F)F)OC2C(N(CCO2)CC3=NC(=O)NN3)C4=CC=C(C=C4)F"
+    },
+    "CID000054841": {
+        "cid": "CID000054841",
+        "name": "Atomoxetine",
+        "smiles": "CC1=CC=CC=C1OC(CCNC)C2=CC=CC=C2"
+    },
+    "CID000004675": {
+        "cid": "CID000004675",
+        "name": "BDBM86425",
+        "smiles": "CC(=O)OC1CC2CCC3C(C2(CC1[N+]4(CCCCC4)C)C)CCC5(C3CC(C5OC(=O)C)[N+]6(CCCCC6)C)C"
+    },
+    "CID000003168": {
+        "cid": "CID000003168",
+        "name": "droperidol",
+        "smiles": "C1CN(CC=C1N2C3=CC=CC=C3NC2=O)CCCC(=O)C4=CC=C(C=C4)F"
+    },
+    "CID000003476": {
+        "cid": "CID000003476",
+        "name": "RefChem:439179",
+        "smiles": "CCC1=C(CN(C1=O)C(=O)NCCC2=CC=C(C=C2)S(=O)(=O)NC(=O)NC3CCC(CC3)C)C"
+    },
+    "CID000004536": {
+        "cid": "CID000004536",
+        "name": "DTXSID60859071",
+        "smiles": "CC12CCC3C(C1CCC2(C#C)O)CCC4=CC(=O)CCC34"
+    },
+    "CID000004873": {
+        "cid": "CID000004873",
+        "name": "potassium chloride",
+        "smiles": "[Cl-].[K+]"
+    },
+    "CID000004205": {
+        "cid": "CID000004205",
+        "name": "mirtazapine",
+        "smiles": "CN1CCN2C(C1)C3=CC=CC=C3CC4=C2N=CC=C4"
+    },
+    "CID000005002": {
+        "cid": "CID000005002",
+        "name": "quetiapine",
+        "smiles": "C1CN(CCN1CCOCCO)C2=NC3=CC=CC=C3SC4=CC=CC=C42"
+    },
+    "CID000002474": {
+        "cid": "CID000002474",
+        "name": "Bupivacaine [USAN:INN:BAN]",
+        "smiles": "CCCCN1CCCCC1C(=O)NC2=C(C=CC=C2C)C"
+    },
+    "CID000003121": {
+        "cid": "CID000003121",
+        "name": "VALPROIC ACID",
+        "smiles": "CCCC(CCC)C(=O)O"
+    },
+    "CID000004730": {
+        "cid": "CID000004730",
+        "name": "3,3-dimethyl-7-oxo-6-[(2-phenoxyacetyl)amino]-4-thia-1-azabicyclo[3.2.0]heptane-2-carboxylate",
+        "smiles": "CC1(C(N2C(S1)C(C2=O)NC(=O)COC3=CC=CC=C3)C(=O)[O-])C"
+    },
+    "CID000004845": {
+        "cid": "CID000004845",
+        "name": "PIRBUTEROL",
+        "smiles": "CC(C)(C)NCC(C1=NC(=C(C=C1)O)CO)O"
+    },
+    "CID000003467": {
+        "cid": "CID000003467",
+        "name": "gentamicin",
+        "smiles": "CC(C1CCC(C(O1)OC2C(CC(C(C2O)OC3C(C(C(CO3)(C)O)NC)O)N)N)N)NC"
+    },
+    "CID000000815": {
+        "cid": "CID000000815",
+        "name": "RefChem:285734",
+        "smiles": "C1C(C(C(C(C1N)OC2C(C(C(C(O2)CN)O)O)O)O)OC3C(C(C(C(O3)CO)O)N)O)N"
+    },
+    "CID000003763": {
+        "cid": "CID000003763",
+        "name": "isoflurane",
+        "smiles": "C(C(F)(F)F)(OC(F)F)Cl"
+    },
+    "CID000004236": {
+        "cid": "CID000004236",
+        "name": "modafinil",
+        "smiles": "C1=CC=C(C=C1)C(C2=CC=CC=C2)S(=O)CC(=O)N"
+    },
+    "CID005282044": {
+        "cid": "CID005282044",
+        "name": "N-[(5aR,6aS,7S,9Z,10aS)-9-[amino(hydroxy)methylidene]-4,7-bis(dimethylamino)-1,10a,12-trihydroxy-8,10,11-trioxo-5a,6,6a,7-tetrahydro-5H-tetracen-2-yl]-2-(tert-butylamino)acetamide",
+        "smiles": "CC(C)(C)NCC(=O)NC1=CC(=C2CC3CC4C(C(=O)C(=C(N)O)C(=O)C4(C(=O)C3=C(C2=C1O)O)O)N(C)C)N(C)C"
+    },
+    "CID000504578": {
+        "cid": "CID000504578",
+        "name": "(2S,3S,4R,5R,6R)-5-amino-6-[(2R,3S,4R,5S)-5-[(1R,2S,3R,6R)-3-amino-6-[(1S,2R,3R,4R,5R)-2-amino-5-(aminomethyl)-3,4-dihydroxycyclohexyl]oxy-2-hydroxycyclohexyl]oxy-4-hydroxy-2-(hydroxymethyl)oxolan-3-yl]oxy-2-(aminomethyl)oxane-3,4-diol",
+        "smiles": "C1CC(C(C(C1N)O)OC2C(C(C(O2)CO)OC3C(C(C(C(O3)CN)O)O)N)O)OC4CC(C(C(C4N)O)O)CN"
+    },
+    "CID005362070": {
+        "cid": "CID005362070",
+        "name": "(3E)-3-[[4-(2-carboxyethylcarbamoyl)phenyl]hydrazinylidene]-6-oxocyclohexa-1,4-diene-1-carboxylic acid",
+        "smiles": "C1=CC(=CC=C1C(=O)NCCC(=O)O)NN=C2C=CC(=O)C(=C2)C(=O)O"
+    },
+    "CID000003902": {
+        "cid": "CID000003902",
+        "name": "letrozole",
+        "smiles": "C1=CC(=CC=C1C#N)C(C2=CC=C(C=C2)C#N)N3C=NC=N3"
+    },
+    "CID000003780": {
+        "cid": "CID000003780",
+        "name": "D-Glucitol, 1,4:3,6-dianhydro-, 2,5-dinitrate",
+        "smiles": "C1C(C2C(O1)C(CO2)O[N+](=O)[O-])O[N+](=O)[O-]"
+    },
+    "CID000065027": {
+        "cid": "CID000065027",
+        "name": "N-[3-[(1R)-1-[(2R)-6-hydroxy-4-oxo-2-(2-phenylethyl)-2-propyl-3H-pyran-5-yl]propyl]phenyl]-5-(trifluoromethyl)pyridine-2-sulfonamide",
+        "smiles": "CCCC1(CC(=O)C(=C(O1)O)C(CC)C2=CC(=CC=C2)NS(=O)(=O)C3=NC=C(C=C3)C(F)(F)F)CCC4=CC=CC=C4"
+    },
+    "CID005362420": {
+        "cid": "CID005362420",
+        "name": "Visudyne",
+        "smiles": "CC1=C(C2=CC3=NC(=CC4=C(C(=C(N4)C=C5C6(C(C(=CC=C6C(=N5)C=C1N2)C(=O)OC)C(=O)OC)C)C)CCC(=O)OC)C(=C3C)CCC(=O)O)C=C"
+    },
+    "CID000056959": {
+        "cid": "CID000056959",
+        "name": "RANOLAZINE",
+        "smiles": "CC1=C(C(=CC=C1)C)NC(=O)CN2CCN(CC2)CC(COC3=CC=CC=C3OC)O"
+    },
+    "CID000444013": {
+        "cid": "CID000444013",
+        "name": "GADOVERSETAMIDE",
+        "smiles": "COCCNC(=O)CN(CCN(CCN(CC(=O)NCCOC)CC(=O)[O-])CC(=O)[O-])CC(=O)[O-].[Gd+3]"
+    },
+    "CID000009052": {
+        "cid": "CID000009052",
+        "name": "2-hydroxy-3-[1-(4-nitrophenyl)-3-oxobutyl]chromen-4-one",
+        "smiles": "CC(=O)CC(C1=CC=C(C=C1)[N+](=O)[O-])C2=C(OC3=CC=CC=C3C2=O)O"
+    },
+    "CID000002269": {
+        "cid": "CID000002269",
+        "name": "C38H72N2O12",
+        "smiles": "CCC1C(C(C(N(CC(CC(C(C(C(C(C(=O)O1)C)OC2CC(C(C(O2)C)O)(C)OC)C)OC3C(C(CC(O3)C)N(C)C)O)(C)O)C)C)C)O)(C)O"
+    },
+    "CID000110635": {
+        "cid": "CID000110635",
+        "name": "Tadalafil",
+        "smiles": "CN1CC(=O)N2C(C1=O)CC3=C(C2C4=CC5=C(C=C4)OCO5)NC6=CC=CC=C36"
+    },
+    "CID000004044": {
+        "cid": "CID000004044",
+        "name": "mefenamic acid",
+        "smiles": "CC1=C(C(=CC=C1)NC2=CC=CC=C2C(=O)O)C"
+    },
+    "CID000005472": {
+        "cid": "CID000005472",
+        "name": "ticlopidine",
+        "smiles": "C1CN(CC2=C1SC=C2)CC3=CC=CC=C3Cl"
+    },
+    "CID000001971": {
+        "cid": "CID000001971",
+        "name": "914348-29-1",
+        "smiles": "C1CC1NC2=C3C(=NC(=N2)N)N(C=N3)C4CC(C=C4)CO"
+    },
+    "CID000005426": {
+        "cid": "CID000005426",
+        "name": "thalidomide",
+        "smiles": "C1CC(=O)NC(=O)C1N2C(=O)C3=CC=CC=C3C2=O"
+    },
+    "CID000003454": {
+        "cid": "CID000003454",
+        "name": "2-amino-9-(1,3-dihydroxypropan-2-yloxymethyl)-3H-purin-6-one",
+        "smiles": "C1=NC2=C(N1COC(CO)CO)NC(=NC2=O)N"
+    },
+    "CID000004449": {
+        "cid": "CID000004449",
+        "name": "nefazodone",
+        "smiles": "CCC1=NN(C(=O)N1CCOC2=CC=CC=C2)CCCN3CCN(CC3)C4=CC(=CC=C4)Cl"
+    },
+    "CID000072467": {
+        "cid": "CID000072467",
+        "name": "NS00006983",
+        "smiles": "CC1=C(N=C(N=C1N)C(CC(=O)N)NCC(C(=O)N)N)C(=O)NC(C(C2=CN=CN2)OC3C(C(C(C(O3)CO)O)O)OC4C(C(C(C(O4)CO)O)OC(=O)N)O)C(=O)NC(C)C(C(C)C(=O)NC(C(C)O)C(=O)NCCC5=NC(=CS5)C6=NC(=CS6)C(=O)NCCC[S+](C)C)O"
+    },
+    "CID000005454": {
+        "cid": "CID000005454",
+        "name": "Thiothixene [USAN:USP]",
+        "smiles": "CN1CCN(CC1)CCC=C2C3=CC=CC=C3SC4=C2C=C(C=C4)S(=O)(=O)N(C)C"
+    },
+    "CID000003642": {
+        "cid": "CID000003642",
+        "name": "MFCD00083364",
+        "smiles": "CCCC(=O)OC1(CCC2C1(CC(C3C2CCC4=CC(=O)CCC34C)O)C)C(=O)CO"
+    },
+    "CID000001046": {
+        "cid": "CID000001046",
+        "name": "pyrazinamide",
+        "smiles": "C1=CN=C(C=N1)C(=O)N"
+    },
+    "CID000001983": {
+        "cid": "CID000001983",
+        "name": "acetaminophen",
+        "smiles": "CC(=O)NC1=CC=C(C=C1)O"
+    },
+    "CID000131536": {
+        "cid": "CID000131536",
+        "name": "Fosamprenavir",
+        "smiles": "CC(C)CN(CC(C(CC1=CC=CC=C1)NC(=O)OC2CCOC2)OP(=O)(O)O)S(=O)(=O)C3=CC=C(C=C3)N"
+    },
+    "CID000004178": {
+        "cid": "CID000004178",
+        "name": "Mexiletine",
+        "smiles": "CC1=C(C(=CC=C1)C)OCC(C)N"
+    },
+    "CID000003198": {
+        "cid": "CID000003198",
+        "name": "econazole",
+        "smiles": "C1=CC(=CC=C1COC(CN2C=CN=C2)C3=C(C=C(C=C3)Cl)Cl)Cl"
+    },
+    "CID000003928": {
+        "cid": "CID000003928",
+        "name": "Lincomycine",
+        "smiles": "CCCC1CC(N(C1)C)C(=O)NC(C2C(C(C(C(O2)SC)O)O)O)C(C)O"
+    },
+    "CID000004542": {
+        "cid": "CID000004542",
+        "name": "norgestrel",
+        "smiles": "CCC12CCC3C(C1CCC2(C#C)O)CCC4=CC(=O)CCC34"
+    },
+    "CID005311027": {
+        "cid": "CID005311027",
+        "name": "Bimatoprost",
+        "smiles": "CCNC(=O)CCCC=CCC1C(CC(C1C=CC(CCC2=CC=CC=C2)O)O)O"
+    },
+    "CID000002142": {
+        "cid": "CID000002142",
+        "name": "DTXSID60860546",
+        "smiles": "C1C(C(C(C(C1NC(=O)C(CCN)O)OC2C(C(C(C(O2)CO)O)N)O)O)OC3C(C(C(C(O3)CN)O)O)O)N"
+    },
+    "CID000508230": {
+        "cid": "CID000508230",
+        "name": "C2-MPAcid",
+        "smiles": "CC1=C2COC(=O)C2=C(C(=C1OC)CC(=O)O)O"
+    },
+    "CID000110634": {
+        "cid": "CID000110634",
+        "name": "2-[2-ethoxy-5-(4-ethylpiperazin-1-yl)sulfonylphenyl]-5-methyl-7-propyl-1H-imidazo[5,1-f][1,2,4]triazin-4-one",
+        "smiles": "CCCC1=NC(=C2N1NC(=NC2=O)C3=C(C=CC(=C3)S(=O)(=O)N4CCN(CC4)CC)OCC)C"
+    },
+    "CID000024486": {
+        "cid": "CID000024486",
+        "name": "Calcium chloride 6-hydrate",
+        "smiles": "O.O.O.O.O.O.[Cl-].[Cl-].[Ca+2]"
+    },
+    "CID000004674": {
+        "cid": "CID000004674",
+        "name": "PAMIDRONIC ACID",
+        "smiles": "C(CN)C(O)(P(=O)(O)O)P(=O)(O)O"
+    },
+    "CID000004828": {
+        "cid": "CID000004828",
+        "name": "pindolol",
+        "smiles": "CC(C)NCC(COC1=CC=CC2=C1C=CN2)O"
+    },
+    "CID000004428": {
+        "cid": "CID000004428",
+        "name": "Naltrexone base anhydrous",
+        "smiles": "C1CC1CN2CCC34C5C(=O)CCC3(C2CC6=C4C(=C(C=C6)O)O5)O"
+    },
+    "CID000004064": {
+        "cid": "CID000004064",
+        "name": "meprobamate",
+        "smiles": "CCCC(C)(COC(=O)N)COC(=O)N"
+    },
+    "CID000047320": {
+        "cid": "CID000047320",
+        "name": "Atracurium besylate",
+        "smiles": "C[N+]1(CCC2=CC(=C(C=C2C1CC3=CC(=C(C=C3)OC)OC)OC)OC)CCC(=O)OCCCCCOC(=O)CC[N+]4(CCC5=CC(=C(C=C5C4CC6=CC(=C(C=C6)OC)OC)OC)OC)C.C1=CC=C(C=C1)S(=O)(=O)[O-].C1=CC=C(C=C1)S(=O)(=O)[O-]"
+    },
+    "CID000071158": {
+        "cid": "CID000071158",
+        "name": "Acamprosate",
+        "smiles": "CC(=O)NCCCS(=O)(=O)O"
+    },
+    "CID000002949": {
+        "cid": "CID000002949",
+        "name": "DTXSID80860200",
+        "smiles": "CC12CCC3C(C1CCC2(C#C)O)CCC4=CC5=C(CC34C)C=NO5"
+    },
+    "CID000001978": {
+        "cid": "CID000001978",
+        "name": "acebutolol",
+        "smiles": "CCCC(=O)NC1=CC(=C(C=C1)OCC(CNC(C)C)O)C(=O)C"
+    },
+    "CID000000158": {
+        "cid": "CID000000158",
+        "name": "8-iso PROSTAGLANDIN E2",
+        "smiles": "CCCCCC(C=CC1C(CC(=O)C1CC=CCCCC(=O)O)O)O"
+    },
+    "CID000005771": {
+        "cid": "CID000005771",
+        "name": "RefChem:1053780",
+        "smiles": "CCC(C)C1C(=O)NC(C(=O)NC(C(=O)NC(CSSCC(C(=O)NC(C(=O)N1)CC2=CC=C(C=C2)O)N)C(=O)N3CCCC3C(=O)NC(CC(C)C)C(=O)NCC(=O)N)CC(=O)N)CCC(=O)N"
+    },
+    "CID000003461": {
+        "cid": "CID000003461",
+        "name": "103882-85-5",
+        "smiles": "C1=CN(C(=O)N=C1N)C2C(C(C(O2)CO)O)(F)F"
+    },
+    "CID000004993": {
+        "cid": "CID000004993",
+        "name": "pyrimethamine",
+        "smiles": "CCC1=C(C(=NC(=N1)N)N)C2=CC=C(C=C2)Cl"
+    },
+    "CID000054786": {
+        "cid": "CID000054786",
+        "name": "Treprostinil Impurity 19",
+        "smiles": "CCCCCC(CCC1C(CC2C1CC3=C(C2)C(=CC=C3)OCC(=O)O)O)O"
+    },
+    "CID000000564": {
+        "cid": "CID000000564",
+        "name": "6-aminohexanoic acid",
+        "smiles": "C(CCC(=O)O)CCN"
+    },
+    "CID000003724": {
+        "cid": "CID000003724",
+        "name": "iodixanol",
+        "smiles": "CC(=O)N(CC(CN(C1=C(C(=C(C(=C1I)C(=O)NCC(CO)O)I)C(=O)NCC(CO)O)I)C(=O)C)O)C2=C(C(=C(C(=C2I)C(=O)NCC(CO)O)I)C(=O)NCC(CO)O)I"
+    },
+    "CID000176168": {
+        "cid": "CID000176168",
+        "name": "DTXSID70969615",
+        "smiles": "C(=O)([O-])[O-].C(=O)([O-])[O-].C(=O)([O-])[O-].O.[La+3].[La+3]"
+    },
+    "CID000004095": {
+        "cid": "CID000004095",
+        "name": "methadone",
+        "smiles": "CCC(=O)C(CC(C)N(C)C)(C1=CC=CC=C1)C2=CC=CC=C2"
+    },
+    "CID000004440": {
+        "cid": "CID000004440",
+        "name": "naratriptan",
+        "smiles": "CNS(=O)(=O)CCC1=CC2=C(C=C1)NC=C2C3CCN(CC3)C"
+    },
+    "CID000060184": {
+        "cid": "CID000060184",
+        "name": "2'-epi-Perindopril, (2'R)-",
+        "smiles": "CCCC(C(=O)OCC)NC(C)C(=O)N1C2CCCCC2CC1C(=O)O"
+    },
+    "CID000024011": {
+        "cid": "CID000024011",
+        "name": "7446-34-6",
+        "smiles": "S=[Se]"
+    },
+    "CID000148211": {
+        "cid": "CID000148211",
+        "name": "Palonosetron, (3aR)-",
+        "smiles": "C1CC2CN(C(=O)C3=CC=CC(=C23)C1)C4CN5CCC4CC5"
+    },
+    "CID000000085": {
+        "cid": "CID000000085",
+        "name": "RefChem:436024",
+        "smiles": "C[N+](C)(C)CC(CC(=O)O)O"
+    },
+    "CID000003702": {
+        "cid": "CID000003702",
+        "name": "indapamide",
+        "smiles": "CC1CC2=CC=CC=C2N1NC(=O)C3=CC(=C(C=C3)Cl)S(=O)(=O)N"
+    },
+    "CID000013342": {
+        "cid": "CID000013342",
+        "name": "vinblastine",
+        "smiles": "CCC1(CC2CC(C3=C(CCN(C2)C1)C4=CC=CC=C4N3)(C5=C(C=C6C(=C5)C78CCN9C7C(C=CC9)(C(C(C8N6C)(C(=O)OC)O)OC(=O)C)CC)OC)C(=O)OC)O"
+    },
+    "CID000004834": {
+        "cid": "CID000004834",
+        "name": "STK249732",
+        "smiles": "CCN1CCN(C(=O)C1=O)C(=O)NC(C2=CC=CC=C2)C(=O)NC3C4N(C3=O)C(C(S4)(C)C)C(=O)[O-]"
+    },
+    "CID000005466": {
+        "cid": "CID000005466",
+        "name": "109857-64-9",
+        "smiles": "CC1=C(SC=C1)C(=CCCN2CCCC(C2)C(=O)O)C3=C(C=CS3)C"
+    },
+    "CID000002099": {
+        "cid": "CID000002099",
+        "name": "alosetron",
+        "smiles": "CC1=C(N=CN1)CN2CCC3=C(C2=O)C4=CC=CC=C4N3C"
+    },
+    "CID000123631": {
+        "cid": "CID000123631",
+        "name": "Gefitinib",
+        "smiles": "COC1=C(C=C2C(=C1)N=CN=C2NC3=CC(=C(C=C3)F)Cl)OCCCN4CCOCC4"
+    },
+    "CID000002375": {
+        "cid": "CID000002375",
+        "name": "bicalutamide",
+        "smiles": "CC(CS(=O)(=O)C1=CC=C(C=C1)F)(C(=O)NC2=CC(=C(C=C2)C#N)C(F)(F)F)O"
+    },
+    "CID000003117": {
+        "cid": "CID000003117",
+        "name": "disulfiram",
+        "smiles": "CCN(CC)C(=S)SSC(=S)N(CC)CC"
+    },
+    "CID000002646": {
+        "cid": "CID000002646",
+        "name": "CEFPROZIL (Z)-ISOMER H0E054927UG/MG(AI)",
+        "smiles": "CC=CC1=C(N2C(C(C2=O)NC(=O)C(C3=CC=C(C=C3)O)N)SC1)C(=O)O"
+    },
+    "CID000002512": {
+        "cid": "CID000002512",
+        "name": "Cabergoline-d5",
+        "smiles": "CCNC(=O)N(CCCN(C)C)C(=O)C1CC2C(CC3=CNC4=CC=CC2=C34)N(C1)CC=C"
+    },
+    "CID000003114": {
+        "cid": "CID000003114",
+        "name": "disopyramide",
+        "smiles": "CC(C)N(CCC(C1=CC=CC=C1)(C2=CC=CC=N2)C(=O)N)C(C)C"
+    },
+    "CID000003414": {
+        "cid": "CID000003414",
+        "name": "phosphonatoformate",
+        "smiles": "C(=O)([O-])P(=O)([O-])[O-]"
+    },
+    "CID000003059": {
+        "cid": "CID000003059",
+        "name": "diflunisal",
+        "smiles": "C1=CC(=C(C=C1C2=C(C=C(C=C2)F)F)C(=O)O)O"
+    },
+    "CID000148192": {
+        "cid": "CID000148192",
+        "name": "Atazanavir",
+        "smiles": "CC(C)(C)C(C(=O)NC(CC1=CC=CC=C1)C(CN(CC2=CC=C(C=C2)C3=CC=CC=N3)NC(=O)C(C(C)(C)C)NC(=O)OC)O)NC(=O)OC"
+    },
+    "CID003062316": {
+        "cid": "CID003062316",
+        "name": "Dasatinib",
+        "smiles": "CC1=C(C(=CC=C1)Cl)NC(=O)C2=CN=C(S2)NC3=CC(=NC(=N3)C)N4CCN(CC4)CCO"
+    },
+    "CID000002995": {
+        "cid": "CID000002995",
+        "name": "desipramine",
+        "smiles": "CNCCCN1C2=CC=CC=C2CCC3=CC=CC=C31"
+    },
+    "CID000005878": {
+        "cid": "CID000005878",
+        "name": "OXANDROLONE",
+        "smiles": "CC12CCC3C(C1CCC2(C)O)CCC4C3(COC(=O)C4)C"
+    },
+    "CID000002141": {
+        "cid": "CID000002141",
+        "name": "amifostine",
+        "smiles": "C(CN)CNCCSP(=O)(O)O"
+    },
+    "CID000005381": {
+        "cid": "CID000005381",
+        "name": "tazarotene",
+        "smiles": "CCOC(=O)C1=CN=C(C=C1)C#CC2=CC3=C(C=C2)SCCC3(C)C"
+    },
+    "CID000004771": {
+        "cid": "CID000004771",
+        "name": "phentermine",
+        "smiles": "CC(C)(CC1=CC=CC=C1)N"
+    },
+    "CID000060787": {
+        "cid": "CID000060787",
+        "name": "DTXSID201098894",
+        "smiles": "CC(C)(C)NC(=O)C1CC2CCCCC2CN1CC(C(CC3=CC=CC=C3)NC(=O)C(CC(=O)N)NC(=O)C4=NC5=CC=CC=C5C=C4)O"
+    },
+    "CID000060877": {
+        "cid": "CID000060877",
+        "name": "Emtricitabine",
+        "smiles": "C1C(OC(S1)CO)N2C=C(C(=NC2=O)N)F"
+    },
+    "CID000003827": {
+        "cid": "CID000003827",
+        "name": "ketotifen",
+        "smiles": "CN1CCC(=C2C3=C(C(=O)CC4=CC=CC=C42)SC=C3)CC1"
+    },
+    "CID000003821": {
+        "cid": "CID000003821",
+        "name": "ketamine",
+        "smiles": "CNC1(CCCCC1=O)C2=CC=CC=C2Cl"
+    },
+    "CID000002130": {
+        "cid": "CID000002130",
+        "name": "amantadine",
+        "smiles": "C1C2CC3CC1CC(C2)(C3)N"
+    },
+    "CID000005453": {
+        "cid": "CID000005453",
+        "name": "thiotepa",
+        "smiles": "C1CN1P(=S)(N2CC2)N3CC3"
+    },
+    "CID000003373": {
+        "cid": "CID000003373",
+        "name": "flumazenil",
+        "smiles": "CCOC(=O)C1=C2CN(C(=O)C3=C(N2C=N1)C=CC(=C3)F)C"
+    },
+    "CID000003372": {
+        "cid": "CID000003372",
+        "name": "FLUPHENAZINE",
+        "smiles": "C1CN(CCN1CCCN2C3=CC=CC=C3SC4=C2C=C(C=C4)C(F)(F)F)CCO"
+    },
+    "CID000002519": {
+        "cid": "CID000002519",
+        "name": "caffeine",
+        "smiles": "CN1C=NC2=C1C(=O)N(C(=O)N2C)C"
+    },
+    "CID000041317": {
+        "cid": "CID000041317",
+        "name": "419534-31-9",
+        "smiles": "CC1=CC(=C(C(=C1C=CC(=CC=CC(=CC(=O)O)C)C)C)C)OC"
+    },
+    "CID000115237": {
+        "cid": "CID000115237",
+        "name": "Paliperidone",
+        "smiles": "CC1=C(C(=O)N2CCCC(C2=N1)O)CCN3CCC(CC3)C4=NOC5=C4C=CC(=C5)F"
+    },
+    "CID000005352": {
+        "cid": "CID000005352",
+        "name": "32004-68-5",
+        "smiles": "CC1=C(C2=C(C1=CC3=CC=C(C=C3)S(=O)C)C=CC(=C2)F)CC(=O)O"
+    },
+    "CID000003040": {
+        "cid": "CID000003040",
+        "name": "STK177287",
+        "smiles": "CC1=C(C(=NO1)C2=C(C=CC=C2Cl)Cl)C(=O)NC3C4N(C3=O)C(C(S4)(C)C)C(=O)[O-]"
+    },
+    "CID000197712": {
+        "cid": "CID000197712",
+        "name": "713516-99-5",
+        "smiles": "CC1=CC(=NC(=N1)OC(C(=O)O)C(C2=CC=CC=C2)(C3=CC=CC=C3)OC)C"
+    },
+    "CID000060164": {
+        "cid": "CID000060164",
+        "name": "ADAPALENE",
+        "smiles": "COC1=C(C=C(C=C1)C2=CC3=C(C=C2)C=C(C=C3)C(=O)O)C45CC6CC(C4)CC(C6)C5"
+    },
+    "CID000004748": {
+        "cid": "CID000004748",
+        "name": "perphenazine",
+        "smiles": "C1CN(CCN1CCCN2C3=CC=CC=C3SC4=C2C=C(C=C4)Cl)CCO"
+    },
+    "CID000004745": {
+        "cid": "CID000004745",
+        "name": "C19H26N2S",
+        "smiles": "CCCN1CC(CC2C1CC3=CNC4=CC=CC2=C34)CSC"
+    },
+    "CID000002478": {
+        "cid": "CID000002478",
+        "name": "busulfan",
+        "smiles": "CS(=O)(=O)OCCCCOS(=O)(=O)C"
+    },
+    "CID000003278": {
+        "cid": "CID000003278",
+        "name": "ETHACRYNIC ACID",
+        "smiles": "CCC(=C)C(=O)C1=C(C(=C(C=C1)OCC(=O)O)Cl)Cl"
+    },
+    "CID000002622": {
+        "cid": "CID000002622",
+        "name": "DB-057040",
+        "smiles": "C[N+]1(CCCC1)CC2=C(N3C(C(C3=O)NC(=O)C(=NOC)C4=CSC(=N4)N)SC2)C(=O)[O-]"
+    },
+    "CID000003741": {
+        "cid": "CID000003741",
+        "name": "ioversol",
+        "smiles": "C(CO)N(C1=C(C(=C(C(=C1I)C(=O)NCC(CO)O)I)C(=O)NCC(CO)O)I)C(=O)CO"
+    },
+    "CID000002610": {
+        "cid": "CID000002610",
+        "name": "1181570-19-3",
+        "smiles": "CC1=C(N2C(C(C2=O)NC(=O)C(C3=CC=C(C=C3)O)N)SC1)C(=O)O"
+    },
+    "CID000004819": {
+        "cid": "CID000004819",
+        "name": "RefChem:1058728",
+        "smiles": "CCC1C(COC1=O)CC2=CN=CN2C"
+    },
+    "CID000005593": {
+        "cid": "CID000005593",
+        "name": "tropicamide",
+        "smiles": "CCN(CC1=CC=NC=C1)C(=O)C(CO)C2=CC=CC=C2"
+    },
+    "CID000003914": {
+        "cid": "CID000003914",
+        "name": "Bunolol",
+        "smiles": "CC(C)(C)NCC(COC1=CC=CC2=C1CCCC2=O)O"
+    },
+    "CID000003784": {
+        "cid": "CID000003784",
+        "name": "isradipine",
+        "smiles": "CC1=C(C(C(=C(N1)C)C(=O)OC(C)C)C2=CC=CC3=NON=C32)C(=O)OC"
+    },
+    "CID000014888": {
+        "cid": "CID000014888",
+        "name": "Arsenic oxide (As2O3)",
+        "smiles": "[O-2].[O-2].[O-2].[As+3].[As+3]"
+    },
+    "CID000002708": {
+        "cid": "CID000002708",
+        "name": "chlorambucil",
+        "smiles": "C1=CC(=CC=C1CCCC(=O)O)N(CCCl)CCCl"
+    },
+    "CID000003397": {
+        "cid": "CID000003397",
+        "name": "flutamide",
+        "smiles": "CC(C)C(=O)NC1=CC(=C(C=C1)[N+](=O)[O-])C(F)(F)F"
+    },
+    "CID006436173": {
+        "cid": "CID006436173",
+        "name": "Rifaximin",
+        "smiles": "CC1C=CC=C(C(=O)NC2=C(C3=C(C4=C(C(=C3O)C)OC(C4=O)(OC=CC(C(C(C(C(C(C1O)C)O)C)OC(=O)C)C)OC)C)C5=C2N6C=CC(=CC6=N5)C)O)C"
+    },
+    "CID000000119": {
+        "cid": "CID000000119",
+        "name": "gamma-aminobutyric acid",
+        "smiles": "C(CC(=O)O)CN"
+    },
+    "CID001349907": {
+        "cid": "CID001349907",
+        "name": "methimazole",
+        "smiles": "CN1C=CNC1=S"
+    },
+    "CID000004053": {
+        "cid": "CID000004053",
+        "name": "Sarcolysin",
+        "smiles": "C1=CC(=CC=C1CC(C(=O)O)N)N(CCCl)CCCl"
+    },
+    "CID000060612": {
+        "cid": "CID000060612",
+        "name": "levomedetomidine",
+        "smiles": "CC1=C(C(=CC=C1)C(C)C2=CN=CN2)C"
+    },
+    "CID000003964": {
+        "cid": "CID000003964",
+        "name": "loxapine",
+        "smiles": "CN1CCN(CC1)C2=NC3=CC=CC=C3OC4=C2C=C(C=C4)Cl"
+    },
+    "CID000004425": {
+        "cid": "CID000004425",
+        "name": "RefChem:1071737",
+        "smiles": "C=CCN1CCC23C4C(=O)CCC2(C1CC5=C3C(=C(C=C5)O)O4)O"
+    },
+    "CID000002274": {
+        "cid": "CID000002274",
+        "name": "C13H17N5O8S2",
+        "smiles": "CC1C(C(=O)N1S(=O)(=O)O)NC(=O)C(=NOC(C)(C)C(=O)O)C2=CSC(=N2)N"
+    },
+    "CID000150310": {
+        "cid": "CID000150310",
+        "name": "SCHEMBL8445849",
+        "smiles": "CC12CCC(=O)C=C1CC(C3C24C(O4)CC5(C3CCC56CCC(=O)O6)C)C(=O)OC"
+    },
+    "CID000005525": {
+        "cid": "CID000005525",
+        "name": "CI-907",
+        "smiles": "CCOC(=O)C(CCC1=CC=CC=C1)NC(C)C(=O)N2C3CCCCC3CC2C(=O)O"
+    },
+    "CID000004727": {
+        "cid": "CID000004727",
+        "name": "DL-Penicillamine",
+        "smiles": "CC(C)(C(C(=O)O)N)S"
+    },
+    "CID000003384": {
+        "cid": "CID000003384",
+        "name": "DTXSID70859360",
+        "smiles": "CC1CC2C3CCC(C3(CC(C2(C4(C1=CC(=O)C=C4)C)F)O)C)(C(=O)C)O"
+    },
+    "CID000002973": {
+        "cid": "CID000002973",
+        "name": "deferoxamine",
+        "smiles": "CC(=O)N(CCCCCNC(=O)CCC(=O)N(CCCCCNC(=O)CCC(=O)N(CCCCCN)O)O)O"
+    },
+    "CID000003494": {
+        "cid": "CID000003494",
+        "name": "Glycopyrronium",
+        "smiles": "C[N+]1(CCC(C1)OC(=O)C(C2CCCC2)(C3=CC=CC=C3)O)C"
+    },
+    "CID000002349": {
+        "cid": "CID000002349",
+        "name": "CHEBI:17334",
+        "smiles": "CC1(C(N2C(S1)C(C2=O)NC(=O)CC3=CC=CC=C3)C(=O)O)C"
+    },
+    "CID000002283": {
+        "cid": "CID000002283",
+        "name": "SR-05000001570",
+        "smiles": "CCC(C)C1C(=O)NC(C(=O)NC(C(=O)NC(C(=O)NC(C(=O)NC(C(=O)NC(C(=O)N1)CCCN)CCCCNC(=O)C(C(C)CC)NC(=O)C(CCC(=O)O)NC(=O)C(CC(C)C)NC(=O)C2CSC(=N2)C(C(C)CC)N)CC(=O)N)CC(=O)O)CC3=CN=CN3)CC4=CC=CC=C4"
+    },
+    "CID006435110": {
+        "cid": "CID006435110",
+        "name": "Equimectrin",
+        "smiles": "CCC(C)C1C(CCC2(O1)CC3CC(O2)CC=C(C(C(C=CC=C4COC5C4(C(C=C(C5O)C)C(=O)O3)O)C)OC6CC(C(C(O6)C)OC7CC(C(C(O7)C)O)OC)OC)C)C.CC1CCC2(CC3CC(O2)CC=C(C(C(C=CC=C4COC5C4(C(C=C(C5O)C)C(=O)O3)O)C)OC6CC(C(C(O6)C)OC7CC(C(C(O7)C)O)OC)OC)C)OC1C(C)C"
+    },
+    "CID000005297": {
+        "cid": "CID000005297",
+        "name": "RefChem:1099083",
+        "smiles": "CC1C(C(C(O1)OC2C(C(C(C(C2O)O)N=C(N)N)O)N=C(N)N)OC3C(C(C(C(O3)CO)O)O)NC)(C=O)O"
+    },
+    "CID000005515": {
+        "cid": "CID000005515",
+        "name": "Neuro_000236",
+        "smiles": "CCC1(C2=C(COC1=O)C(=O)N3CC4=CC5=C(C=CC(=C5CN(C)C)O)N=C4C3=C2)O"
+    },
+    "CID000048175": {
+        "cid": "CID000048175",
+        "name": "C25H31ClF2O5",
+        "smiles": "CCC(=O)OC1(C(CC2C1(CC(C3(C2CC(C4=CC(=O)C=CC43C)F)F)O)C)C)C(=O)CCl"
+    },
+    "CID000002637": {
+        "cid": "CID000002637",
+        "name": "BDBM50169176",
+        "smiles": "COC1(C2N(C1=O)C(=C(CS2)COC(=O)N)C(=O)[O-])NC(=O)CC3=CC=CS3"
+    },
+    "CID000027991": {
+        "cid": "CID000027991",
+        "name": "dAVP",
+        "smiles": "C1CC(N(C1)C(=O)C2CSSCCC(=O)NC(C(=O)NC(C(=O)NC(C(=O)NC(C(=O)N2)CC(=O)N)CCC(=O)N)CC3=CC=CC=C3)CC4=CC=C(C=C4)O)C(=O)NC(CCCN=C(N)N)C(=O)NCC(=O)N"
+    },
+    "CID000002177": {
+        "cid": "CID000002177",
+        "name": "CHEMBL195725",
+        "smiles": "CC(C)CN(CC(C(CC1=CC=CC=C1)NC(=O)OC2CCOC2)O)S(=O)(=O)C3=CC=C(C=C3)N"
+    },
+    "CID000060696": {
+        "cid": "CID000060696",
+        "name": "SCHEMBL13875772",
+        "smiles": "CC(=O)OC1C(CC2C1(CCC3C2CCC4C3(CC(C(C4)O)N5CCOCC5)C)C)[N+]6(CCCC6)CC=C"
+    },
+    "CID000004739": {
+        "cid": "CID000004739",
+        "name": "2'-Deoxycoformycin",
+        "smiles": "C1C(C(OC1N2C=NC3=C2NC=NCC3O)CO)O"
+    },
+    "CID000077992": {
+        "cid": "CID000077992",
+        "name": "Frovatriptan",
+        "smiles": "CNC1CCC2=C(C1)C3=C(N2)C=CC(=C3)C(=O)N"
+    },
+    "CID000002019": {
+        "cid": "CID000002019",
+        "name": "Dactinomycin (USP)",
+        "smiles": "CC1C(C(=O)NC(C(=O)N2CCCC2C(=O)N(CC(=O)N(C(C(=O)O1)C(C)C)C)C)C(C)C)NC(=O)C3=C4C(=C(C=C3)C)OC5=C(C(=O)C(=C(C5=N4)C(=O)NC6C(OC(=O)C(N(C(=O)CN(C(=O)C7CCCN7C(=O)C(NC6=O)C(C)C)C)C)C(C)C)C)N)C"
+    },
+    "CID004659569": {
+        "cid": "CID004659569",
+        "name": "Tolcapone",
+        "smiles": "CC1=CC=C(C=C1)C(=O)C2=CC(=C(C(=C2)O)O)[N+](=O)[O-]"
+    },
+    "CID000004607": {
+        "cid": "CID000004607",
+        "name": "orb1990212",
+        "smiles": "CC1=C(C(=NO1)C2=CC=CC=C2)C(=O)NC3C4N(C3=O)C(C(S4)(C)C)C(=O)[O-]"
+    },
+    "CID000005052": {
+        "cid": "CID000005052",
+        "name": "Salutensin",
+        "smiles": "COC1C(CC2CN3CCC4=C(C3CC2C1C(=O)OC)NC5=C4C=CC(=C5)OC)OC(=O)C6=CC(=C(C(=C6)OC)OC)OC"
+    },
+    "CID000119182": {
+        "cid": "CID000119182",
+        "name": "Clofarabine",
+        "smiles": "C1=NC2=C(N=C(N=C2N1C3C(C(C(O3)CO)O)F)Cl)N"
+    },
+    "CID000005215": {
+        "cid": "CID000005215",
+        "name": "sulfadiazine",
+        "smiles": "C1=CN=C(N=C1)NS(=O)(=O)C2=CC=C(C=C2)N"
+    },
+    "CID000005486": {
+        "cid": "CID000005486",
+        "name": "158808-86-7",
+        "smiles": "CCCCS(=O)(=O)NC(CC1=CC=C(C=C1)OCCCCC2CCNCC2)C(=O)O"
+    },
+    "CID000145068": {
+        "cid": "CID000145068",
+        "name": "nitric oxide",
+        "smiles": "[N]=O"
+    },
+    "CID000003637": {
+        "cid": "CID000003637",
+        "name": "hydralazine",
+        "smiles": "C1=CC=C2C(=C1)C=NN=C2NN"
+    },
+    "CID000072938": {
+        "cid": "CID000072938",
+        "name": "SB-265805S;LB-20304a",
+        "smiles": "CON=C1CN(CC1CN)C2=C(C=C3C(=O)C(=CN(C3=N2)C4CC4)C(=O)O)F"
+    },
+    "CID000003382": {
+        "cid": "CID000003382",
+        "name": "Topsyn",
+        "smiles": "CC(=O)OCC(=O)C12C(CC3C1(CC(C4(C3CC(C5=CC(=O)C=CC54C)F)F)O)C)OC(O2)(C)C"
+    },
+    "CID000004140": {
+        "cid": "CID000004140",
+        "name": "Isomethergine",
+        "smiles": "CCC(CO)NC(=O)C1CN(C2CC3=CNC4=CC=CC(=C34)C2=C1)C"
+    },
+    "CID000004195": {
+        "cid": "CID000004195",
+        "name": "midodrine",
+        "smiles": "COC1=CC(=C(C=C1)OC)C(CNC(=O)CN)O"
+    },
+    "CID000002215": {
+        "cid": "CID000002215",
+        "name": "61503-74-0",
+        "smiles": "CN1CCC2=C3C1CC4=C(C3=CC=C2)C(=C(C=C4)O)O"
+    },
+    "CID000000298": {
+        "cid": "CID000000298",
+        "name": "RefChem:935245",
+        "smiles": "C1=CC(=CC=C1C(C(CO)NC(=O)C(Cl)Cl)O)[N+](=O)[O-]"
+    },
+    "CID000444033": {
+        "cid": "CID000444033",
+        "name": "141845-82-1",
+        "smiles": "CC(C)C(=O)OCC(=O)C12C(CC3C1(CC(C4C3CCC5=CC(=O)C=CC45C)O)C)OC(O2)C6CCCCC6"
+    },
+    "CID000082146": {
+        "cid": "CID000082146",
+        "name": "Bexarotene",
+        "smiles": "CC1=CC2=C(C=C1C(=C)C3=CC=C(C=C3)C(=O)O)C(CCC2(C)C)(C)C"
+    },
+    "CID000004932": {
+        "cid": "CID000004932",
+        "name": "propafenone",
+        "smiles": "CCCNCC(COC1=CC=CC=C1C(=O)CCC2=CC=CC=C2)O"
+    },
+    "CID000002266": {
+        "cid": "CID000002266",
+        "name": "azelaic acid",
+        "smiles": "C(CCCC(=O)O)CCCC(=O)O"
+    },
+    "CID000002369": {
+        "cid": "CID000002369",
+        "name": "betaxolol",
+        "smiles": "CC(C)NCC(COC1=CC=C(C=C1)CCOCC2CC2)O"
+    },
+    "CID000002232": {
+        "cid": "CID000002232",
+        "name": "183679-05-2",
+        "smiles": "CC1CCN(C(C1)C(=O)O)C(=O)C(CCCN=C(N)N)NS(=O)(=O)C2=CC=CC3=C2NCC(C3)C"
+    },
+    "CID005473385": {
+        "cid": "CID005473385",
+        "name": "SCHEMBL12257420",
+        "smiles": "C1=NC2C(=N1)NC(=NC2=S)N"
+    },
+    "CID000003291": {
+        "cid": "CID000003291",
+        "name": "ethosuximide",
+        "smiles": "CCC1(CC(=O)NC1=O)C"
+    },
+    "CID000002725": {
+        "cid": "CID000002725",
+        "name": "chlorpheniramine",
+        "smiles": "CN(C)CCC(C1=CC=C(C=C1)Cl)C2=CC=CC=N2"
+    },
+    "CID000002675": {
+        "cid": "CID000002675",
+        "name": "RefChem:1074309",
+        "smiles": "C=CC1=C(N2C(C(C2=O)NC(=O)C(=NOCC(=O)O)C3=CSC(=N3)N)SC1)C(=O)O"
+    },
+    "CID000004645": {
+        "cid": "CID000004645",
+        "name": "2-[amino(hydroxy)methylidene]-4-(dimethylamino)-5,6,10,11,12a-pentahydroxy-6-methyl-4,4a,5,5a-tetrahydrotetracene-1,3,12-trione",
+        "smiles": "CC1(C2C(C3C(C(=O)C(=C(N)O)C(=O)C3(C(=O)C2=C(C4=C1C=CC=C4O)O)O)N(C)C)O)O"
+    },
+    "CID000004913": {
+        "cid": "CID000004913",
+        "name": "PROCAINAMIDE",
+        "smiles": "CCN(CC)CCNC(=O)C1=CC=C(C=C1)N"
+    },
+    "CID000001134": {
+        "cid": "CID000001134",
+        "name": "DTXSID20936337",
+        "smiles": "CC1=CN(C(=O)NC1=O)C2CC(C(O2)CO)O"
+    },
+    "CID000071273": {
+        "cid": "CID000071273",
+        "name": "98626-61-0",
+        "smiles": "CCCN1CCCCC1C(=O)NC2=C(C=CC=C2C)C"
+    },
+    "CID000003562": {
+        "cid": "CID000003562",
+        "name": "halothane",
+        "smiles": "C(C(F)(F)F)(Cl)Br"
+    },
+    "CID000002551": {
+        "cid": "CID000002551",
+        "name": "Carbamylcholine",
+        "smiles": "C[N+](C)(C)CCOC(=O)N"
+    },
+    "CID000002727": {
+        "cid": "CID000002727",
+        "name": "chlorpropamide",
+        "smiles": "CCCNC(=O)NS(=O)(=O)C1=CC=C(C=C1)Cl"
+    },
+    "CID000002673": {
+        "cid": "CID000002673",
+        "name": "Cefradin",
+        "smiles": "CC1=C(N2C(C(C2=O)NC(=O)C(C3=CCC=CC3)N)SC1)C(=O)O"
+    },
+    "CID000002370": {
+        "cid": "CID000002370",
+        "name": "bethanechol",
+        "smiles": "CC(C[N+](C)(C)C)OC(=O)N"
+    },
+    "CID000039860": {
+        "cid": "CID000039860",
+        "name": "56496-90-3",
+        "smiles": "CCCCCCC(C)(C)C1=CC(=C2C3CC(=O)CCC3C(OC2=C1)(C)C)O"
+    },
+    "CID000005721": {
+        "cid": "CID000005721",
+        "name": "C12H20N4O7",
+        "smiles": "CC(=O)NC1C(C=C(OC1C(C(CO)O)O)C(=O)O)N=C(N)N"
+    },
+    "CID000012620": {
+        "cid": "CID000012620",
+        "name": "1-DOCOSANOL",
+        "smiles": "CCCCCCCCCCCCCCCCCCCCCCO"
+    },
+    "CID000040976": {
+        "cid": "CID000040976",
+        "name": "CHEMBL430483",
+        "smiles": "CCC12CC(=C)C3C(C1CCC2(C#C)O)CCC4=CC(=O)CCC34"
+    },
+    "CID000005070": {
+        "cid": "CID000005070",
+        "name": "riluzole",
+        "smiles": "C1=CC2=C(C=C1OC(F)(F)F)SC(=N2)N"
+    },
+    "CID000051634": {
+        "cid": "CID000051634",
+        "name": "Miglustat",
+        "smiles": "CCCCN1CC(C(C(C1CO)O)O)O"
+    },
+    "CID000003381": {
+        "cid": "CID000003381",
+        "name": "Dermatin (steroid)",
+        "smiles": "CC1(OC2CC3C4CC(C5=CC(=O)C=CC5(C4(C(CC3(C2(O1)C(=O)CO)C)O)F)C)F)C"
+    },
+    "CID000002170": {
+        "cid": "CID000002170",
+        "name": "amoxapine",
+        "smiles": "C1CN(CCN1)C2=NC3=CC=CC=C3OC4=C2C=C(C=C4)Cl"
+    },
+    "CID003086258": {
+        "cid": "CID003086258",
+        "name": "CHEMBL270363",
+        "smiles": "CCC1=C2C=C3C(=C(C(=CC4=NC(=CC5=NC(=CC(=C1C)N2)C(=C5CCC(=O)O)C)C(=C4C)CCC(=O)O)N3)C(C)O)C"
+    },
+    "CID009571074": {
+        "cid": "CID009571074",
+        "name": "SCHEMBL1650584",
+        "smiles": "CC1=C(SC=N1)C=CC2=C(N3C(C(C3=O)NC(=O)C(=NOC)C4=CSC(=N4)N)SC2)C(=O)O"
+    },
+    "CID000004011": {
+        "cid": "CID000004011",
+        "name": "maprotiline",
+        "smiles": "CNCCCC12CCC(C3=CC=CC=C31)C4=CC=CC=C24"
+    },
+    "CID000002182": {
+        "cid": "CID000002182",
+        "name": "6,7-dichloro-5,10-dihydro-3H-imidazo[2,1-b]quinazolin-2-one",
+        "smiles": "C1C2=C(C=CC(=C2Cl)Cl)NC3=NC(=O)CN31"
+    },
+    "CID000005482": {
+        "cid": "CID000005482",
+        "name": "tioconazole",
+        "smiles": "C1=CC(=C(C=C1Cl)Cl)C(CN2C=CN=C2)OCC3=C(SC=C3)Cl"
+    }
+}
