@@ -220,6 +220,9 @@ def predict_side_effects(drug1_display, drug2_display):
 
     true_labels = true_label_dict.get((drug1_id, drug2_id), set())
 
+    print("SEÇİLEN:", drug1_id, drug2_id)
+    print("DICT VAR MI:", (drug1_id, drug2_id) in true_label_dict)
+
     image = Draw.MolsToGridImage(
         [mol1, mol2],
         legends=[drug1_display.split(" [")[0], drug2_display.split(" [")[0]],
