@@ -1,12 +1,11 @@
 torch
 torch-geometric
-rdkit
 pandas
 numpy
 scikit-learn
 gradio
-deep-translator
-wikipedia
 pubchempy
-transformers==4.41.2
-sentencepiece
+requests
+rdkit-pypi
+pytdc
+deep-translator
