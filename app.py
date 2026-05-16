@@ -20,6 +20,10 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 SIDE_EFFECT_DESCRIPTION_FILE = "side_effect_descriptions_enhanced.json"
 DRUG_DESCRIPTION_FILE = "drug_descriptions_enhanced.json"
 
+TEST_ROC_AUC = 0.8828
+TEST_PR_AUC = 0.3437
+NUM_SIDE_EFFECT_CLASSES = 1317
+
 
 def load_json_file(file_path, warning_message):
     if os.path.exists(file_path):
@@ -132,7 +136,6 @@ def get_drug_usage_description(cid):
     )
 
     source = item.get("source", "Varsayılan")
-
     name = item.get("name", "")
 
     return name, description, source
@@ -177,6 +180,14 @@ def get_drug_info_markdown(display_name, cid, smiles):
         f"- **Diğer Adlar:** {synonyms_text}\n"
         f"- **SMILES:** `{smiles}`\n"
     )
+
+
+def get_score_level(score):
+    if score >= 45:
+        return "Yüksek"
+    if score >= 30:
+        return "Orta"
+    return "Düşük"
 
 
 print(f"Kullanılan cihaz: {device}")
@@ -267,6 +278,44 @@ def update_second_drug(selected_drug):
     )
 
 
+def set_demo_pair(demo_name):
+    demo_pairs = {
+        "Dipyridamole + Gentamicin": ("Dipyridamole", "Gentamicin"),
+        "Darunavir + Penicillins": ("Darunavir", "Penicillins"),
+        "Adapalene + Sibutramine": ("Adapalene", "Sibutramine"),
+    }
+
+    if demo_name not in demo_pairs:
+        return None, gr.Dropdown(choices=[], value=None)
+
+    first_keyword, second_keyword = demo_pairs[demo_name]
+
+    selected_first = None
+    selected_second = None
+
+    for item in drug_list:
+        if first_keyword.lower() in item.lower():
+            selected_first = item
+            break
+
+    if selected_first is None:
+        return None, gr.Dropdown(choices=[], value=None)
+
+    possible_pairs = sorted(list(drug_pair_map.get(selected_first, [])))
+
+    for item in possible_pairs:
+        if second_keyword.lower() in item.lower():
+            selected_second = item
+            break
+
+    return selected_first, gr.Dropdown(
+        choices=possible_pairs,
+        value=selected_second,
+        label="İkinci İlaç",
+        filterable=True,
+    )
+
+
 model = SiameseGATv2(
     num_node_features=80,
     num_edge_features=6,
@@ -286,7 +335,7 @@ model.eval()
 print("Model başarıyla yüklendi.")
 
 
-def predict_side_effects(drug1_display, drug2_display):
+def predict_side_effects(drug1_display, drug2_display, top_k):
     empty_df = pd.DataFrame()
 
     if drug1_display is None or drug2_display is None:
@@ -297,6 +346,8 @@ def predict_side_effects(drug1_display, drug2_display):
 
     if drug1_id == drug2_id:
         return None, "", "", "Lütfen iki farklı ilaç seçiniz.", empty_df, empty_df
+
+    top_k = int(top_k)
 
     smiles1 = drug_dict[drug1_id]
     smiles2 = drug_dict[drug2_id]
@@ -323,7 +374,7 @@ def predict_side_effects(drug1_display, drug2_display):
         output = model(batch1, batch2)
         scores = torch.sigmoid(output)[0]
 
-    top_scores, top_indices = torch.topk(scores, 10)
+    top_scores, top_indices = torch.topk(scores, top_k)
 
     true_labels = true_label_dict.get((drug1_id, drug2_id), set())
 
@@ -355,6 +406,7 @@ def predict_side_effects(drug1_display, drug2_display):
                 "Açıklama": info["description"],
                 "Kaynak": info["source"],
                 "Model Skoru": f"%{score:.2f}",
+                "Skor Seviyesi": get_score_level(score),
                 "Veri Setinde Var mı?": "Evet" if is_match else "Hayır",
             }
         )
@@ -375,18 +427,32 @@ def predict_side_effects(drug1_display, drug2_display):
 
     true_df = pd.DataFrame(true_rows)
 
-    precision_at_10 = matched_count / 10
+    precision_at_k = matched_count / top_k if top_k > 0 else 0
 
     summary = (
         f"### Değerlendirme Özeti\n\n"
-        f"- **Top-10 eşleşme:** {matched_count} / 10\n"
-        f"- **Precision@10:** {precision_at_10:.2f}\n"
+        f"- **Top-{top_k} eşleşme:** {matched_count} / {top_k}\n"
+        f"- **Precision@{top_k}:** {precision_at_k:.2f}\n"
         f"- **Veri setindeki gerçek yan etki sayısı:** {len(true_labels)}\n\n"
         f"Bu karşılaştırma yalnızca TWOSIDES veri setinde kayıtlı ilaç çiftleri için yapılmaktadır. "
         f"Model skorları kesin klinik olasılık değil, veri setinden öğrenilen örüntülere dayalı göreli tahmin skorlarıdır."
     )
 
     return image, drug1_info, drug2_info, summary, prediction_df, true_df
+
+
+performance_panel = f"""
+## Model Performans Özeti
+
+| Metrik | Değer |
+|---|---:|
+| Test ROC-AUC | {TEST_ROC_AUC:.4f} |
+| Test PR-AUC | {TEST_PR_AUC:.4f} |
+| Yan etki sınıfı sayısı | {NUM_SIDE_EFFECT_CLASSES} |
+| Model | Siamese GATv2 |
+| Veri seti | TWOSIDES |
+
+"""
 
 
 with gr.Blocks(theme=gr.themes.Soft()) as demo:
@@ -397,13 +463,21 @@ with gr.Blocks(theme=gr.themes.Soft()) as demo:
         "TWOSIDES veri seti üzerinde eğitilmiş GATv2 tabanlı GNN modeliyle tahmin eder."
     )
 
-    gr.Markdown(
-        "**Not:** Veri setinde ilaçlar genellikle marka adıyla değil, "
-        "etken madde veya PubChem bileşik adıyla temsil edilmektedir."
-    )
-
     with gr.Row():
         with gr.Column(scale=1):
+            gr.Markdown("## Girdi Paneli")
+
+            demo_pair = gr.Dropdown(
+                choices=[
+                    "Dipyridamole + Gentamicin",
+                    "Darunavir + Penicillins",
+                    "Adapalene + Sibutramine",
+                ],
+                label="Hazır Demo Çifti",
+                value=None,
+                filterable=True,
+            )
+
             drug1 = gr.Dropdown(
                 choices=drug_list,
                 label="Birinci İlaç",
@@ -416,10 +490,22 @@ with gr.Blocks(theme=gr.themes.Soft()) as demo:
                 filterable=True,
             )
 
+            top_k = gr.Radio(
+                choices=[5, 10, 20],
+                value=10,
+                label="Gösterilecek Tahmin Sayısı (Top-K)",
+            )
+
             button = gr.Button("Yan Etki Tahmini Yap", variant="primary")
 
         with gr.Column(scale=1):
+            gr.Markdown(performance_panel)
             output_image = gr.Image(label="Moleküler Yapılar")
+
+    gr.Markdown(
+        "**Not:** Veri setinde ilaçlar genellikle marka adıyla değil, "
+        "etken madde veya PubChem bileşik adıyla temsil edilmektedir."
+    )
 
     gr.Markdown("## Seçilen İlaç Bilgileri")
 
@@ -432,7 +518,7 @@ with gr.Blocks(theme=gr.themes.Soft()) as demo:
 
     output_summary = gr.Markdown()
 
-    gr.Markdown("## Modelin Tahmin Ettiği İlk 10 Yan Etki")
+    gr.Markdown("## Modelin Tahmin Ettiği Yan Etkiler")
 
     prediction_table = gr.Dataframe(
         interactive=False,
@@ -458,9 +544,15 @@ with gr.Blocks(theme=gr.themes.Soft()) as demo:
         outputs=drug2,
     )
 
+    demo_pair.change(
+        fn=set_demo_pair,
+        inputs=demo_pair,
+        outputs=[drug1, drug2],
+    )
+
     button.click(
         predict_side_effects,
-        inputs=[drug1, drug2],
+        inputs=[drug1, drug2, top_k],
         outputs=[
             output_image,
             drug1_info_box,
