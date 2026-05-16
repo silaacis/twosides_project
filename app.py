@@ -72,15 +72,24 @@ def get_pubchem_record_title(cid):
     return None
 
 
-def get_drug_name(cid):
+def get_compound_from_cid(cid):
     try:
         pure_cid = int(str(cid).replace("CID", ""))
+        return pcp.Compound.from_cid(pure_cid)
+    except Exception:
+        return None
 
+
+def get_drug_name(cid):
+    try:
         title_name = get_pubchem_record_title(cid)
         if title_name:
             return title_name
 
-        compound = pcp.Compound.from_cid(pure_cid)
+        compound = get_compound_from_cid(cid)
+
+        if compound is None:
+            return f"Bilinmeyen İlaç [{cid}]"
 
         if compound.synonyms:
             clean_names = [
@@ -103,6 +112,37 @@ def get_drug_name(cid):
         pass
 
     return f"Bilinmeyen İlaç [{cid}]"
+
+
+def get_drug_info_markdown(display_name, cid, smiles):
+    compound = get_compound_from_cid(cid)
+
+    name = display_name.split(" [")[0]
+
+    if compound is None:
+        return (
+            f"### {name}\n\n"
+            f"- **PubChem CID:** {cid}\n"
+            f"- **SMILES:** `{smiles}`\n"
+            f"- PubChem üzerinden ayrıntılı bilgi alınamadı.\n"
+        )
+
+    formula = compound.molecular_formula or "Bilinmiyor"
+    weight = compound.molecular_weight or "Bilinmiyor"
+    iupac = compound.iupac_name or "Bilinmiyor"
+
+    synonyms = compound.synonyms[:5] if compound.synonyms else []
+    synonyms_text = ", ".join(synonyms) if synonyms else "Bilinmiyor"
+
+    return (
+        f"### {name}\n\n"
+        f"- **PubChem CID:** {cid}\n"
+        f"- **Moleküler Formül:** {formula}\n"
+        f"- **Molekül Ağırlığı:** {weight}\n"
+        f"- **IUPAC Adı:** {iupac}\n"
+        f"- **Diğer Adlar:** {synonyms_text}\n"
+        f"- **SMILES:** `{smiles}`\n"
+    )
 
 
 print(f"Kullanılan cihaz: {device}")
@@ -216,28 +256,31 @@ def predict_side_effects(drug1_display, drug2_display):
     empty_df = pd.DataFrame()
 
     if drug1_display is None or drug2_display is None:
-        return None, "Lütfen iki ilaç seçiniz.", empty_df, empty_df
+        return None, "", "", "Lütfen iki ilaç seçiniz.", empty_df, empty_df
 
     drug1_id = display_to_id[drug1_display]
     drug2_id = display_to_id[drug2_display]
 
     if drug1_id == drug2_id:
-        return None, "Lütfen iki farklı ilaç seçiniz.", empty_df, empty_df
+        return None, "", "", "Lütfen iki farklı ilaç seçiniz.", empty_df, empty_df
 
     smiles1 = drug_dict[drug1_id]
     smiles2 = drug_dict[drug2_id]
+
+    drug1_info = get_drug_info_markdown(drug1_display, drug1_id, smiles1)
+    drug2_info = get_drug_info_markdown(drug2_display, drug2_id, smiles2)
 
     mol1 = Chem.MolFromSmiles(smiles1)
     mol2 = Chem.MolFromSmiles(smiles2)
 
     if mol1 is None or mol2 is None:
-        return None, "Molekül yapısı okunamadı.", empty_df, empty_df
+        return None, drug1_info, drug2_info, "Molekül yapısı okunamadı.", empty_df, empty_df
 
     g1 = smiles_to_graph(smiles1)
     g2 = smiles_to_graph(smiles2)
 
     if g1 is None or g2 is None:
-        return None, "Graf dönüşümü başarısız oldu.", empty_df, empty_df
+        return None, drug1_info, drug2_info, "Graf dönüşümü başarısız oldu.", empty_df, empty_df
 
     batch1 = Batch.from_data_list([g1]).to(device)
     batch2 = Batch.from_data_list([g2]).to(device)
@@ -309,7 +352,7 @@ def predict_side_effects(drug1_display, drug2_display):
         f"Model skorları kesin klinik olasılık değil, veri setinden öğrenilen örüntülere dayalı göreli tahmin skorlarıdır."
     )
 
-    return image, summary, prediction_df, true_df
+    return image, drug1_info, drug2_info, summary, prediction_df, true_df
 
 
 with gr.Blocks(theme=gr.themes.Soft()) as demo:
@@ -338,6 +381,15 @@ with gr.Blocks(theme=gr.themes.Soft()) as demo:
 
         with gr.Column(scale=1):
             output_image = gr.Image(label="Moleküler Yapılar")
+
+    gr.Markdown("## Seçilen İlaç Bilgileri")
+
+    with gr.Row():
+        with gr.Column(scale=1):
+            drug1_info_box = gr.Markdown()
+
+        with gr.Column(scale=1):
+            drug2_info_box = gr.Markdown()
 
     output_summary = gr.Markdown()
 
@@ -371,6 +423,8 @@ with gr.Blocks(theme=gr.themes.Soft()) as demo:
         inputs=[drug1, drug2],
         outputs=[
             output_image,
+            drug1_info_box,
+            drug2_info_box,
             output_summary,
             prediction_table,
             true_table,
