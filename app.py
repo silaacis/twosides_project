@@ -2,6 +2,7 @@ import json
 import os
 import torch
 import gradio as gr
+import pandas as pd
 import pubchempy as pcp
 import requests
 
@@ -24,29 +25,31 @@ def load_side_effect_descriptions():
         with open(DESCRIPTION_FILE, "r", encoding="utf-8") as file:
             return json.load(file)
 
-    print("Uyarı: side_effect_descriptions.json bulunamadı.")
+    print("Uyarı: side_effect_descriptions_enhanced.json bulunamadı.")
     return {}
 
 
 side_effect_descriptions = load_side_effect_descriptions()
 
 
-def get_side_effect_info(label_id, effect_name):
+def get_side_effect_info(label_id):
     key = str(label_id)
 
     if key in side_effect_descriptions:
         item = side_effect_descriptions[key]
-        return (
-            item.get("tr_name", effect_name),
-            item.get("description", "Açıklama bulunamadı."),
-            item.get("source", "Açıklama dosyası"),
-        )
+        return {
+            "en_name": item.get("en_name", key),
+            "tr_name": item.get("tr_name", item.get("en_name", key)),
+            "description": item.get("description", "Açıklama bulunamadı."),
+            "source": item.get("source", "Açıklama dosyası"),
+        }
 
-    return (
-        effect_name,
-        f"{effect_name}, TWOSIDES veri setinde ilaç kombinasyonlarıyla ilişkili olarak bildirilen klinik bir yan etkidir.",
-        "Varsayılan",
-    )
+    return {
+        "en_name": key,
+        "tr_name": key,
+        "description": "Bu yan etki için açıklama bulunamadı.",
+        "source": "Varsayılan",
+    }
 
 
 def get_pubchem_record_title(cid):
@@ -74,7 +77,6 @@ def get_drug_name(cid):
         pure_cid = int(str(cid).replace("CID", ""))
 
         title_name = get_pubchem_record_title(cid)
-
         if title_name:
             return title_name
 
@@ -123,6 +125,19 @@ mlb = torch.load(
 
 num_classes = len(mlb.classes_)
 
+print("Gerçek etiket sözlüğü hazırlanıyor...")
+
+true_label_dict = {}
+
+for _, row in grouped_df.iterrows():
+    d1 = row["Drug1_ID"]
+    d2 = row["Drug2_ID"]
+    labels = set(str(label) for label in row["Y"])
+
+    true_label_dict[(d1, d2)] = labels
+    true_label_dict[(d2, d1)] = labels
+
+
 print("İlaç isimleri hazırlanıyor...")
 
 drug_dict = {}
@@ -167,13 +182,15 @@ print("Model başarıyla yüklendi.")
 
 def predict_side_effects(drug1_display, drug2_display):
     if drug1_display is None or drug2_display is None:
-        return None, "Lütfen iki ilaç seçiniz."
+        empty_df = pd.DataFrame()
+        return None, "Lütfen iki ilaç seçiniz.", empty_df, empty_df
 
     drug1_id = display_to_id[drug1_display]
     drug2_id = display_to_id[drug2_display]
 
     if drug1_id == drug2_id:
-        return None, "Lütfen iki farklı ilaç seçiniz."
+        empty_df = pd.DataFrame()
+        return None, "Lütfen iki farklı ilaç seçiniz.", empty_df, empty_df
 
     smiles1 = drug_dict[drug1_id]
     smiles2 = drug_dict[drug2_id]
@@ -182,13 +199,15 @@ def predict_side_effects(drug1_display, drug2_display):
     mol2 = Chem.MolFromSmiles(smiles2)
 
     if mol1 is None or mol2 is None:
-        return None, "Molekül yapısı okunamadı."
+        empty_df = pd.DataFrame()
+        return None, "Molekül yapısı okunamadı.", empty_df, empty_df
 
     g1 = smiles_to_graph(smiles1)
     g2 = smiles_to_graph(smiles2)
 
     if g1 is None or g2 is None:
-        return None, "Graf dönüşümü başarısız oldu."
+        empty_df = pd.DataFrame()
+        return None, "Graf dönüşümü başarısız oldu.", empty_df, empty_df
 
     batch1 = Batch.from_data_list([g1]).to(device)
     batch2 = Batch.from_data_list([g2]).to(device)
@@ -199,6 +218,8 @@ def predict_side_effects(drug1_display, drug2_display):
 
     top_scores, top_indices = torch.topk(scores, 10)
 
+    true_labels = true_label_dict.get((drug1_id, drug2_id), set())
+
     image = Draw.MolsToGridImage(
         [mol1, mol2],
         legends=[drug1_display.split(" [")[0], drug2_display.split(" [")[0]],
@@ -206,39 +227,66 @@ def predict_side_effects(drug1_display, drug2_display):
         subImgSize=(350, 300),
     )
 
-    result = "## Tahmin Edilen İlk 10 Yan Etki\n\n"
-    result += "| Sıra | Yan Etki | Türkçe Karşılık | Açıklama | Kaynak | Model Skoru |\n"
-    result += "|---|---|---|---|---|---|\n"
+    prediction_rows = []
+    matched_count = 0
 
-    for i, idx in enumerate(top_indices):
-        label_id = mlb.classes_[idx.item()]
-        effect_name = side_effect_descriptions.get(
-            str(label_id), {}
-        ).get("en_name", str(label_id))
+    for rank, idx in enumerate(top_indices, start=1):
+        label_id = str(mlb.classes_[idx.item()])
+        score = top_scores[rank - 1].item() * 100
 
-        score = top_scores[i].item() * 100
+        info = get_side_effect_info(label_id)
+        is_match = label_id in true_labels
 
-        tr_name, description, source = get_side_effect_info(label_id, effect_name)
+        if is_match:
+            matched_count += 1
 
-        result += (
-            f"| {i + 1} | {effect_name} | {tr_name} | "
-            f"{description} | {source} | %{score:.2f} |\n"
+        prediction_rows.append(
+            {
+                "Sıra": rank,
+                "Yan Etki": info["en_name"],
+                "Türkçe Karşılık": info["tr_name"],
+                "Açıklama": info["description"],
+                "Kaynak": info["source"],
+                "Model Skoru": f"%{score:.2f}",
+                "Veri Setinde Var mı?": "Evet" if is_match else "Hayır",
+            }
         )
 
-    result += "\n---\n"
-    result += "**Not:** Bu sistem tıbbi tanı veya tedavi önerisi değildir. "
-    result += "Model skorları kesin klinik olasılık değil, TWOSIDES veri setinden öğrenilen örüntülere dayalı göreli tahmin skorlarıdır. "
-    result += "Yan etki açıklamaları, önceden oluşturulmuş açıklama dosyasından alınmaktadır."
+    prediction_df = pd.DataFrame(prediction_rows)
 
-    return image, result
+    true_rows = []
+
+    for label_id in sorted(true_labels):
+        info = get_side_effect_info(label_id)
+        true_rows.append(
+            {
+                "Yan Etki": info["en_name"],
+                "Türkçe Karşılık": info["tr_name"],
+                "Açıklama": info["description"],
+            }
+        )
+
+    true_df = pd.DataFrame(true_rows)
+
+    precision_at_10 = matched_count / 10
+
+    summary = (
+        f"### Değerlendirme Özeti\n\n"
+        f"- **Top-10 eşleşme:** {matched_count} / 10\n"
+        f"- **Precision@10:** {precision_at_10:.2f}\n"
+        f"- **Veri setindeki gerçek yan etki sayısı:** {len(true_labels)}\n\n"
+        f"Model skorları kesin klinik olasılık değil, TWOSIDES veri setinden öğrenilen örüntülere dayalı göreli tahmin skorlarıdır."
+    )
+
+    return image, summary, prediction_df, true_df
 
 
 with gr.Blocks(theme=gr.themes.Soft()) as demo:
     gr.Markdown("# GNN Tabanlı Polypharmacy Yan Etki Tahmin Sistemi")
 
     gr.Markdown(
-        "Bu arayüz, iki ilacın birlikte kullanımında ortaya çıkabilecek "
-        "olası yan etkileri TWOSIDES veri seti üzerinde eğitilmiş GATv2 modeliyle tahmin eder."
+        "Bu arayüz, iki ilacın birlikte kullanımında ortaya çıkabilecek olası yan etkileri "
+        "TWOSIDES veri seti üzerinde eğitilmiş GATv2 tabanlı GNN modeliyle tahmin eder."
     )
 
     with gr.Row():
@@ -260,13 +308,50 @@ with gr.Blocks(theme=gr.themes.Soft()) as demo:
         with gr.Column(scale=1):
             output_image = gr.Image(label="Moleküler Yapılar")
 
-    gr.Markdown("## Tahmin Sonuçları")
-    output_text = gr.Markdown()
+    output_summary = gr.Markdown()
+
+    gr.Markdown("## Modelin Tahmin Ettiği İlk 10 Yan Etki")
+
+    prediction_table = gr.Dataframe(
+        headers=[
+            "Sıra",
+            "Yan Etki",
+            "Türkçe Karşılık",
+            "Açıklama",
+            "Kaynak",
+            "Model Skoru",
+            "Veri Setinde Var mı?",
+        ],
+        interactive=False,
+        wrap=True,
+    )
+
+    gr.Markdown("## TWOSIDES Veri Setindeki Gerçek Yan Etkiler")
+
+    true_table = gr.Dataframe(
+        headers=[
+            "Yan Etki",
+            "Türkçe Karşılık",
+            "Açıklama",
+        ],
+        interactive=False,
+        wrap=True,
+    )
+
+    gr.Markdown(
+        "**Not:** Bu sistem tıbbi tanı veya tedavi önerisi değildir. "
+        "Sonuçlar araştırma/prototip amaçlıdır."
+    )
 
     button.click(
         predict_side_effects,
         inputs=[drug1, drug2],
-        outputs=[output_image, output_text],
+        outputs=[
+            output_image,
+            output_summary,
+            prediction_table,
+            true_table,
+        ],
     )
 
 
