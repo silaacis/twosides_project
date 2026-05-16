@@ -278,44 +278,6 @@ def update_second_drug(selected_drug):
     )
 
 
-def set_demo_pair(demo_name):
-    demo_pairs = {
-        "Dipyridamole + Gentamicin": ("Dipyridamole", "Gentamicin"),
-        "Darunavir + Penicillins": ("Darunavir", "Penicillins"),
-        "Adapalene + Sibutramine": ("Adapalene", "Sibutramine"),
-    }
-
-    if demo_name not in demo_pairs:
-        return None, gr.Dropdown(choices=[], value=None)
-
-    first_keyword, second_keyword = demo_pairs[demo_name]
-
-    selected_first = None
-    selected_second = None
-
-    for item in drug_list:
-        if first_keyword.lower() in item.lower():
-            selected_first = item
-            break
-
-    if selected_first is None:
-        return None, gr.Dropdown(choices=[], value=None)
-
-    possible_pairs = sorted(list(drug_pair_map.get(selected_first, [])))
-
-    for item in possible_pairs:
-        if second_keyword.lower() in item.lower():
-            selected_second = item
-            break
-
-    return selected_first, gr.Dropdown(
-        choices=possible_pairs,
-        value=selected_second,
-        label="İkinci İlaç",
-        filterable=True,
-    )
-
-
 model = SiameseGATv2(
     num_node_features=80,
     num_edge_features=6,
@@ -467,17 +429,6 @@ with gr.Blocks(theme=gr.themes.Soft()) as demo:
         with gr.Column(scale=1):
             gr.Markdown("## Girdi Paneli")
 
-            demo_pair = gr.Dropdown(
-                choices=[
-                    "Dipyridamole + Gentamicin",
-                    "Darunavir + Penicillins",
-                    "Adapalene + Sibutramine",
-                ],
-                label="Hazır Demo Çifti",
-                value=None,
-                filterable=True,
-            )
-
             drug1 = gr.Dropdown(
                 choices=drug_list,
                 label="Birinci İlaç",
@@ -542,12 +493,6 @@ with gr.Blocks(theme=gr.themes.Soft()) as demo:
         fn=update_second_drug,
         inputs=drug1,
         outputs=drug2,
-    )
-
-    demo_pair.change(
-        fn=set_demo_pair,
-        inputs=demo_pair,
-        outputs=[drug1, drug2],
     )
 
     button.click(
