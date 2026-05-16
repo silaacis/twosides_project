@@ -72,6 +72,75 @@ def get_pubchem_record_title(cid):
     return None
 
 
+def extract_pubchem_description(cid):
+    try:
+        pure_cid = str(int(str(cid).replace("CID", "")))
+        url = f"https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/compound/{pure_cid}/JSON"
+
+        response = requests.get(url, timeout=8)
+
+        if response.status_code != 200:
+            return "PubChem üzerinden kısa açıklama alınamadı."
+
+        data = response.json()
+        sections = data.get("Record", {}).get("Section", [])
+
+        preferred_headings = [
+            "description",
+            "pharmacology",
+            "therapeutic uses",
+            "drug indication",
+            "use and manufacturing",
+            "clinical use",
+            "mechanism of action",
+        ]
+
+        def extract_text_from_info(info_list):
+            for info in info_list:
+                value = info.get("Value", {})
+
+                if "StringWithMarkup" in value:
+                    texts = [
+                        item.get("String", "")
+                        for item in value["StringWithMarkup"]
+                    ]
+
+                    text = " ".join(texts).strip()
+
+                    if len(text) > 40:
+                        return text[:700] + ("..." if len(text) > 700 else "")
+
+            return None
+
+        def search_sections(section_list):
+            for section in section_list:
+                heading = section.get("TOCHeading", "").lower()
+
+                if any(key in heading for key in preferred_headings):
+                    text = extract_text_from_info(section.get("Information", []))
+
+                    if text:
+                        return text
+
+                nested_sections = section.get("Section", [])
+                nested_result = search_sections(nested_sections)
+
+                if nested_result:
+                    return nested_result
+
+            return None
+
+        description = search_sections(sections)
+
+        if description:
+            return description
+
+    except Exception:
+        pass
+
+    return "PubChem’de bu bileşik için kısa kullanım açıklaması bulunamadı."
+
+
 def get_compound_from_cid(cid):
     try:
         pure_cid = int(str(cid).replace("CID", ""))
@@ -116,15 +185,16 @@ def get_drug_name(cid):
 
 def get_drug_info_markdown(display_name, cid, smiles):
     compound = get_compound_from_cid(cid)
-
     name = display_name.split(" [")[0]
+    drug_description = extract_pubchem_description(cid)
 
     if compound is None:
         return (
             f"### {name}\n\n"
             f"- **PubChem CID:** {cid}\n"
+            f"- **Kısa Açıklama / Kullanım Bilgisi:** {drug_description}\n"
             f"- **SMILES:** `{smiles}`\n"
-            f"- PubChem üzerinden ayrıntılı bilgi alınamadı.\n"
+            f"- PubChem üzerinden ayrıntılı kimyasal bilgi alınamadı.\n"
         )
 
     formula = compound.molecular_formula or "Bilinmiyor"
@@ -137,6 +207,7 @@ def get_drug_info_markdown(display_name, cid, smiles):
     return (
         f"### {name}\n\n"
         f"- **PubChem CID:** {cid}\n"
+        f"- **Kısa Açıklama / Kullanım Bilgisi:** {drug_description}\n"
         f"- **Moleküler Formül:** {formula}\n"
         f"- **Molekül Ağırlığı:** {weight}\n"
         f"- **IUPAC Adı:** {iupac}\n"
@@ -361,6 +432,11 @@ with gr.Blocks(theme=gr.themes.Soft()) as demo:
     gr.Markdown(
         "Bu arayüz, iki ilacın birlikte kullanımında ortaya çıkabilecek olası yan etkileri "
         "TWOSIDES veri seti üzerinde eğitilmiş GATv2 tabanlı GNN modeliyle tahmin eder."
+    )
+
+    gr.Markdown(
+        "**Not:** Veri setinde ilaçlar genellikle marka adıyla değil, "
+        "etken madde veya PubChem bileşik adıyla temsil edilmektedir."
     )
 
     with gr.Row():
