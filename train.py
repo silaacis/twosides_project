@@ -3,17 +3,21 @@ import time
 import warnings
 
 import numpy as np
+import pandas as pd
 import torch
 import torch.nn as nn
+
 from sklearn.metrics import average_precision_score, roc_auc_score
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MultiLabelBinarizer
+
 from tdc.multi_pred import DDI
 from torch.utils.data import Dataset
 from torch_geometric.loader import DataLoader
 
 from graph_utils import smiles_to_graph
 from model import SiameseGATv2
+
 
 warnings.filterwarnings("ignore")
 
@@ -37,7 +41,7 @@ class TwosidesDataset(Dataset):
 
 def train_one_epoch(model, train_loader, criterion, optimizer, device):
     model.train()
-    total_loss = 0
+    total_loss = 0.0
 
     for batch_idx, batch in enumerate(train_loader):
         g1, g2, labels = batch
@@ -64,14 +68,14 @@ def train_one_epoch(model, train_loader, criterion, optimizer, device):
     return total_loss / len(train_loader)
 
 
-def evaluate(model, test_loader, device):
+def evaluate(model, data_loader, device):
     model.eval()
 
     all_labels = []
     all_preds = []
 
     with torch.no_grad():
-        for batch in test_loader:
+        for batch in data_loader:
             g1, g2, labels = batch
 
             g1 = g1.to(device)
@@ -99,11 +103,12 @@ def evaluate(model, test_loader, device):
 
 def main():
     os.makedirs("models", exist_ok=True)
+    os.makedirs("results", exist_ok=True)
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print(f"Kullanılan cihaz: {device}")
 
-    print("TWOSIDES veri seti indiriliyor...")
+    print("TWOSIDES veri seti indiriliyor/yükleniyor...")
     data = DDI(name="TWOSIDES")
     df = data.get_data()
 
@@ -113,6 +118,8 @@ def main():
         .apply(list)
         .reset_index()
     )
+
+    print(f"Toplam benzersiz ilaç çifti: {len(grouped_df)}")
 
     mlb = MultiLabelBinarizer()
     y_multilabel = mlb.fit_transform(grouped_df["Y"])
@@ -124,21 +131,39 @@ def main():
     num_classes = len(mlb.classes_)
     print(f"Toplam yan etki sınıfı: {num_classes}")
 
-    train_df, test_df = train_test_split(
+    train_val_df, test_df = train_test_split(
         grouped_df,
         test_size=0.2,
         random_state=42,
     )
 
+    train_df, val_df = train_test_split(
+        train_val_df,
+        test_size=0.125,
+        random_state=42,
+    )
+
+    print(f"Train örnek sayısı: {len(train_df)}")
+    print(f"Validation örnek sayısı: {len(val_df)}")
+    print(f"Test örnek sayısı: {len(test_df)}")
+
+    batch_size = 64
+
     train_loader = DataLoader(
         TwosidesDataset(train_df),
-        batch_size=64,
+        batch_size=batch_size,
         shuffle=True,
+    )
+
+    val_loader = DataLoader(
+        TwosidesDataset(val_df),
+        batch_size=batch_size,
+        shuffle=False,
     )
 
     test_loader = DataLoader(
         TwosidesDataset(test_df),
-        batch_size=64,
+        batch_size=batch_size,
         shuffle=False,
     )
 
@@ -154,6 +179,7 @@ def main():
     ).to(device)
 
     criterion = nn.BCEWithLogitsLoss()
+
     optimizer = torch.optim.Adam(
         model.parameters(),
         lr=0.001,
@@ -167,43 +193,126 @@ def main():
         patience=2,
     )
 
-    epochs = 5
+    epochs = 10
+    best_val_pr_auc = 0.0
+
+    history = []
+
+    torch.save(mlb, "models/label_binarizer.pth")
 
     print("Eğitim başlıyor...")
-    print("-" * 70)
-    print(f"{'Epoch':<10} {'Loss':<15} {'ROC-AUC':<15} {'PR-AUC':<15} {'Süre':<10}")
-    print("-" * 70)
+    print("-" * 95)
+    print(
+        f"{'Epoch':<8} "
+        f"{'Train Loss':<15} "
+        f"{'Val ROC-AUC':<15} "
+        f"{'Val PR-AUC':<15} "
+        f"{'Best PR-AUC':<15} "
+        f"{'Süre(sn)':<10}"
+    )
+    print("-" * 95)
 
     for epoch in range(1, epochs + 1):
         start_time = time.time()
 
         train_loss = train_one_epoch(
-            model,
-            train_loader,
-            criterion,
-            optimizer,
-            device,
+            model=model,
+            train_loader=train_loader,
+            criterion=criterion,
+            optimizer=optimizer,
+            device=device,
         )
 
-        roc_auc, pr_auc = evaluate(model, test_loader, device)
-        scheduler.step(pr_auc)
+        val_roc_auc, val_pr_auc = evaluate(
+            model=model,
+            data_loader=val_loader,
+            device=device,
+        )
+
+        scheduler.step(val_pr_auc)
 
         duration = time.time() - start_time
 
+        is_best = val_pr_auc > best_val_pr_auc
+
+        if is_best:
+            best_val_pr_auc = val_pr_auc
+            torch.save(model.state_dict(), "models/twosides_gatv2_best_model.pth")
+            torch.save(model.state_dict(), "models/twosides_gatv2_model.pth")
+
+        history.append(
+            {
+                "epoch": epoch,
+                "train_loss": train_loss,
+                "val_roc_auc": val_roc_auc,
+                "val_pr_auc": val_pr_auc,
+                "best_val_pr_auc": best_val_pr_auc,
+                "duration_seconds": duration,
+                "is_best": is_best,
+            }
+        )
+
+        pd.DataFrame(history).to_csv(
+            "results/training_history.csv",
+            index=False,
+            encoding="utf-8",
+        )
+
         print(
-            f"{epoch:<10} "
+            f"{epoch:<8} "
             f"{train_loss:<15.4f} "
-            f"{roc_auc:<15.4f} "
-            f"{pr_auc:<15.4f} "
+            f"{val_roc_auc:<15.4f} "
+            f"{val_pr_auc:<15.4f} "
+            f"{best_val_pr_auc:<15.4f} "
             f"{duration:<10.0f}"
         )
 
-    torch.save(model.state_dict(), "models/twosides_gatv2_model.pth")
-    torch.save(mlb, "models/label_binarizer.pth")
+    print("-" * 95)
+    print("En iyi model validation PR-AUC değerine göre kaydedildi.")
+    print("Final test değerlendirmesi yapılıyor...")
+
+    model.load_state_dict(
+        torch.load(
+            "models/twosides_gatv2_best_model.pth",
+            map_location=device,
+        )
+    )
+
+    test_roc_auc, test_pr_auc = evaluate(
+        model=model,
+        data_loader=test_loader,
+        device=device,
+    )
+
+    final_results = {
+        "best_val_pr_auc": best_val_pr_auc,
+        "test_roc_auc": test_roc_auc,
+        "test_pr_auc": test_pr_auc,
+        "num_classes": num_classes,
+        "train_size": len(train_df),
+        "validation_size": len(val_df),
+        "test_size": len(test_df),
+        "epochs": epochs,
+        "batch_size": batch_size,
+        "hidden_dim": hidden_dim,
+    }
+
+    pd.DataFrame([final_results]).to_csv(
+        "results/final_test_results.csv",
+        index=False,
+        encoding="utf-8",
+    )
+
+    print(f"Test ROC-AUC: {test_roc_auc:.4f}")
+    print(f"Test PR-AUC: {test_pr_auc:.4f}")
 
     print("Eğitim tamamlandı.")
-    print("Model kaydedildi: models/twosides_gatv2_model.pth")
-    print("Label binarizer kaydedildi: models/label_binarizer.pth")
+    print("Kaydedilen dosyalar:")
+    print("- models/twosides_gatv2_model.pth")
+    print("- models/twosides_gatv2_best_model.pth")
+    print("- models/label_binarizer.pth")
+    print("- results/training_history.csv")
+    print("- results/final_test_results.csv")
 
 
 if __name__ == "__main__":
