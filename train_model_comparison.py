@@ -95,7 +95,7 @@ def train_single_model(
     val_loader,
     test_loader,
     num_classes,
-    epochs=2,
+    epochs=10,
 ):
     print("\n" + "=" * 70)
     print(f"{model_name} eğitimi başlıyor...")
@@ -283,7 +283,7 @@ def main():
             val_loader=val_loader,
             test_loader=test_loader,
             num_classes=num_classes,
-            epochs=2,
+            epochs=10,
         )
     )
 
@@ -295,7 +295,7 @@ def main():
             val_loader=val_loader,
             test_loader=test_loader,
             num_classes=num_classes,
-            epochs=2,
+            epochs=10,
         )
     )
 
@@ -307,7 +307,7 @@ def main():
             val_loader=val_loader,
             test_loader=test_loader,
             num_classes=num_classes,
-            epochs=2,
+            epochs=10,
         )
     )
 
