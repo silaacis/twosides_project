@@ -167,7 +167,7 @@ def train_single_model(model_name, model_class):
 
     best_pr_auc = 0
 
-    for epoch in range(1, 6):
+    for epoch in range(1, 3):
         model.train()
 
         total_loss = 0
