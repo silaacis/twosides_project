@@ -8,4 +8,4 @@ pubchempy
 requests
 rdkit
 pytdc
-deep-translator
+tqdm
