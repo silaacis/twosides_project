@@ -6,6 +6,6 @@ scikit-learn
 gradio
 pubchempy
 requests
-rdkit-pypi
+rdkit
 pytdc
 deep-translator
