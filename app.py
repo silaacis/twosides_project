@@ -247,7 +247,6 @@ print("TWOSIDES verisi yükleniyor...")
 data = DDI(name="TWOSIDES")
 
 
-label_map = get_label_map(name="TWOSIDES")
 
 grouped_df = (
     df.groupby(["Drug1_ID", "Drug1", "Drug2_ID", "Drug2"])["Y"]
