@@ -1,0 +1,2 @@
+model,epochs,best_val_pr_auc,test_roc_auc,test_pr_auc,num_classes,train_size,validation_size,test_size,batch_size,hidden_dim,fingerprint_dim
+GraphSAGE + Morgan Fingerprint,10,0.3606486293705307,0.8921677201704685,0.36678544179463346,1317,44430,6348,12695,64,128,512

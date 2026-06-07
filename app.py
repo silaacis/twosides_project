@@ -12,7 +12,8 @@ from rdkit.Chem import Draw
 from torch_geometric.data import Batch
 
 from graph_utils import smiles_to_graph
-from model_graphsage import SiameseGraphSAGE
+from model_graphsage_fp import SiameseGraphSAGEFingerprint
+from fingerprint_utils import smiles_to_morgan_fingerprint
 
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -20,8 +21,8 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 SIDE_EFFECT_DESCRIPTION_FILE = "side_effect_descriptions_enhanced.json"
 DRUG_DESCRIPTION_FILE = "drug_descriptions_enhanced.json"
 
-TEST_ROC_AUC = 0.8845
-TEST_PR_AUC = 0.3476
+TEST_ROC_AUC = 0.8922
+TEST_PR_AUC = 0.3668
 NUM_SIDE_EFFECT_CLASSES = 1317
 
 
@@ -278,23 +279,24 @@ def update_second_drug(selected_drug):
     )
 
 
-model = SiameseGraphSAGE(
+model = SiameseGraphSAGEFingerprint(
     num_node_features=80,
     num_edge_features=6,
     hidden_dim=128,
     num_classes=num_classes,
+    fingerprint_dim=512,
 ).to(device)
 
 model.load_state_dict(
     torch.load(
-        "models/graphsage_best.pth",
+        "models/graphsage_fp_best.pth",
         map_location=device,
     )
 )
 
 model.eval()
 
-print("GraphSAGE modeli başarıyla yüklendi.")
+print("GraphSAGE + Morgan Fingerprint modeli başarıyla yüklendi.")
 
 
 def predict_side_effects(drug1_display, drug2_display, top_k):
@@ -332,8 +334,11 @@ def predict_side_effects(drug1_display, drug2_display, top_k):
     batch1 = Batch.from_data_list([g1]).to(device)
     batch2 = Batch.from_data_list([g2]).to(device)
 
+    fp1 = smiles_to_morgan_fingerprint(smiles1).unsqueeze(0).to(device)
+    fp2 = smiles_to_morgan_fingerprint(smiles2).unsqueeze(0).to(device)
+
     with torch.no_grad():
-        output = model(batch1, batch2)
+        output = model(batch1, batch2, fp1, fp2)
         scores = torch.sigmoid(output)[0]
 
     top_scores, top_indices = torch.topk(scores, top_k)
@@ -411,7 +416,7 @@ performance_panel = f"""
 | Test ROC-AUC | {TEST_ROC_AUC:.4f} |
 | Test PR-AUC | {TEST_PR_AUC:.4f} |
 | Yan etki sınıfı sayısı | {NUM_SIDE_EFFECT_CLASSES} |
-| Model | Siamese GraphSAGE |
+| Model | GraphSAGE + Morgan Fingerprint |
 | Veri seti | TWOSIDES |
 
 """
@@ -422,7 +427,7 @@ with gr.Blocks(theme=gr.themes.Soft()) as demo:
 
     gr.Markdown(
         "Bu arayüz, iki ilacın birlikte kullanımında ortaya çıkabilecek olası yan etkileri "
-        "TWOSIDES veri seti üzerinde eğitilmiş GraphSAGE tabanlı GNN modeliyle tahmin eder."
+        "TWOSIDES veri seti üzerinde eğitilmiş GraphSAGE + Morgan Fingerprint tabanlı GNN modeliyle tahmin eder."
     )
 
     with gr.Row():
