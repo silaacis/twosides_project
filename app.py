@@ -5,6 +5,7 @@ import gradio as gr
 import pandas as pd
 import pubchempy as pcp
 import requests
+from tdc.utils import get_label_map
 
 from tdc.multi_pred import DDI
 from rdkit import Chem
@@ -47,6 +48,39 @@ drug_descriptions = load_json_file(
 
 
 def get_side_effect_info(label_id):
+    key = str(label_id)
+
+    side_effect_name = key
+
+    try:
+        int_key = int(key)
+        side_effect_name = label_map.get(int_key, key)
+    except Exception:
+        side_effect_name = label_map.get(key, key)
+
+    possible_keys = [
+        key,
+        side_effect_name,
+        str(side_effect_name),
+        str(side_effect_name).lower(),
+    ]
+
+    for lookup_key in possible_keys:
+        if lookup_key in side_effect_descriptions:
+            item = side_effect_descriptions[lookup_key]
+            return {
+                "en_name": item.get("en_name", side_effect_name),
+                "tr_name": item.get("tr_name", item.get("en_name", side_effect_name)),
+                "description": item.get("description", "Açıklama bulunamadı."),
+                "source": item.get("source", "Açıklama dosyası"),
+            }
+
+    return {
+        "en_name": side_effect_name,
+        "tr_name": side_effect_name,
+        "description": "Bu yan etki için açıklama bulunamadı.",
+        "source": "Varsayılan",
+    }
     key = str(label_id)
 
     if key in side_effect_descriptions:
@@ -196,6 +230,8 @@ print("TWOSIDES verisi yükleniyor...")
 
 data = DDI(name="TWOSIDES")
 df = data.get_data()
+
+label_map = get_label_map(name="TWOSIDES")
 
 grouped_df = (
     df.groupby(["Drug1_ID", "Drug1", "Drug2_ID", "Drug2"])["Y"]
