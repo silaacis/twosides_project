@@ -194,7 +194,7 @@ def main():
 
     criterion = torch.nn.BCEWithLogitsLoss()
 
-    epochs = 10
+    epochs = 20
     best_val_pr_auc = 0.0
 
     history = []
