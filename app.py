@@ -64,56 +64,6 @@ def get_side_effect_info(label_id):
         "description": "Bu yan etki için açıklama bulunamadı.",
         "source": "Varsayılan",
     }
-    key = str(label_id)
-
-    side_effect_name = key
-
-    try:
-        int_key = int(key)
-        side_effect_name = label_map.get(int_key, key)
-    except Exception:
-        side_effect_name = label_map.get(key, key)
-
-    possible_keys = [
-        key,
-        side_effect_name,
-        str(side_effect_name),
-        str(side_effect_name).lower(),
-    ]
-
-    for lookup_key in possible_keys:
-        if lookup_key in side_effect_descriptions:
-            item = side_effect_descriptions[lookup_key]
-            return {
-                "en_name": item.get("en_name", side_effect_name),
-                "tr_name": item.get("tr_name", item.get("en_name", side_effect_name)),
-                "description": item.get("description", "Açıklama bulunamadı."),
-                "source": item.get("source", "Açıklama dosyası"),
-            }
-
-    return {
-        "en_name": side_effect_name,
-        "tr_name": side_effect_name,
-        "description": "Bu yan etki için açıklama bulunamadı.",
-        "source": "Varsayılan",
-    }
-    key = str(label_id)
-
-    if key in side_effect_descriptions:
-        item = side_effect_descriptions[key]
-        return {
-            "en_name": item.get("en_name", key),
-            "tr_name": item.get("tr_name", item.get("en_name", key)),
-            "description": item.get("description", "Açıklama bulunamadı."),
-            "source": item.get("source", "Açıklama dosyası"),
-        }
-
-    return {
-        "en_name": key,
-        "tr_name": key,
-        "description": "Bu yan etki için açıklama bulunamadı.",
-        "source": "Varsayılan",
-    }
 
 
 def get_pubchem_record_title(cid):
@@ -145,6 +95,12 @@ def get_compound_from_cid(cid):
 
 
 def get_drug_name(cid):
+    drug_item = drug_descriptions.get(cid, {})
+    json_name = drug_item.get("name", "")
+
+    if json_name and not json_name.upper().startswith("CID"):
+        return json_name.title()
+
     try:
         title_name = get_pubchem_record_title(cid)
         if title_name:
@@ -245,8 +201,7 @@ print(f"Kullanılan cihaz: {device}")
 print("TWOSIDES verisi yükleniyor...")
 
 data = DDI(name="TWOSIDES")
-
-
+df = data.get_data()
 
 grouped_df = (
     df.groupby(["Drug1_ID", "Drug1", "Drug2_ID", "Drug2"])["Y"]
