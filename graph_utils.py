@@ -1,3 +1,20 @@
+"""Bu dosya, ilaçların SMILES formatındaki kimyasal gösterimlerini
+Graph Neural Network (GNN) modellerinin kullanabileceği graph
+yapısına dönüştürmek için oluşturulmuştur.
+
+İşleyiş:
+
+1. SMILES stringi RDKit kullanılarak molekül nesnesine çevrilir.
+2. Moleküldeki her atom için çeşitli kimyasal özellikler çıkarılır. 
+- Atom tipi
+- Atom derecesi
+- Hidrojen sayısı
+
+3. Moleküldeki her bağ için bağ özellikleri çıkarılır.
+4. Atomlar node, bağlar edge olacak şekilde graph oluşturulur.
+5. Oluşturulan graph PyTorch Geometric Data formatında döndürülür.
+"""
+
 import torch
 from torch_geometric.data import Data
 from rdkit import Chem

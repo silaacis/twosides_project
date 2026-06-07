@@ -1,39 +1,20 @@
 """
-train_graphsage_final.py
+train_graphsage_fp.py
 
-Bu dosya, projede final model olarak seçilen GraphSAGE modelini
-TWOSIDES veri seti üzerinde eğitmek için kullanılır.
+Bu dosya, GraphSAGE modelinin Morgan Fingerprint ile zenginleştirilmiş
+versiyonunu eğitmek için kullanılır.
 
-İşleyiş:
+Amaç:
+Standart GraphSAGE modeli sadece moleküler graph bilgisini kullanırken,
+bu model hem graph embedding hem de Morgan Fingerprint bilgisini birlikte kullanır.
 
-1. TWOSIDES veri seti yüklenir.
-2. Aynı ilaç çiftlerine ait yan etkiler tek listede gruplanır.
-3. Yan etki etiketleri MultiLabelBinarizer ile çok etiketli formata çevrilir.
-4. Veri train, validation ve test setlerine ayrılır.
-5. Her ilaç SMILES formatından moleküler graph yapısına dönüştürülür.
-6. Siamese GraphSAGE modeli eğitilir.
-7. Her epoch sonunda validation ROC-AUC ve PR-AUC değerleri hesaplanır.
-8. En iyi validation PR-AUC değerini veren model kaydedilir.
-9. Eğitim sonunda en iyi model test seti üzerinde değerlendirilir.
-10. Eğitim geçmişi ve final sonuçlar CSV dosyalarına kaydedilir.
+Model:
+GraphSAGE + Morgan Fingerprint
 
-Kullanılan Problem Tipi:
-- Multi-label classification
-- Bir ilaç çifti aynı anda birden fazla yan etkiye sahip olabilir.
-
-Kullanılan Loss:
-- BCEWithLogitsLoss
-
-Kullanılan Metrikler:
-- ROC-AUC
-- PR-AUC
-
-Kaydedilen Dosyalar:
-- models/graphsage_best.pth
-- models/twosides_graphsage_model.pth
-- models/label_binarizer.pth
-- results/graphsage_final_history.csv
-- results/graphsage_final_results.csv
+Çıktılar:
+- models/graphsage_fp_best.pth
+- results/graphsage_fp_history.csv
+- results/graphsage_fp_results.csv
 """
 
 import os
@@ -54,7 +35,8 @@ from torch_geometric.data import Batch
 from tdc.multi_pred import DDI
 
 from graph_utils import smiles_to_graph
-from model_graphsage import SiameseGraphSAGE
+from fingerprint_utils import smiles_to_morgan_fingerprint
+from model_graphsage_fp import SiameseGraphSAGEFingerprint
 
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -64,7 +46,7 @@ os.makedirs("models", exist_ok=True)
 os.makedirs("results", exist_ok=True)
 
 
-class DrugPairDataset(Dataset):
+class DrugPairFingerprintDataset(Dataset):
     def __init__(self, dataframe, labels):
         self.dataframe = dataframe.reset_index(drop=True)
         self.labels = labels
@@ -75,21 +57,31 @@ class DrugPairDataset(Dataset):
     def __getitem__(self, idx):
         row = self.dataframe.iloc[idx]
 
-        graph1 = smiles_to_graph(row["Drug1"])
-        graph2 = smiles_to_graph(row["Drug2"])
+        smiles1 = row["Drug1"]
+        smiles2 = row["Drug2"]
+
+        graph1 = smiles_to_graph(smiles1)
+        graph2 = smiles_to_graph(smiles2)
+
+        fp1 = smiles_to_morgan_fingerprint(smiles1)
+        fp2 = smiles_to_morgan_fingerprint(smiles2)
+
         label = torch.tensor(self.labels[idx], dtype=torch.float)
 
-        return graph1, graph2, label
+        return graph1, graph2, fp1, fp2, label
 
 
 def collate_fn(batch):
-    graphs1, graphs2, labels = zip(*batch)
+    graphs1, graphs2, fps1, fps2, labels = zip(*batch)
 
     batch1 = Batch.from_data_list(graphs1)
     batch2 = Batch.from_data_list(graphs2)
+
+    fps1 = torch.stack(fps1)
+    fps2 = torch.stack(fps2)
     labels = torch.stack(labels)
 
-    return batch1, batch2, labels
+    return batch1, batch2, fps1, fps2, labels
 
 
 def evaluate_model(model, loader):
@@ -99,12 +91,14 @@ def evaluate_model(model, loader):
     all_preds = []
 
     with torch.no_grad():
-        for batch1, batch2, labels in loader:
+        for batch1, batch2, fp1, fp2, labels in loader:
             batch1 = batch1.to(device)
             batch2 = batch2.to(device)
+            fp1 = fp1.to(device)
+            fp2 = fp2.to(device)
             labels = labels.to(device)
 
-            outputs = model(batch1, batch2)
+            outputs = model(batch1, batch2, fp1, fp2)
             preds = torch.sigmoid(outputs)
 
             all_labels.append(labels.cpu().numpy())
@@ -143,8 +137,6 @@ def main():
     num_classes = len(mlb.classes_)
     print(f"Toplam yan etki sınıfı: {num_classes}")
 
-    torch.save(mlb, "models/label_binarizer.pth")
-
     train_val_df, test_df, train_val_labels, test_labels = train_test_split(
         grouped_df,
         y_multilabel,
@@ -166,31 +158,32 @@ def main():
     batch_size = 64
 
     train_loader = DataLoader(
-        DrugPairDataset(train_df, train_labels),
+        DrugPairFingerprintDataset(train_df, train_labels),
         batch_size=batch_size,
         shuffle=True,
         collate_fn=collate_fn,
     )
 
     val_loader = DataLoader(
-        DrugPairDataset(val_df, val_labels),
+        DrugPairFingerprintDataset(val_df, val_labels),
         batch_size=batch_size,
         shuffle=False,
         collate_fn=collate_fn,
     )
 
     test_loader = DataLoader(
-        DrugPairDataset(test_df, test_labels),
+        DrugPairFingerprintDataset(test_df, test_labels),
         batch_size=batch_size,
         shuffle=False,
         collate_fn=collate_fn,
     )
 
-    model = SiameseGraphSAGE(
+    model = SiameseGraphSAGEFingerprint(
         num_node_features=80,
         num_edge_features=6,
         hidden_dim=128,
         num_classes=num_classes,
+        fingerprint_dim=512,
     ).to(device)
 
     optimizer = torch.optim.Adam(
@@ -206,7 +199,7 @@ def main():
 
     history = []
 
-    print("GraphSAGE final eğitimi başlıyor...")
+    print("GraphSAGE + Morgan Fingerprint eğitimi başlıyor...")
 
     for epoch in range(1, epochs + 1):
         model.train()
@@ -215,14 +208,16 @@ def main():
 
         progress_bar = tqdm(train_loader)
 
-        for batch1, batch2, labels in progress_bar:
+        for batch1, batch2, fp1, fp2, labels in progress_bar:
             batch1 = batch1.to(device)
             batch2 = batch2.to(device)
+            fp1 = fp1.to(device)
+            fp2 = fp2.to(device)
             labels = labels.to(device)
 
             optimizer.zero_grad()
 
-            outputs = model(batch1, batch2)
+            outputs = model(batch1, batch2, fp1, fp2)
             loss = criterion(outputs, labels)
 
             loss.backward()
@@ -231,7 +226,7 @@ def main():
             total_loss += loss.item()
 
             progress_bar.set_description(
-                f"GraphSAGE | Epoch {epoch} | Loss: {loss.item():.4f}"
+                f"GraphSAGE+FP | Epoch {epoch} | Loss: {loss.item():.4f}"
             )
 
         avg_loss = total_loss / len(train_loader)
@@ -244,8 +239,7 @@ def main():
 
         if is_best:
             best_val_pr_auc = val_pr_auc
-            torch.save(model.state_dict(), "models/graphsage_best.pth")
-            torch.save(model.state_dict(), "models/twosides_graphsage_model.pth")
+            torch.save(model.state_dict(), "models/graphsage_fp_best.pth")
 
         history.append(
             {
@@ -260,7 +254,7 @@ def main():
         )
 
         pd.DataFrame(history).to_csv(
-            "results/graphsage_final_history.csv",
+            "results/graphsage_fp_history.csv",
             index=False,
             encoding="utf-8",
         )
@@ -278,7 +272,7 @@ def main():
 
     model.load_state_dict(
         torch.load(
-            "models/graphsage_best.pth",
+            "models/graphsage_fp_best.pth",
             map_location=device,
         )
     )
@@ -286,7 +280,7 @@ def main():
     test_roc_auc, test_pr_auc = evaluate_model(model, test_loader)
 
     final_results = {
-        "model": "GraphSAGE",
+        "model": "GraphSAGE + Morgan Fingerprint",
         "epochs": epochs,
         "best_val_pr_auc": best_val_pr_auc,
         "test_roc_auc": test_roc_auc,
@@ -297,23 +291,22 @@ def main():
         "test_size": len(test_df),
         "batch_size": batch_size,
         "hidden_dim": 128,
+        "fingerprint_dim": 512,
     }
 
     pd.DataFrame([final_results]).to_csv(
-        "results/graphsage_final_results.csv",
+        "results/graphsage_fp_results.csv",
         index=False,
         encoding="utf-8",
     )
 
-    print(f"GraphSAGE Test ROC-AUC: {test_roc_auc:.4f}")
-    print(f"GraphSAGE Test PR-AUC: {test_pr_auc:.4f}")
+    print(f"GraphSAGE + FP Test ROC-AUC: {test_roc_auc:.4f}")
+    print(f"GraphSAGE + FP Test PR-AUC: {test_pr_auc:.4f}")
 
     print("Kaydedilen dosyalar:")
-    print("- models/graphsage_best.pth")
-    print("- models/twosides_graphsage_model.pth")
-    print("- models/label_binarizer.pth")
-    print("- results/graphsage_final_history.csv")
-    print("- results/graphsage_final_results.csv")
+    print("- models/graphsage_fp_best.pth")
+    print("- results/graphsage_fp_history.csv")
+    print("- results/graphsage_fp_results.csv")
 
 
 if __name__ == "__main__":

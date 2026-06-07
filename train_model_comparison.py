@@ -16,7 +16,7 @@ from torch_geometric.data import Batch
 from tdc.multi_pred import DDI
 
 from graph_utils import smiles_to_graph
-from model import SiameseGATv2
+from model_gat import SiameseGATv2
 from model_gcn import SiameseGCN
 from model_graphsage import SiameseGraphSAGE
 

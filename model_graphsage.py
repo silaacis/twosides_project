@@ -1,3 +1,46 @@
+"""
+Bu dosya, Siamese GraphSAGE modelini içermektedir.
+
+Modelin amacı:
+
+1. Birinci ilacın moleküler graphını analiz etmek
+2. İkinci ilacın moleküler graphını analiz etmek
+3. Her ilaç için bir embedding (sayısal temsil) üretmek
+4. İki embedding'i birleştirmek
+5. 1317 olası yan etki için tahmin skoru üretmek
+
+Model Yapısı:
+
+- GraphSAGE Katmanı 1
+- Batch Normalization
+- ReLU Aktivasyon
+- Dropout
+
+- GraphSAGE Katmanı 2
+- Batch Normalization
+- ReLU Aktivasyon
+
+- Global Mean Pooling
+- Global Max Pooling
+
+- Tam Bağlantılı (Fully Connected) Sınıflandırıcı
+
+Siamese Mimari:
+
+Aynı GraphSAGE ağı hem birinci hem ikinci ilacı işler.
+Böylece iki molekül aynı özellik uzayında temsil edilir.
+
+Çıktı:
+
+Model her ilaç çifti için 1317 yan etki sınıfına ait
+olasılık skorları üretmektedir.
+
+Final çalışmada yapılan model karşılaştırmaları sonucunda
+GraphSAGE modeli GCN ve GATv2 modellerinden daha yüksek
+ROC-AUC ve PR-AUC performansı göstermiştir ve final model
+olarak seçilmiştir.
+"""
+
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
