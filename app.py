@@ -5,7 +5,6 @@ import gradio as gr
 import pandas as pd
 import pubchempy as pcp
 import requests
-from tdc.utils import get_label_map
 
 from tdc.multi_pred import DDI
 from rdkit import Chem
@@ -48,6 +47,23 @@ drug_descriptions = load_json_file(
 
 
 def get_side_effect_info(label_id):
+    key = str(label_id)
+
+    if key in side_effect_descriptions:
+        item = side_effect_descriptions[key]
+        return {
+            "en_name": item.get("en_name", key),
+            "tr_name": item.get("tr_name", item.get("en_name", key)),
+            "description": item.get("description", "Açıklama bulunamadı."),
+            "source": item.get("source", "Açıklama dosyası"),
+        }
+
+    return {
+        "en_name": key,
+        "tr_name": key,
+        "description": "Bu yan etki için açıklama bulunamadı.",
+        "source": "Varsayılan",
+    }
     key = str(label_id)
 
     side_effect_name = key
@@ -229,7 +245,7 @@ print(f"Kullanılan cihaz: {device}")
 print("TWOSIDES verisi yükleniyor...")
 
 data = DDI(name="TWOSIDES")
-df = data.get_data()
+
 
 label_map = get_label_map(name="TWOSIDES")
 
