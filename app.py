@@ -21,8 +21,8 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 SIDE_EFFECT_DESCRIPTION_FILE = "side_effect_descriptions_enhanced.json"
 DRUG_DESCRIPTION_FILE = "drug_descriptions_enhanced.json"
 
-TEST_ROC_AUC = 0.8922
-TEST_PR_AUC = 0.3668
+TEST_ROC_AUC = 0.8970
+TEST_PR_AUC = 0.3827
 NUM_SIDE_EFFECT_CLASSES = 1317
 
 
@@ -290,7 +290,7 @@ model = SiameseGraphSAGEFingerprint(
     num_edge_features=6,
     hidden_dim=128,
     num_classes=num_classes,
-    fingerprint_dim=512,
+    fingerprint_dim=1024,
 ).to(device)
 
 model.load_state_dict(
@@ -340,8 +340,8 @@ def predict_side_effects(drug1_display, drug2_display, top_k):
     batch1 = Batch.from_data_list([g1]).to(device)
     batch2 = Batch.from_data_list([g2]).to(device)
 
-    fp1 = smiles_to_morgan_fingerprint(smiles1).unsqueeze(0).to(device)
-    fp2 = smiles_to_morgan_fingerprint(smiles2).unsqueeze(0).to(device)
+    fp1 = smiles_to_morgan_fingerprint(smiles1, n_bits=1024).unsqueeze(0).to(device)
+    fp2 = smiles_to_morgan_fingerprint(smiles2, n_bits=1024).unsqueeze(0).to(device)
 
     with torch.no_grad():
         output = model(batch1, batch2, fp1, fp2)
