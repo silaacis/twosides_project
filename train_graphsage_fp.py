@@ -183,7 +183,7 @@ def main():
         num_edge_features=6,
         hidden_dim=128,
         num_classes=num_classes,
-        fingerprint_dim=512,
+        fingerprint_dim=1024,
     ).to(device)
 
     optimizer = torch.optim.Adam(
