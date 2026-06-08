@@ -63,8 +63,8 @@ class DrugPairFingerprintDataset(Dataset):
         graph1 = smiles_to_graph(smiles1)
         graph2 = smiles_to_graph(smiles2)
 
-        fp1 = smiles_to_morgan_fingerprint(smiles1)
-        fp2 = smiles_to_morgan_fingerprint(smiles2)
+        fp1 = smiles_to_morgan_fingerprint(smiles1, n_bits=1024)
+        fp2 = smiles_to_morgan_fingerprint(smiles2, n_bits=1024)
 
         label = torch.tensor(self.labels[idx], dtype=torch.float)
 
@@ -291,7 +291,7 @@ def main():
         "test_size": len(test_df),
         "batch_size": batch_size,
         "hidden_dim": 128,
-        "fingerprint_dim": 512,
+        "fingerprint_dim": 1024,
     }
 
     pd.DataFrame([final_results]).to_csv(
